@@ -10,13 +10,14 @@
     "type": "git",
     "url": "git+https://github.com/djoj/planit.git"
   },
-  "author": "Oliver Wang, Dianne Le, Justin Biele and Jongsoo Yoon",
+  "author": "Oliver Wang, Dianne Le, Justin Biele, Jongsoo Yoon",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/djoj/planit/issues"
   },
   "homepage": "https://github.com/djoj/planit#readme",
   "dependencies": {
+    "bcrypt": "^0.8.7",
     "body-parser": "^1.15.2",
     "cors": "^2.8.1",
     "dotenv": "^2.0.0",
@@ -26,6 +27,7 @@
     "sequelize": "^3.24.3"
   },
   "devDependencies": {
+    "morgan": "^1.7.0",
     "nodemon": "^1.11.0"
   }
 }
