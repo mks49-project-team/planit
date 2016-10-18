@@ -8,7 +8,7 @@ var router = require('./routes/index').router;
 
 var app = express();
 
-var db = require('./db/db');
+var db = require('./db').db;
 
 var port = process.env.PORT || 8000
 
