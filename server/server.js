@@ -1,20 +1,25 @@
 var express = require('express');
 require('dotenv').config();
 var request = require('request');
-var bodyParser = require('body-Parser');
+var bodyParser = require('body-parser');
 var morgan = require('morgan');
 var cors = require('cors');
+var router = require('./routes/index').router;
 
 var app = express();
 
 var db = require('./db/db');
 
-app.use(bodyParser.json());
-app.use(cors());
-app.use(express.static('./client'))
-app.use(morgan('dev'))
-
 var port = process.env.PORT || 8000
 
-app.listen(port);
-console.log(`server listening on port ${port}`);
+app.use(morgan('dev'));
+app.use(cors());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(express.static(__dirname + '../client'));
+
+app.use('/api', router);
+
+app.listen(port, function() {
+  console.log(`server listening on port ${port}`);
+});
