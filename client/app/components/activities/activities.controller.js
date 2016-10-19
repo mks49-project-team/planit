@@ -4,7 +4,7 @@
 
   angular
     .module('app.activityList')
-    .controller('ListController')
+    .controller('ListController', ListController);
 
   ListController.$inject = ['$state', 'listService'];
 
@@ -12,6 +12,10 @@
     var vm = this;
     vm.getActivities = getActivities;
     vm.getActivities();
+
+    function getActivities() {
+      listService.getActivities();
+    }
   }
 
 })();

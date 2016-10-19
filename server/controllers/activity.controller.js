@@ -1,5 +1,5 @@
 var PossibleActivities = require('../db').PossibleActivities;
-
+var yelpSearch = require('../helpers/activityHelper').yelpSearch
 var activityController = {};
 
 activityController.GET = function(req, res) {
@@ -15,25 +15,28 @@ activityController.GET = function(req, res) {
 };
 
 activityController.POST = function(req, res) {
-  console.log('inside activity controller.POST');
-  PossibleActivities.sync().then(function() {
-    return PossibleActivities.create({
-      name: 'name',
-      picture: 'image',
-      description: 'description',
-      address: 'address'
-    })
-  })
-  .then(function(possibleActivity) {
-    res.status(200).json(possibleActivity);
+  // make API request to Yelp
+  yelpSearch('Seattle')
+  .then(function(searchResults) {
+    console.log("this is a search result", searchResults)
+    PossibleActivities.bulkCreate({
+        name: 'name',
+        rating: 'rating',
+        stars: 'some stows',
+        picture: 'image',
+        description: 'description',
+        address: 'address'
+    });
+
+    res.status(200).json(searchResults);
   })
   .catch(function(err) {
     console.log('Error in posting possible activities: ', err)
     res.status(418).send(err);
   });
 
-}
+};
 
 module.exports = {
   activityController: activityController
-}
+};
