@@ -18,6 +18,7 @@
       return itineraryService.getSavedActivities()
         .then(function(data) {
           vm.savedActivities = data;
+          console.log('got savedActivities', data);
         })
         .catch(function(err) {
           console.log('err in getSavedActivities', err);

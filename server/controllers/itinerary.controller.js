@@ -1,4 +1,5 @@
 var SavedActivities = require('../db').SavedActivities;
+var PossibleActivities = require('../db').PossibleActivities;
 
 var itineraryController = {};
 
@@ -36,6 +37,7 @@ itineraryController.POST = function(req, res) {
   });
 };
 
+///// CHANGE THIS TO PossibleActivities /////
 itineraryController.DELETE = function(req, res) {
   console.log('inside itineraryController.DELETE');
   SavedActivities.destroy({
