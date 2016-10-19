@@ -17,13 +17,11 @@ itineraryController.GET = function(req, res) {
 
 itineraryController.POST = function(req, res) {
   console.log('inside itineraryController.POST');
-  SavedActivities.sync().then(function() {
-    return SavedActivities.create({
-      name: 'testname',
-      picture: 'testpic',
-      description: 'testdesc',
-      address: 'testaddress'
-    });
+  SavedActivities.create({
+    name: 'testname',
+    picture: 'testpic',
+    description: 'testdesc',
+    address: 'testaddress'
   })
   .then(function(activity) {
     res.status(201).json(activity);
