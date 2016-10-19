@@ -10,7 +10,7 @@
   function config($stateProvider) {
     $stateProvider
       .state('itinerary', {
-        url: '/trip',
+        url: '/itinerary',
         templateUrl: './app/components/itinerary/itinerary.html',
         controller: 'ItineraryController as vm'
       });
