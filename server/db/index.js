@@ -48,5 +48,6 @@ Trip.hasMany(SavedActivities, {as: 'SavedActivitiesId'});
 module.exports = {
   db: db,
   PossibleActivities: PossibleActivities,
-  SavedActivities: SavedActivities
+  SavedActivities: SavedActivities,
+  Trip: Trip
 };
