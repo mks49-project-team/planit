@@ -3,5 +3,6 @@
  * */
 
 module.exports = {
-  itineraryController: require('./itinerary.controller').itineraryController
+  itineraryController: require('./itinerary.controller').itineraryController,
+  activityController: require('./activity.controller').activityController
 };
