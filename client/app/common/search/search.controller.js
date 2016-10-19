@@ -10,10 +10,11 @@
   SearchController.$inject = [$state, 'searchService'] //research what this does.
 
   var vm = this;
-  vm.search = {};
-  vm.searchResults = searchResults;
+  var vm.search = '';
 
   
+
+
 
 
 
