@@ -5,7 +5,7 @@ var express = require('express');
 
 var itineraryRouter = require('./itinerary.router').itineraryRouter;
 
-
+var activityRouter = require('./activity.router').activityRouter;
 
 
 
@@ -20,7 +20,7 @@ var router = express.Router();
  * */
 
 router.use('/itinerary', itineraryRouter);
-
+router.use('/activity', activityRouter);
 
 
 

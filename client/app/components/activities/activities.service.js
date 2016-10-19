@@ -27,13 +27,18 @@
 yelp.search({ location: req.query })
   .then(function(data) {
     data.businesses.forEach(function(business) {
-      var businessEntry = {};
-      businessEntry.id = business.id
-      businessEntry.name = business.name;
-      businessEntry.rating = business.rating
-      businessEntry.rating_img_url_small = business.rating_img_url_small;
-      businessEntry.categories = business.categories;
-      businessEntry.address = business.location.display_address;
+      var businessEntry = {
+        id: business.id,
+        name: business.name,
+        rating: business.rating,
+        stars: business.rating_img_url_small,
+        categories: business.categories,
+        address: business.location.dispaly_address,
+        image: business.image_url,
+        description: business.snippet_text
+
+      };
+
 
       console.log(businessEntry)
     })
