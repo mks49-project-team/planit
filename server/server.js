@@ -1,3 +1,4 @@
+var path = require('path');
 var express = require('express');
 require('dotenv').config();
 var request = require('request');
@@ -16,7 +17,7 @@ app.use(morgan('dev'));
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
-app.use(express.static(__dirname + '../client'));
+app.use('/', express.static(path.join(__dirname, '../client')));
 
 app.use('/api', router);
 

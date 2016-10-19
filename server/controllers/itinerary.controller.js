@@ -20,6 +20,16 @@ itineraryController.POST = function(req, res) {
   res.status(201).send();
 };
 
+itineraryController.DELETE = function(req, res) {
+  console.log('inside itineraryController.DELETE');
+  SavedActivities.destroy({
+    where: {
+      name: 'testname'
+    }
+  });
+  res.status(200).send();
+}
+
 module.exports = {
   itineraryController: itineraryController
 };
