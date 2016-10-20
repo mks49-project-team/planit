@@ -10,11 +10,18 @@
 
   function ListController($state, listService) {
     var vm = this;
+    vm.possibleActivities = [];
     vm.getActivities = getActivities;
-    vm.getActivities();
 
     function getActivities() {
-      listService.getActivities();
+      return listService.getActivities()
+        .then(function(data) {
+          vm.possibleActivities = data;
+        })
+        .catch(function(err) {
+          console.log("There was an error: ", err);
+          return err;
+        });
     }
   }
 

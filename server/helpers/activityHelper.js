@@ -11,7 +11,8 @@ var yelpQuery = new Yelp ({
 });
 
 
-function yelpSearch(locationSearch) {
+function yelpSearch(locationSearch, tripId) {
+  var tripId = tripId;
   return yelpQuery.search({location: locationSearch})
     .then(function(data) {
       var businessEntry = [];
@@ -23,7 +24,8 @@ function yelpSearch(locationSearch) {
           stars: business.rating_img_url_small,
           address: business.location.display_address,
           image: business.image_url,
-          description: business.snippet_text
+          description: business.snippet_text,
+          tripId: tripId
 
         });
       });
