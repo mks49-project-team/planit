@@ -9,6 +9,9 @@ SavedActivities.belongsTo(Trip);
 Trip.hasMany(PossibleActivities, {as: 'PossibleActivitiesId'});
 Trip.hasMany(SavedActivities, {as: 'SavedActivitiesId'});
 
+// Option force: true overwrites existing tables.
+db.sync({ force: true });
+
 /* *
  *  To test if you've setup your routes and connection to the
  *  database correctly, copy-and-paste the function that relates to
@@ -19,30 +22,24 @@ Trip.hasMany(SavedActivities, {as: 'SavedActivitiesId'});
  *  For an example, you can make a 'POST' request to localhost:8000/api/itinerary
  * */
 
-// PossibleActivities.sync().then(function() {
-//   return PossibleActivities.create({
-//     name: 'testname',
-//     picture: 'testpic',
-//     description: 'testdesc',
-//     address: 'testaddress'
-//   });
+// PossibleActivities.create({
+//   name: 'testname',
+//   picture: 'testpic',
+//   description: 'testdesc',
+//   address: 'testaddress'
 // });
 //
-// SavedActivities.sync().then(function() {
-//   return SavedActivities.create({
-//     name: 'testname',
-//     picture: 'testpic',
-//     description: 'testdesc',
-//     address: 'testaddress'
-//   });
+// SavedActivities.create({
+//   name: 'testname',
+//   picture: 'testpic',
+//   description: 'testdesc',
+//   address: 'testaddress'
 // });
 //
-// Trip.sync().then(function() {
-//   return Trip.create({
+// Trip.create({
 //     uuid: 'testuuid',
 //     password: 'testpw',
 //     locationName: 'testloc',
-//   });
 // });
 
 module.exports = {
