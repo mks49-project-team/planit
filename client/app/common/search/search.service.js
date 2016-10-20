@@ -30,7 +30,7 @@
     function submit() {
       return $http({
         method: 'POST',
-        url: '/api/postSearch'
+        url: '/api/postSearch',
       })
     }
 

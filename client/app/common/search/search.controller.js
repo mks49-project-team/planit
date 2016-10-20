@@ -5,17 +5,24 @@
 
   angular
     .module('app.search')
-    .controller('searchController', SearchController);
+    .controller('SearchController', SearchController);
 
   SearchController.$inject = [$state, 'searchService'] //research what this does.
 
   var vm = this;
-  var vm.search = '';
+  vm.search = '';
+  vm.input = 'Enter your destination'
+  vm.autoComplete = autoComplete
 
-  
+  vm.autoComplete();
+  google.maps.event.addDomListener(window, 'load', vm.autoComplete);
 
+  function autoComplete() {
+    console.log("autocomplete is running")
+    return searchService.autoComplete()
+  }
 
-
+  // vm.submit = submit
 
 
 
