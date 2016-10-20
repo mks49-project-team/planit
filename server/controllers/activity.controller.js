@@ -18,17 +18,13 @@ activityController.POST = function(req, res) {
   // make API request to Yelp
   yelpSearch('Seattle')
   .then(function(searchResults) {
+    //saves search results to the database
     console.log("this is a search result", searchResults)
-    PossibleActivities.bulkCreate({
-        name: 'name',
-        rating: 'rating',
-        stars: 'some stows',
-        picture: 'image',
-        description: 'description',
-        address: 'address'
-    });
-
-    res.status(200).json(searchResults);
+    PossibleActivities.bulkCreate(searchResults)
+  })
+  .then(function(savedActivities) {
+    console.log('things have been saved i guess');
+    res.status(200).json(savedActivities);
   })
   .catch(function(err) {
     console.log('Error in posting possible activities: ', err)

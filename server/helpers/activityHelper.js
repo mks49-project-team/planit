@@ -8,7 +8,7 @@ var yelpQuery = new Yelp ({
   token: 'L5Q9dkCBNNr-GwZDl81mliC8z5OtWJjr',
   token_secret: '5UIuf3CH89z_ODFJsfQA5RDoFLQ'
 
-})
+});
 
 
 function yelpSearch(locationSearch) {
@@ -26,14 +26,14 @@ function yelpSearch(locationSearch) {
           description: business.snippet_text
 
         });
-        // console.log("this is a business entry", businessEntry)
-      })
+      });
       return businessEntry;
     })
-    // .catch(function(err) {
-    //   console.log('There was an error: ', err)
-    // })
-}
+    .catch(function(err) {
+      console.log('There was an error: ', err);
+    });
+};
+
 module.exports = {
   yelpSearch: yelpSearch
-}
+};
