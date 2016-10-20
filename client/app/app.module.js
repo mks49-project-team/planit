@@ -5,7 +5,7 @@
     .module('app', [
       'ui.router',
       'app.itinerary',
-      // 'app.activities',
+      'app.activityList',
       // 'app.search',
       // 'app.auth'
     ]);

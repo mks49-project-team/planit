@@ -4,17 +4,26 @@
 
   angular
     .module('app.activityList')
-    .controller('ListController', ListController);
+    .controller('ActivityController', ActivityController);
 
-  ListController.$inject = ['$state', 'listService'];
+  ActivityController.$inject = ['$state', 'activityService'];
 
-  function ListController($state, listService) {
+  function ActivityController($state, listService) {
     var vm = this;
+    vm.possibleActivities = [];
     vm.getActivities = getActivities;
-    vm.getActivities();
 
     function getActivities() {
-      listService.getActivities();
+
+      return activityService.getActivities()
+
+        .then(function(data) {
+          vm.possibleActivities = data;
+        })
+        .catch(function(err) {
+          console.log("There was an error: ", err);
+          return err;
+        });
     }
   }
 
