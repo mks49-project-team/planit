@@ -13,7 +13,6 @@
     vm.possibleActivities = [];
     vm.getActivities = getActivities;
     vm.getActivities();
-       var arr = [];
     function getActivities() {
 
       return activityService.getActivities()
@@ -33,7 +32,7 @@
             splitz = splitz.join('');
             entry.address = splitz;
           })
-          console.log("good god please work", data[0].address)
+          // console.log("good god please work", data[0].address)
           vm.possibleActivities = data;
         })
         .catch(function(err) {
