@@ -1,6 +1,6 @@
-<div>
-  <form ng-submit="vm.submit()" ng-controllers="SearchController">
-    <input ng-model='input' id="searchTextField" type="text" size="100" autocomplete="on">
+<div ng-controllers="SearchController">
+  <form ng-submit="vm.submit(vm.query)">
+    <input ng-model='vm.query' id="searchTextField" type="text" size="100" autocomplete="on">
     <input type="submit" id="submit" value="Planit!" />
   </form>
 </div>

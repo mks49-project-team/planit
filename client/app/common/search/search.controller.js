@@ -13,7 +13,6 @@
 
     var vm = this;
     vm.search = '';
-    vm.input = 'Enter your destination'
     vm.autoComplete = autoComplete
     vm.submit = submit;
 
@@ -26,7 +25,11 @@
     }
 
     function submit() {
-      return searchService.submit()
+      vm.search = this.query;
+      console.log(this.query);
+      console.log('this is search', vm.search);
+
+      return searchService.submit(vm.search)
       .then(function(results){
         console.log("THIS IS RESULTS", results);
       })

@@ -28,10 +28,12 @@
     var autocomplete = new google.maps.places.Autocomplete(input, options);
     };
 
-    function submit() {
+    function submit(locName) {
       return $http({
         method: 'POST',
-        url: '/search',
+        url: '/api/search',
+        headers: {'Content-Type': 'application/json'},
+        data: {locationName: locName}
       })
     }
   }
