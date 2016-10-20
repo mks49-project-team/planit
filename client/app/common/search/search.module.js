@@ -3,5 +3,5 @@
 (function(){
   'use strict';
 
-  angular.module('app.lend',[])
+  angular.module('app.search',[])
 })()
