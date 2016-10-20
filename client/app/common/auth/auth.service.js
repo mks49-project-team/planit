@@ -1,26 +1,31 @@
-var crypto = require('crypto');
 (function() {
   'use strict';
 
   angular
-    .module(app.auth)
-    .factory('appService', appService);
+    .module('app.auth')
+    .factory('authService', authService);
 
   authService.$inject = ['$http'];
 
   function authService($http) {
+    var service = {
+      getHash: getHash
+    };
+    return service;
 
-  }
-
-
-})
-
-var createEndpoint = function() {
-  crypto.randomBytes(10, function(error, buf) {
-    if(err) {
-      console.error(err)
-    } else {
-      console.log("This is the crypto", buf)
+    function getHash() {
+      return $http({
+        method: 'GET',
+        url: '/api/auth'
+      })
+      .then(function(res) {
+        console.log("this is res from auth.service", res.data)
+        return res;
+      })
+      .catch(function(err) {
+        console.log("Error in auth.service", err)
+        return err;
+      })
     }
-  })
-}
+  }
+})()

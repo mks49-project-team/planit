@@ -16,7 +16,7 @@ function yelpSearch(locationSearch, tripId) {
   return yelpQuery.search({location: locationSearch})
     .then(function(data) {
       var businessEntry = [];
-      console.log('this is the data baybay')
+      // console.log('this is the data baybay')
       data.businesses.forEach(function(business) {
         businessEntry.push({
           name: business.name,

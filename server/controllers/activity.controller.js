@@ -21,7 +21,7 @@ activityController.POST = function(req, res) {
   yelpSearch(req)
     .then(function(searchResults) {
       //saves search results to the database
-      console.log(searchResults)
+      // console.log(searchResults)
       PossibleActivities.bulkCreate(searchResults)
     })
     .then(function(savedActivities) {
