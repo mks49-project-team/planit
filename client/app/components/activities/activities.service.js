@@ -7,25 +7,28 @@
     activityService.$inject = ['$http'];
 
     function activityService($http) {
+
       var service = {
         getActivities: getActivities,
       };
       return service;
-    };
+
     ////////////////////////
 
-    //function calls for yelp results in database
-    function getActivities() {
-      return $http({
-        method: 'GET',
-        url:'/api/activity'
-      })
-      .then(function(res) {
-        return res.data;
-      })
-      .catch(function(err) {
-        console.log('There was an error: ', err);
-        return err;
-      })
+      //function calls for yelp results in database
+      function getActivities() {
+        return $http({
+          method: 'GET',
+          url:'/api/activity'
+        })
+        .then(function(res) {
+          //console.log("this is the res inside the .then() odf service.js", res)
+          return res.data;
+        })
+        .catch(function(err) {
+          console.log('There was an error: ', err);
+          return err;
+        });
+      }
     }
 })();
