@@ -9,6 +9,8 @@ var activityRouter = require('./activity.router').activityRouter;
 
 var searchRouter = require('./search.router').searchRouter;
 
+var authRouter = require('./auth.router').authRouter;
+
 
 
 var router = express.Router();
@@ -20,7 +22,7 @@ var router = express.Router();
 router.use('/itinerary', itineraryRouter);
 router.use('/activity', activityRouter);
 router.use('/search', searchRouter);
-
+router.use('/auth', authRouter);
 
 
 
