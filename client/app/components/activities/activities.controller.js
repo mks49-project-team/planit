@@ -4,17 +4,17 @@
 
   angular
     .module('app.activityList')
-    .controller('ListController', ListController);
+    .controller('ActivityController', ActivityController);
 
-  ListController.$inject = ['$state', 'listService'];
+  ActivityController.$inject = ['$state', 'activityService'];
 
-  function ListController($state, listService) {
+  function ActivityController($state, listService) {
     var vm = this;
     vm.possibleActivities = [];
     vm.getActivities = getActivities;
 
     function getActivities() {
-      return listService.getActivities()
+      return activityService.getActivities()
         .then(function(data) {
           vm.possibleActivities = data;
         })
