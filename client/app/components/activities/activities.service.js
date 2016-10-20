@@ -12,7 +12,6 @@
       };
       return service;
     };
-
     ////////////////////////
 
     //function calls for yelp results in database

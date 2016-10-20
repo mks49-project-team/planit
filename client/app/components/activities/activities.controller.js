@@ -14,7 +14,9 @@
     vm.getActivities = getActivities;
 
     function getActivities() {
+
       return activityService.getActivities()
+
         .then(function(data) {
           vm.possibleActivities = data;
         })
