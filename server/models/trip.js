@@ -9,6 +9,7 @@ module.exports = function(db) {
     password: {type: Sequelize.STRING},
     locationName: {type: Sequelize.STRING}
   });
+  // Creating random string as endpoint
   Trip.hook('beforeValidate', function(trip, options) {
     trip.uuid = randomstring.generate(10);
   })
