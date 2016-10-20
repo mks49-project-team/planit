@@ -6,7 +6,7 @@
       'ui.router',
       'app.itinerary',
       // 'app.activities',
-      // 'app.search',
+      'app.search',
       // 'app.auth'
     ]);
 })();

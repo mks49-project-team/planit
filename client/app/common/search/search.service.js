@@ -11,7 +11,8 @@
 
   function searchService($http) {
     var service = {
-      autoComplete : autoComplete
+      autoComplete : autoComplete,
+      submit: submit
     };
 
     return service;
@@ -19,7 +20,7 @@
     ////////////////////
 
     function autoComplete() {
-      var options  {
+      var options = {
         types: ['(cities)']
       };
 
@@ -30,9 +31,10 @@
     function submit() {
       return $http({
         method: 'POST',
-        url: '/api/postSearch',
+        url: '/search',
       })
     }
+  }
 
 
 })()
