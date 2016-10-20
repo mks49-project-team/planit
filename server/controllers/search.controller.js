@@ -1,5 +1,6 @@
 var Trip = require('../db').Trip;
 var activityController = require('./activity.controller').activityController;
+var authController = require('./auth.controller').authController;
 var searchController = {};
 
 searchController.POST = function(req, res) {
@@ -11,8 +12,10 @@ searchController.POST = function(req, res) {
     locationName: req.body.locationName
   })
   .then(function(activity) {
+    console.log("this is the hash", activity.dataValues.uuid)
     console.log("poopy", activity.dataValues.locationName)
     activityController.POST(activity.dataValues.locationName)
+    authController.hash = activity.dataValues.uuid;
     res.status(201).send(activity);
   })
   .catch(function(err) {
