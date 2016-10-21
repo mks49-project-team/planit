@@ -1,56 +1,20 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title></title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-<link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.indigo-pink.min.css">
 
-<style type="text/css">
-  .activityList{
-    width:100%;
-  }
-  #poop{
-    margin:0 auto;
-    width:50%;
-    position:relative;
-    top:25%;
-  }
-</style>
-<script defer src="https://code.getmdl.io/1.2.1/material.min.js"></script>
-
-
-
-
-</head>
 <body>
   {{ $parent.test }}
-<div>
-    <div class="mdl-layout__drawer">
-      <span class="mdl-layout-title">Title</span>
-    </div>
-    <main class="mdl-layout__content">
-      <section class="mdl-layout__tab-panel is-active" id="fixed-tab-1">
-        <div class="page-content">
-          <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp activityList">
-            <tbody>
-              <tr ng-repeat="activity in vm.possibleActivities" ng-click="vm.getSelectedActivity(activity)">
-                <td class="mdl-data-table__cell--non-numeric">{{activity.name}}</td>
-                <td>{{activity.address}}</td>
-                <td>{{activity.description}}</td>
-                <td>{{activity.rating}}</td>
-              </tr>
-            </tbody>
-          </table>
+<div class="container">
 
-
-        </div>
-      </section>
-
-    </main>
+  <div class="col-md-6 activityTable">
+    <table class="table table-striped table-hover">
+      <tbody>
+        <tr class="info" ng-repeat="activity in vm.possibleActivities" ng-click="vm.getSelectedActivity(activity)">
+          <td>{{activity.name}}</td>
+          <td>{{activity.address}}</td>
+          <td>{{activity.description}}</td>
+          <td>{{activity.rating}}</td>
+          <td><img src="{{activity.stars}}"></td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </div>
-
-
-
 </body>
-</html>
