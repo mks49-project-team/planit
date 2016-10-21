@@ -14,12 +14,22 @@
     vm.getActivities = getActivities;
     vm.getSelectedActivity = getSelectedActivity;
 
-    vm.getActivities();
+    $scope.$on('uuidChange', function(event, args) {
+      // console.log('change detected', event, args.val);
+      vm.uuid = args.val;
+      // console.log(vm.uuid);
+      // setTimeout(function() {
+      console.log('args.val', args.val);
+        vm.getActivities(args.val);
+      // }, 1000);
+    });
 
-    function getActivities() {
+    vm.getActivities(vm.uuid);
+
+    function getActivities(uuid) {
       // $scope.$parent.test = 'overwrite parent test from activity controller';
-      console.log('inside controller getActivities');
-      return activityService.getActivities()
+      console.log('inside controller getActivities', uuid);
+      return activityService.getActivities(uuid)
         .then(function(data) {
           data.forEach(function(entry){
             var splitz = entry.address.split('');

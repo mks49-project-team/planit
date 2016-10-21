@@ -9,8 +9,8 @@ SavedActivities.belongsTo(Trip);
 Trip.hasMany(PossibleActivities, {as: 'PossibleActivitiesId'});
 Trip.hasMany(SavedActivities, {as: 'SavedActivitiesId'});
 
-// Option force: true overwrites existing tables.
-db.sync();
+// Option { force: true } overwrites existing tables.
+db.sync({ force: true });
 
 /* *
  *  To test if you've setup your routes and connection to the

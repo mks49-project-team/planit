@@ -6,9 +6,9 @@
     .module('app.auth')
     .controller('AuthController', AuthController);
 
-  AuthController.$inject = ['$state', 'authService'];
+  AuthController.$inject = ['$scope', '$state', 'authService'];
 
-  function AuthController($state, authService) {
+  function AuthController($scope, $state, authService) {
     var vm = this;
     vm.windowLocation = null;
     vm.getHash = getHash
@@ -19,7 +19,15 @@
         .then(function(data) {
           console.log("this is data", data)
           vm.windowLocation = data.data
-          window.location.replace(window.location.href + "/planit/" + vm.windowLocation)
+
+          window.location.replace(window.location.href + "/" + vm.windowLocation);
+          return data.data;
+        })
+        .then(function(hash) {
+          vm.uuid = hash;
+          $scope.$parent.uuid = hash;
+          console.log('vm.uuid', $scope.parent, $scope.$parent.uuid );
+
         })
         .catch(function(err) {
           console.log('err in auth', err)
