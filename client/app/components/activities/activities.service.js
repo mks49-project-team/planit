@@ -7,16 +7,17 @@
     activityService.$inject = ['$http'];
 
     function activityService($http) {
-
       var service = {
-        getActivities: getActivities,
+        getActivities: getActivities
       };
+
       return service;
 
     ////////////////////////
 
       //function calls for yelp results in database
       function getActivities() {
+        console.log('inside activities.service getSavedActivities');
         return $http({
           method: 'GET',
           url:'/api/activity'

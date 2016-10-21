@@ -9,17 +9,23 @@
 
   function config($stateProvider) {
     $stateProvider
-      .state('trip', {
+      .state('parent', {
+        abstract: true,
         url: '/trip',
+        templateUrl: '../trip.html',
+        controller: 'ParentController as parent'
+      })
+      .state('parent.trip', {
         views: {
-          '': { templateUrl: '../trip.html' },
-          'activity@trip': {
+          'activity': {
             templateUrl: './app/components/activities/activities.html',
-            controller: 'ActivityController as vm'
+            controller: 'ActivityController as vm',
+            parent: 'parent'
           },
-          'itinerary@trip' : {
+          'itinerary' : {
             templateUrl: './app/components/itinerary/itinerary.html',
-            controller: 'ItineraryController as vm'
+            controller: 'ItineraryController as vm',
+            parent: 'parent'
           }
         }
       });

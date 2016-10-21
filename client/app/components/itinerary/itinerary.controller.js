@@ -5,14 +5,19 @@
     .module('app.itinerary')
     .controller('ItineraryController', ItineraryController);
 
-  ItineraryController.$inject = ['$state', 'itineraryService'];
+  ItineraryController.$inject = ['$scope', '$state', 'itineraryService'];
 
-  function ItineraryController($state, itineraryService) {
+  function ItineraryController($scope, $state, itineraryService) {
     var vm = this;
     vm.savedActivities = [];
     vm.getSavedActivities = getSavedActivities;
     vm.postSavedActivity = postSavedActivity;
     vm.deleteSelectedActivity = deleteSelectedActivity;
+
+    $scope.$on('selectedActivityChange', function(event, args) {
+      console.log('change detected', event);
+      postSavedActivity(args.val);
+    });
 
     function getSavedActivities() {
       return itineraryService.getSavedActivities()
