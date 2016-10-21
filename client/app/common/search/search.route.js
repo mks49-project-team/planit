@@ -10,7 +10,7 @@
   function config($stateProvider) {
     $stateProvider
       .state('search', {
-        url: '/search',
+        url: '/explore',
         templateUrl: './app/common/search/search.html',
         controller: 'SearchController as vm'
       });

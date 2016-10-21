@@ -17,11 +17,8 @@
     $scope.$on('uuidChange', function(event, args) {
       // console.log('change detected', event, args.val);
       vm.uuid = args.val;
-      // console.log(vm.uuid);
-      // setTimeout(function() {
       console.log('args.val', args.val);
-        vm.getActivities(args.val);
-      // }, 1000);
+      vm.getActivities(args.val);
     });
 
     vm.getActivities(vm.uuid);

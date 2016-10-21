@@ -33,6 +33,7 @@
           console.log('err in auth', err)
         })
     }
+    // vm.getHash();
   }
 
 })();

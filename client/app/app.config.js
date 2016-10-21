@@ -11,11 +11,12 @@
     $stateProvider
       .state('parent', {
         abstract: true,
-        url: '/trip',
+        url: '/',
         templateUrl: '../trip.html',
         controller: 'ParentController as parent'
       })
       .state('parent.trip', {
+        url: 'trip',
         views: {
           'activity': {
             templateUrl: './app/components/activities/activities.html',
@@ -33,6 +34,12 @@
             parent: 'parent'
           }
         }
-      });
+      })
+      // .state('parent.search', {
+      //   url: 'explore',
+      //   templateUrl: './app/common/search/search.html',
+      //   controller: 'SearchController as vm',
+      //   parent: 'parent'
+      // })
   }
 })();
