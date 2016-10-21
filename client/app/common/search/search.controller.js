@@ -7,9 +7,9 @@
     .module('app.search')
     .controller('SearchController', SearchController)
 
-  SearchController.$inject = ['$state', 'searchService'] //research what this does.
+  SearchController.$inject = ['$location', '$state', 'searchService'] //research what this does.
 
-  function SearchController($state, searchService) {
+  function SearchController($location, $state, searchService) {
 
     var vm = this;
     vm.search = '';
@@ -32,6 +32,7 @@
       return searchService.submit(vm.search)
       .then(function(results){
         console.log("THIS IS RESULTS", results);
+        $location.path('/trip');
       })
     }
 
