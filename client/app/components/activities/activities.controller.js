@@ -14,6 +14,10 @@
     vm.getActivities = getActivities;
     vm.getSelectedActivity = getSelectedActivity;
 
+    $scope.$on('uuidChange', function(event, args) {
+      console.log('change detected', event);
+    });
+
     vm.getActivities();
 
     function getActivities() {

@@ -24,7 +24,7 @@ itineraryController.POST = function(req, res) {
     address: req.body.address,
     image: req.body.image,
     description: req.body.description,
-    tripId: req.body.tripId
+    uuid: req.body.uuid
   })
   .then(function(activity) {
     PossibleActivities.destroy({

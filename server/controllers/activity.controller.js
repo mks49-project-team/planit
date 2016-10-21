@@ -17,11 +17,16 @@ activityController.GET = function(req, res) {
 activityController.POST = function(req, res) {
   // console.log('inside the activity controller.POST');
   // make API request to Yelp
-  yelpSearch(req)
+  console.log('req in activityController', req);
+  yelpSearch(req.locationName)
     .then(function(searchResults) {
-      //saves search results to the database
-      // console.log(searchResults)
-      PossibleActivities.bulkCreate(searchResults)
+      //saves search results to the database;
+      searchResults.forEach(function(searchResult) {
+        console.log(searchResult['tripId']);
+        searchResult['uuid'] = req.uuid;
+      });
+      console.log(searchResults, 'searchResults');
+      PossibleActivities.bulkCreate(searchResults);
     })
     .then(function(savedActivities) {
       console.log('things have been saved i guess');

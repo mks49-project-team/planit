@@ -14,7 +14,7 @@ searchController.POST = function(req, res) {
   .then(function(activity) {
     console.log("this is the hash", activity.dataValues.uuid)
     console.log("poopy", activity.dataValues.locationName)
-    activityController.POST(activity.dataValues.locationName)
+    activityController.POST({ locationName: activity.dataValues.locationName, uuid: activity.dataValues.uuid })
     authController.hash = activity.dataValues.uuid;
     res.status(201).send(activity);
   })
