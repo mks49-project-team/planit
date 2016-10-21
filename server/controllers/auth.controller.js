@@ -19,7 +19,7 @@ authController.GETHASH = function(req, res) {
   .then(function(trip) {
     console.log("This is trip!", trip)
     activityController.POST(trip.dataValues.locationName)
-    res.status(200).send(trip)
+    res.redirect('/');
   })
   .catch(function(err) {
     console.log("Invalid hash")
