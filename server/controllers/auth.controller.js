@@ -10,7 +10,7 @@ authController.GET = function(req, res) {
 
 authController.GETHASH = function(req, res) {
   console.log("getting from hash link")
-  res.status(200).send(req.params)
+  res.status(200).send(req.params.hash)
 }
 
 
