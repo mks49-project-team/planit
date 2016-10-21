@@ -3,18 +3,17 @@
   {{ $parent.test }}
 <div class="container">
 
-
-
-          <table class="table table-striped table-hover">
-            <tbody>
-              <tr ng-repeat="activity in vm.possibleActivities" ng-click="vm.getSelectedActivity(activity)">
-                <td>{{activity.name}}</td>
-                <td>{{activity.address}}</td>
-                <td>{{activity.description}}</td>
-                <td>{{activity.rating}}</td>
-              </tr>
-            </tbody>
-          </table>
-
+  <div class="col-md-6">
+    <table class="table table-striped table-hover">
+      <tbody>
+        <tr ng-repeat="activity in vm.possibleActivities" ng-click="vm.getSelectedActivity(activity)">
+          <td>{{activity.name}}</td>
+          <td>{{activity.address}}</td>
+          <td>{{activity.description}}</td>
+          <td>{{activity.rating}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
 </body>
