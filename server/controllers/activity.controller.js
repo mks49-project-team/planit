@@ -3,8 +3,11 @@ var yelpSearch = require('../helpers/activityHelper').yelpSearch;
 var activityController = {};
 
 activityController.GET = function(req, res) {
-  // console.log('inside the activity controller.GET');
-  PossibleActivities.findAll({})
+  console.log('inside the activity controller.GET', req);
+  PossibleActivities
+    .findAll({
+      where: { uuid: req.query.uuid }
+    })
     .then(function(activity) {
       res.status(200).json(activity);
     })

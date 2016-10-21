@@ -11,8 +11,8 @@
   function AuthController($scope, $state, authService) {
     var vm = this;
     vm.windowLoation = null;
-    vm.getHash = getHash
-
+    vm.getHash = getHash;
+    
     console.log('authController scope', $scope);
     function getHash() {
       console.log("You clicked me!")
