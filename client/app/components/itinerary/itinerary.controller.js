@@ -19,8 +19,20 @@
       postSavedActivity(args.val);
     });
 
-    function getSavedActivities() {
-      return itineraryService.getSavedActivities()
+    $scope.$on('uuidChange', function(event, args) {
+      // console.log('change detected', event, args.val);
+      vm.uuid = args.val;
+      // console.log(vm.uuid);
+      // setTimeout(function() {
+      console.log('args.val', args.val);
+        vm.getSavedActivities(args.val);
+      // }, 1000);
+    });
+
+    vm.getSavedActivities(vm.uuid);
+
+    function getSavedActivities(uuid) {
+      return itineraryService.getSavedActivities(uuid)
         .then(function(data) {
           vm.savedActivities = data;
           console.log('got savedActivities', data);

@@ -5,7 +5,9 @@ var itineraryController = {};
 
 itineraryController.GET = function(req, res) {
   console.log('inside itineraryController.GET');
-  SavedActivities.findAll({})
+  SavedActivities.findAll({
+    where: { uuid: req.query.uuid }
+  })
   .then(function(activity) {
     res.status(200).json(activity);
   })
