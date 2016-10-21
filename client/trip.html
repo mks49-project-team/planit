@@ -1,26 +1,6 @@
 
-
-
-
-<div>
-  <ul class="nav nav-tabs" role="tablist">
-      <li role="presentation" class="active">
-        <a href="#home" aria-controls="home" role="tab" data-toggle="tab">
-          Points of Interest
-        </a>
-      </li>
-      <li role="presentation">
-        <a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">
-          Planned Activities
-        </a>
-      </li>
-  </ul>
+<div class="container">
+  <div ui-view="auth"></div>
+  <span class="col-md-6" ui-view="activity"></span>
+  <span class="col-md-6" ui-view="itinerary"></span>
 </div>
-
-
-
-
-
-<div ui-view="activity"></div>
-<div ui-view="itinerary"></div>
-<div ui-view="auth"></div>

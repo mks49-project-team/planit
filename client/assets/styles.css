@@ -1,3 +1,14 @@
+/*
+
+=== CSS SELECTORS ===
+
+.               |  class
+#               |  id
+
+
+*/
+
+
 
 #planitNavLogo{
   top:10px;
@@ -21,3 +32,34 @@
 input[type=text] {
   color: #000;
 }
+/*Activity*/
+.activityTable{
+  height:500px;
+  overflow:auto;
+}
+/*End ACtivity*/
+
+
+/*Itinerary*/
+.itineraryTable{
+  height:500px;
+  overflow:auto;
+}
+/*End Itinerary*/
+
+/*Auth template*/
+#authIdTemplate{
+  text-align:center;
+  margin:0 auto;
+}
+
+.planIdButton:hover{
+  transition:1s;
+}
+
+
+
+
+
+
+

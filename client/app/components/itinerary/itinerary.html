@@ -1,14 +1,15 @@
 itinerary template
 
 <div class="container">
-  <div class="col-md-6">
+  <div class="col-md-6 itineraryTable">
     <table class="table table-striped table-hover">
       <tbody>
-        <tr ng-repeat="activity in vm.savedActivities" ng-click="vm.getSelectedActivity(activity)">
+        <tr class="info" ng-repeat="activity in vm.savedActivities" ng-click="vm.getSelectedActivity(activity)">
           <td>{{activity.name}}</td>
           <td>{{activity.address}}</td>
           <td>{{activity.description}}</td>
           <td>{{activity.rating}}</td>
+          <td><img src="{{activity.stars}}"></td>
         </tr>
       </tbody>
     </table>
