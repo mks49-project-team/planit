@@ -5,7 +5,7 @@
 
   angular
     .module('app.search')
-    .controller('SearchController', SearchController);
+    .controller('SearchController', SearchController)
 
   SearchController.$inject = ['$state', 'searchService'] //research what this does.
 
@@ -25,8 +25,8 @@
     }
 
     function submit() {
-      vm.search = this.query;
-      console.log(this.query);
+      vm.search = document.getElementById('searchTextField').value;
+      console.log(document.getElementById('searchTextField').value);
       console.log('this is search', vm.search);
 
       return searchService.submit(vm.search)
@@ -37,7 +37,6 @@
 
   }
 
-  // vm.submit = submit
 
 
 
