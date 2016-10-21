@@ -27,10 +27,22 @@ itineraryController.POST = function(req, res) {
     tripId: req.body.tripId
   })
   .then(function(activity) {
-    res.status(201).json(activity);
-    console.log(activity.get({
-      plain: true
-    }));
+    PossibleActivities.destroy({
+      where: {
+        name: activity.name
+      }
+    })
+    .then(function(numDeleted) {
+      res.status(201).json(numDeleted);
+    })
+    .catch(function(err) {
+      console.log('err in deleting selected activity', err);
+      res.status(204).send(err);
+    });
+    // res.status(201).json(activity);
+    // console.log(activity.get({
+    //   plain: true
+    // }));
   })
   .catch(function(err) {
     console.log('err in saving selected activity', err);
@@ -41,18 +53,18 @@ itineraryController.POST = function(req, res) {
 ///// CHANGE THIS TO PossibleActivities /////
 itineraryController.DELETE = function(req, res) {
   console.log('inside itineraryController.DELETE');
-  SavedActivities.destroy({
-    where: {
-      name: 'testname'
-    }
-  })
-  .then(function(numDeleted) {
-    res.status(201).json(numDeleted);
-  })
-  .catch(function(err) {
-    console.log('err in deleting selected activity', err);
-    res.status(204).send(err);
-  });
+  // SavedActivities.destroy({
+  //   where: {
+  //     name: 'testname'
+  //   }
+  // })
+  // .then(function(numDeleted) {
+  //   res.status(201).json(numDeleted);
+  // })
+  // .catch(function(err) {
+  //   console.log('err in deleting selected activity', err);
+  //   res.status(204).send(err);
+  // });
 }
 
 module.exports = {
