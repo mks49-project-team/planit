@@ -7,7 +7,8 @@ module.exports = function(db) {
     stars:{type: Sequelize.STRING},
     picture: {type: Sequelize.STRING},
     description: {type: Sequelize.STRING},
-    address: {type: Sequelize.STRING}
+    address: {type: Sequelize.STRING},
+    uuid: {type: Sequelize.STRING}
   });
 
   return SavedActivities;

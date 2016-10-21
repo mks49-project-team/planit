@@ -11,12 +11,20 @@
     var parent = this;
     $scope.test = 'test';
     $scope.selectedActivity = 'booger';
+    $scope.uuid = 'poop';
+
     $scope.$watch('selectedActivity', function(newVal, oldVal) {
       if (newVal !== oldVal) {
-        $scope.$broadcast('selectedActivityChange', {val: newVal});
+        $scope.$broadcast('selectedActivityChange', { val: newVal });
       }
     });
-    
+
+    $scope.$watch('uuid', function(newVal, oldVal) {
+      if (newVal !== oldVal) {
+        $scope.$broadcast('uuidChange', { val: newVal });
+      }
+    });
+
     $scope.console = function() {
       console.log('$scope.selectedActivity: ', $scope.selectedActivity);
     }

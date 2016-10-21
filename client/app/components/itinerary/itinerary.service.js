@@ -19,10 +19,11 @@
     ///////////////
 
     // populate the itinerary section with previously selected activities
-    function getSavedActivities() {
+    function getSavedActivities(uuid) {
       return $http({
         method: 'GET',
-        url: '/api/itinerary'
+        url: '/api/itinerary',
+        params: { uuid: uuid }
       })
       .then(function(res) {
         return res.data;

@@ -26,6 +26,11 @@
             templateUrl: './app/components/itinerary/itinerary.html',
             controller: 'ItineraryController as vm',
             parent: 'parent'
+          },
+          'auth': {
+            templateUrl: './app/common/auth/auth.html',
+            controller: 'AuthController as vm',
+            parent: 'parent'
           }
         }
       });
