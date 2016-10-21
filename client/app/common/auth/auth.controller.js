@@ -19,7 +19,6 @@
         .then(function(data) {
           console.log("this is data", data)
           vm.windowLocation = data.data
-
           window.location.replace(window.location.href + "/" + vm.windowLocation);
           return data.data;
         })
@@ -27,7 +26,6 @@
           vm.uuid = hash;
           $scope.$parent.uuid = hash;
           console.log('vm.uuid', $scope.parent, $scope.$parent.uuid );
-
         })
         .catch(function(err) {
           console.log('err in auth', err)
