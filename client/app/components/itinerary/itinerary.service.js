@@ -34,6 +34,7 @@
 
     // add selected activity to saved activities
     function postSavedActivity(activity) {
+      console.log('activity in itinearry service postSavedActivity', activity);
       return $http({
         method: 'POST',
         url: '/api/itinerary',

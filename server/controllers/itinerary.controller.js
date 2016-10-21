@@ -16,12 +16,15 @@ itineraryController.GET = function(req, res) {
 };
 
 itineraryController.POST = function(req, res) {
-  console.log('inside itineraryController.POST');
+  console.log('inside itineraryController.POST', req.body);
   SavedActivities.create({
-    name: 'testname',
-    picture: 'testpic',
-    description: 'testdesc',
-    address: 'testaddress'
+    name: req.body.name,
+    rating: req.body.rating,
+    stars: req.body.stars,
+    address: req.body.address,
+    image: req.body.image,
+    description: req.body.description,
+    tripId: req.body.tripId
   })
   .then(function(activity) {
     res.status(201).json(activity);
