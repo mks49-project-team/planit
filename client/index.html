@@ -9,6 +9,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.1/angular-ui-router.min.js"></script>
 
     <!-- Styles -->
+    <link rel="stylesheet" href="http://bootswatch.com/yeti/bootstrap.min.css">
     <link rel="stylesheet" href="/assets/styles.css">
 
     <!-- App -->
@@ -46,7 +47,28 @@
 
   </head>
   <body>
-    index.html
+
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <img id="planitNavLogo" src="assets/planit-logo.png">
+        </div>
+      </div>
+    </nav>
+    <div class="jumbotron indexJumbo">
+      <h1 id="jumboHeader">Plan it with Planit</h1>
+      <p id="jumboParagraph">Planet travel with Planit makes Planning your it as e-z as planit</p>
+    </div>
+
+
+
+
+
+
+
+
+
+
     <ul>
       <li><a ui-sref="itinerary">itinerary view</a></li>
       <li><a ui-sref="activity">activity view</a></li>
@@ -54,7 +76,7 @@
       <li><a ui-sref="auth">auth view</a></li>
       <li><a ui-sref="parent.trip">trip</a></li>
     </ul>
-    
+
     <div ui-view></div>
 
   </body>
