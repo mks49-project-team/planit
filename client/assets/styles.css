@@ -1,3 +1,16 @@
+#submit{
+  position: relative;
+  top: 180px;
+  text-align: center;
+  font-size: 18px;
+}
+
+#searchTextField{
+  color: white;
+  background-color: transparent;
+  border-color: transparent;
+}
+
 
 #planitNavLogo{
   top:10px;
