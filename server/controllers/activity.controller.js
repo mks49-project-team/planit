@@ -15,9 +15,8 @@ activityController.GET = function(req, res) {
 };
 
 activityController.POST = function(req, res) {
+  // console.log('inside the activity controller.POST');
   // make API request to Yelp
-  console.log("this is the trip", req)
-
   yelpSearch(req)
     .then(function(searchResults) {
       //saves search results to the database
