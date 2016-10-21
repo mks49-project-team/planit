@@ -14,6 +14,11 @@
     vm.postSavedActivity = postSavedActivity;
     vm.deleteSelectedActivity = deleteSelectedActivity;
 
+    $scope.$on('selectedActivityChange', function(event, args) {
+      console.log('change detected', event);
+      postSavedActivity(args.val);
+    });
+
     function getSavedActivities() {
       return itineraryService.getSavedActivities()
         .then(function(data) {
