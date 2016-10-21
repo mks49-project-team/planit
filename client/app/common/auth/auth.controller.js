@@ -19,7 +19,7 @@
         .then(function(data) {
           console.log("this is data", data)
           vm.windowLocation = data.data
-          window.location.replace(window.location.href + "/planit/" + vm.windowLocation)
+          window.location = (window.location.href + "/planit/" + vm.windowLocation)
         })
         .catch(function(err) {
           console.log('err in auth', err)
