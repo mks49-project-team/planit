@@ -8,6 +8,11 @@ authController.GET = function(req, res) {
   res.status(200).send(authController.hash);
 };
 
+authController.GETHASH = function(req, res) {
+  console.log("getting from hash link")
+  res.status(200).send(req.params)
+}
+
 
 
 module.exports = {

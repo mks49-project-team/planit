@@ -10,7 +10,7 @@
 
   function AuthController($state, authService) {
     var vm = this;
-    vm.windowLoation = null;
+    vm.windowLocation = null;
     vm.getHash = getHash
 
     function getHash() {
@@ -19,7 +19,7 @@
         .then(function(data) {
           console.log("this is data", data)
           vm.windowLocation = data.data
-          window.location.replace(window.location.href + "/" + vm.windowLocation)
+          window.location.replace(window.location.href + "/planit/" + vm.windowLocation)
         })
         .catch(function(err) {
           console.log('err in auth', err)
