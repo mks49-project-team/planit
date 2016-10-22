@@ -24,13 +24,16 @@
 
 >>>>>>> feat/activities
 
-
+/*index.html*/
 #planitNavLogo{
   top:10px;
   height:50px;
   width:100px;
 }
+/*end index page*/
 
+
+/*Search Bar*/
 .indexJumbo{
   position:relative;
   top:-21px;
@@ -44,23 +47,37 @@
   text-align:center;
   color:white;
 }
-input[type=text] {
-  color: #000;
+#searchTextField{
+  background-color:rgba(0, 0, 0, 0);
+  text-align:center;
 }
-/*Activity*/
+
+#planItButton{
+  position:relative;
+  top:180px;
+}
+
+
+
+
+
+/*End Search Bar*/
+
+
+/*Activity List*/
 .activityTable{
   height:500px;
   overflow:auto;
 }
-/*End ACtivity*/
+/*End Activity List*/
 
 
-/*Itinerary*/
+/*Itinerary List*/
 .itineraryTable{
   height:500px;
   overflow:auto;
 }
-/*End Itinerary*/
+/*End Itinerary List*/
 
 /*Auth template*/
 #authIdTemplate{
@@ -68,12 +85,11 @@ input[type=text] {
   margin:0 auto;
 }
 
-.planIdButton:hover{
+#planItButton:hover{
   transition:1s;
 }
 
-
-
+/*end Auth template*/
 
 
 
