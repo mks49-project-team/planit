@@ -19,7 +19,9 @@
         .then(function(data) {
           console.log("this is data", data)
           vm.windowLocation = data.data
-          window.location.replace(window.location.href + "?uuid=" + vm.windowLocation);
+          if (!window.location.href.includes('uuid')) {
+            window.location.replace(window.location.href + "?uuid=" + vm.windowLocation);
+          }
           return data.data;
         })
         .then(function(hash) {
