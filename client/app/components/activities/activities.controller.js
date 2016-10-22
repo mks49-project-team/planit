@@ -13,7 +13,8 @@
     vm.possibleActivities = [];
     vm.getActivities = getActivities;
     vm.getSelectedActivity = getSelectedActivity;
-
+    vm.uuid;
+    
     $scope.$on('uuidChange', function(event, args) {
       // console.log('change detected', event, args.val);
       vm.uuid = args.val;
@@ -53,11 +54,12 @@
       console.log('This is the parent', $scope.$parent.test);
       $scope.$parent.selectedActivity = activity;
       $scope.$parent.console();
+      vm.getActivities(vm.uuid);
     }
 
     setTimeout(function() {
       console.log(vm.uuid, 'this is activities.controller');
       vm.getActivities(vm.uuid);
-    }, 2000);
+    }, 1500);
   }
 })();

@@ -13,10 +13,12 @@
     vm.getSavedActivities = getSavedActivities;
     vm.postSavedActivity = postSavedActivity;
     vm.deleteSelectedActivity = deleteSelectedActivity;
-
+    vm.uuid;
+    
     $scope.$on('selectedActivityChange', function(event, args) {
       console.log('change detected', event);
       postSavedActivity(args.val);
+      vm.getSavedActivities(vm.uuid);
     });
 
     $scope.$on('uuidChange', function(event, args) {
@@ -72,6 +74,6 @@
     setTimeout(function() {
       console.log(vm.uuid, 'this is activities.controller');
       vm.getSavedActivities(vm.uuid);
-    }, 2000);
+    }, 1500);
   }
 })();
