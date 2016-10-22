@@ -4,7 +4,15 @@
   <p id="jumboParagraph">Planet travel with Planit makes Planning your it as e-z as planit</p>
 
   <form ng-submit="vm.submit(vm.query)">
-    <input ng-model='vm.query' id="searchTextField" type="text" size="100" autocomplete="on">
+    <!-- <input ng-model='vm.query' id="searchTextField" type="text" size="100" autocomplete="on"> -->
+
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+
+        <input ng-model='vm.query' class="mdl-textfield__input" type="text" id="searchTextField" size="100" autocomplete="on">
+
+        <label class="mdl-textfield__label" for="searchTextField">Enter a destination</label>
+      </div>
+
     <p>
     <input type="submit" id="submit" href="#" class="btn btn-primary btn-lg" value="Planit!" />
     </p>

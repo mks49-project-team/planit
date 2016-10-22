@@ -12,8 +12,15 @@
     <link rel="stylesheet" href="http://bootswatch.com/yeti/bootstrap.min.css">
     <link rel="stylesheet" href="/assets/styles.css">
 
+
     <!-- Bootstrap Javascript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <!-- mdl -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.indigo-pink.min.css">
+    <script defer src="https://code.getmdl.io/1.2.1/material.min.js"></script>
+
 
     <!-- App -->
     <script src="./app/app.module.js"></script>
@@ -47,6 +54,7 @@
      <!-- Google Autocomplete -->
      <script src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places" type="text/javascript"></script>
 
+
   </head>
   <body>
 
@@ -59,6 +67,13 @@
     </nav>
 
     <div ui-view></div>
+    <div class="buffer">
+        <hr>
+    </div>
+    <div class="footer">
+
+    </div>
+
 
   </body>
 </html>

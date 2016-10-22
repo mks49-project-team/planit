@@ -1,4 +1,12 @@
-<<<<<<< HEAD
+/*
+
+=== CSS SELECTORS ===
+
+.               |  class
+#               |  id
+
+
+*/
 #submit{
   position: relative;
   top: 180px;
@@ -11,18 +19,7 @@
   background-color: transparent;
   border-color: transparent;
 }
-=======
-/*
 
-=== CSS SELECTORS ===
-
-.               |  class
-#               |  id
-
-
-*/
-
->>>>>>> feat/activities
 
 /*index.html*/
 #planitNavLogo{
@@ -30,6 +27,17 @@
   height:50px;
   width:100px;
 }
+
+.buffer{
+  height:50px;
+}
+.footer{
+  height:300px;
+  background-color:#333333;
+  width:100%;
+}
+
+
 /*end index page*/
 
 
@@ -47,10 +55,10 @@
   text-align:center;
   color:white;
 }
-#searchTextField{
+/*#searchTextField{
   background-color:rgba(0, 0, 0, 0);
   text-align:center;
-}
+}*/
 
 #planItButton{
   position:relative;
@@ -64,32 +72,42 @@
 /*End Search Bar*/
 
 
+/*Activity Related*/
 /*Activity List*/
+.tableFoundation{
+  border:black 1px;
+}
 .activityTable{
+  border:black 1px;
   height:500px;
   overflow:auto;
 }
 /*End Activity List*/
 
-
 /*Itinerary List*/
 .itineraryTable{
+  border:black 1px;
   height:500px;
   overflow:auto;
 }
 /*End Itinerary List*/
 
+/*End Acitivity Related*/
+
+
+
+
+
+
 /*Auth template*/
 #authIdTemplate{
+
   text-align:center;
   margin:0 auto;
 }
 
-#planItButton:hover{
-  transition:1s;
-}
-
 /*end Auth template*/
+
 
 
 
