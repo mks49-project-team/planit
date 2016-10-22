@@ -5,7 +5,7 @@ module.exports = function(db) {
     name: {type: Sequelize.STRING},
     rating:{type: Sequelize.STRING},
     stars:{type: Sequelize.STRING},
-    picture: {type: Sequelize.STRING},
+    image: {type: Sequelize.STRING},
     description: {type: Sequelize.STRING},
     address: {type: Sequelize.STRING},
     uuid: {type: Sequelize.STRING}
