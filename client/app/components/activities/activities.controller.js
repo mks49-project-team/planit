@@ -21,8 +21,6 @@
       vm.getActivities(args.val);
     });
 
-    vm.getActivities(vm.uuid);
-
     function getActivities(uuid) {
       // $scope.$parent.test = 'overwrite parent test from activity controller';
       console.log('inside controller getActivities', uuid);
@@ -57,5 +55,9 @@
       $scope.$parent.console();
     }
 
+    setTimeout(function() {
+      console.log(vm.uuid, 'this is activities.controller');
+      vm.getActivities(vm.uuid);
+    }, 2000);
   }
 })();

@@ -68,5 +68,10 @@
     }
 
     init();
+
+    setTimeout(function() {
+      console.log(vm.uuid, 'this is activities.controller');
+      vm.getSavedActivities(vm.uuid);
+    }, 2000);
   }
 })();
