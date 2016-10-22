@@ -1,5 +1,8 @@
 var PossibleActivities = require('../db').PossibleActivities;
+var PossibleExpedia = require('../db').PossibleExpedia;
 var yelpSearch = require('../helpers/activityHelper').yelpSearch;
+var rp = require('request-promise');
+
 var activityController = {};
 
 activityController.GET = function(req, res) {
@@ -41,6 +44,24 @@ activityController.POST = function(req, res) {
     });
 
 };
+
+activityController.POSTEXPEDIA = function(req, res) {
+  console.log('Posting from Expedia!', req)
+  var url = "http://terminal2.expedia.com/x/activities/search?location=" + req.locationName + "&apikey=OPwVzGiq1hnLYYTDwQI2Uqjt5OPrt767"
+  var options = {
+    method: "POST",
+    uri: url,
+    json: true
+  }
+  rp(options)
+    .then(function(body) {
+      body.activities.forEach(function(expediaResult) {
+        expediaResult['uuid'] = req.uuid;
+      })
+      PossibleExpedia.bulkCreate(body.activities);
+      res.status(200).json(body);
+    })
+}
 
 module.exports = {
   activityController: activityController
