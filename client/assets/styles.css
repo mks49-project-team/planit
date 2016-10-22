@@ -17,7 +17,8 @@
 #searchTextField{
   color: white;
   background-color: transparent;
-  border-color: transparent;
+  /*border-color: transparent;*/
+  text-align:center;
 }
 
 
