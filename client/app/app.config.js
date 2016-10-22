@@ -5,9 +5,9 @@
     .module('app')
     .config(config);
 
-  config.$inject = ['$stateProvider'];
+  config.$inject = ['$stateProvider', '$urlRouterProvider'];
 
-  function config($stateProvider) {
+  function config($stateProvider, $urlRouterProvider) {
     $stateProvider
       .state('parent', {
         abstract: true,
@@ -41,5 +41,7 @@
       //   controller: 'SearchController as vm',
       //   parent: 'parent'
       // })
+
+      $urlRouterProvider.otherwise('explore');
   }
 })();
