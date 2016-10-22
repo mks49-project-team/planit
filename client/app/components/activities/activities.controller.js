@@ -14,7 +14,7 @@
     vm.getActivities = getActivities;
     vm.getSelectedActivity = getSelectedActivity;
     vm.uuid;
-    
+
     $scope.$on('uuidChange', function(event, args) {
       // console.log('change detected', event, args.val);
       vm.uuid = args.val;
@@ -28,6 +28,7 @@
       return activityService.getActivities(uuid)
         .then(function(data) {
           data.forEach(function(entry){
+            console.log(entry, 'entry');
             var splitz = entry.address.split('');
             for (var i = 0; i < splitz.length; i++) {
               var temp = '';
