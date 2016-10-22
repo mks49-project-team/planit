@@ -1,7 +1,8 @@
 
-<body>
-  {{ $parent.test }}
+
+  <!-- {{ $parent.test }} -->
 <div class="container">
+<h5>Points of Interest In Your City</h5>
 
   <div class="col-md-6 activityTable">
     <table class="table table-striped table-hover">
@@ -11,10 +12,10 @@
           <td>{{activity.address}}</td>
           <td>{{activity.description}}</td>
           <td>{{activity.rating}}</td>
+          <td>{{activity.picture}}</td>
           <td><img src="{{activity.stars}}"></td>
         </tr>
       </tbody>
     </table>
   </div>
 </div>
-</body>
