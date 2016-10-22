@@ -1,12 +1,15 @@
 var db = require('./db.js');
 
 var PossibleActivities = require('../models').PossibleActivities(db);
+var PossibleExpedia = require('../models').PossibleExpedia(db);
 var SavedActivities = require('../models').SavedActivities(db);
 var Trip = require('../models').Trip(db);
 
 PossibleActivities.belongsTo(Trip);
+PossibleExpedia.belongsTo(Trip);
 SavedActivities.belongsTo(Trip);
 Trip.hasMany(PossibleActivities, {as: 'PossibleActivitiesId'});
+Trip.hasMany(PossibleExpedia, {as: 'PossibleExpediaId'})
 Trip.hasMany(SavedActivities, {as: 'SavedActivitiesId'});
 
 // Option { force: true } overwrites existing tables.
@@ -45,6 +48,7 @@ db.sync({ force: true });
 module.exports = {
   db: db,
   PossibleActivities: PossibleActivities,
+  PossibleExpedia: PossibleExpedia,
   SavedActivities: SavedActivities,
   Trip: Trip
 };

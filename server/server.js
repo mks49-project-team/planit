@@ -6,6 +6,7 @@ var bodyParser = require('body-parser');
 var morgan = require('morgan');
 var cors = require('cors');
 var router = require('./routes/index').router;
+var rp = require('request-promise');
 
 var app = express();
 
