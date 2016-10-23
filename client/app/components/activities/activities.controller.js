@@ -10,6 +10,7 @@
   function ActivityController($scope, $state, activityService) {
     var vm = this;
     vm.possibleActivities = [];
+    vm.possibleExpedia = [];
     vm.getActivities = getActivities;
     vm.getSelectedActivity = getSelectedActivity;
     vm.getExpedia = getExpedia;
@@ -60,7 +61,7 @@
     function getExpedia(uuid) {
       return activityService.getExpedia(uuid)
         .then(function(data) {
-          console.log('THIS IS EXPEDIA DATA!!!!', data);
+          vm.possibleExpedia = data
         })
         .catch(function(err) {
           console.log('err in getExpedia', err);
@@ -73,8 +74,8 @@
     * */
 
     setTimeout(function() {
-      vm.getActivities(vm.uuid);
       vm.getExpedia(vm.uuid);
+      vm.getActivities(vm.uuid);
     }, 1500);
   }
 })();
