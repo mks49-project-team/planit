@@ -1,22 +1,23 @@
 var db = require('./db.js');
 
 var PossibleActivities = require('../models').PossibleActivities(db);
-var PossibleExpedia = require('../models').PossibleExpedia(db);
 var SavedActivities = require('../models').SavedActivities(db);
+var PossibleExpedia = require('../models').PossibleExpedia(db);
 var SavedExpedia = require('../models/').SavedExpedia(db);
 var Trip = require('../models').Trip(db);
 
 PossibleActivities.belongsTo(Trip);
-PossibleExpedia.belongsTo(Trip);
 SavedActivities.belongsTo(Trip);
+PossibleExpedia.belongsTo(Trip);
 SavedExpedia.belongsTo(Trip);
+
 Trip.hasMany(PossibleActivities, {foreignKey: 'PossibleActivitiesId', constraints: false});
 Trip.hasMany(PossibleExpedia, {foreignKey: 'PossibleExpediaId', constraints: false});
 Trip.hasMany(SavedActivities, {foreignKey: 'SavedActivitiesId', constraints: false});
 Trip.hasMany(SavedExpedia, {foreignKey: 'SavedExpediaId', constraints: false});
 
 // Option { force: true } overwrites existing tables.
-db.sync({force:true});
+db.sync({force: true});
 
 /* *
  *  To test if you've setup your routes and connection to the
@@ -51,8 +52,8 @@ db.sync({force:true});
 module.exports = {
   db: db,
   PossibleActivities: PossibleActivities,
-  PossibleExpedia: PossibleExpedia,
   SavedActivities: SavedActivities,
+  PossibleExpedia: PossibleExpedia,
   SavedExpedia: SavedExpedia,
   Trip: Trip
 };
