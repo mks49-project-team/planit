@@ -1,12 +1,16 @@
+/* *
+* The main app module contains ParentController.
+* */
+
 (function() {
   'use strict';
 
   angular
     .module('app', [
       'ui.router',
-      'app.itinerary',
-      'app.activityList',
+      'app.auth',
       'app.search',
-      'app.auth'
+      'app.activityList',
+      'app.itinerary'
     ]);
 })();
