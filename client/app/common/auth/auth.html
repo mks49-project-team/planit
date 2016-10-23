@@ -1,6 +1,28 @@
-<div id="authIdTemplate" ng-init="vm.getHash()">
-  <button class="btn btn-primary planIdButton">
+<div class="container" id="authIdTemplate" ng-init="vm.getHash()">
+
+  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">
     Share!
-  <span class="glyphicon glyphicon-share"></span>
+    <span class="glyphicon glyphicon-share"></span>
   </button>
+
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h3 class="modal-title">Your Trip ID</h3>
+        </div>
+        <div class="modal-body">
+          <p id="modalBody">{{vm.modalHash}}</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
 </div>
