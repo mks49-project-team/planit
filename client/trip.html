@@ -5,7 +5,22 @@
   <span class="col-md-6" ui-view="itinerary"></span>
   <!-- <div ui-view="messaging"></div> -->
 </div>
+<div class="btn"></div>
 
+<div class="dropup fac">
+  <button class="btn btn-default dropdown-toggle" type="" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Dropup
+    <span class="caret"></span>
+  </button>
+  <ul id="messageList" class="dropdown-menu" aria-labelledby="dropdownMenu2">
+
+  </ul>
+</div>
+
+
+
+
+<!--
 
 <div class="dropup btn-circle">
   <button class="btn btn-primary
@@ -22,17 +37,8 @@
       <input type="text" name="" />
     </ul>
   </div>
-</div>
-
-<ul id="messages"></ul>
-    <form action="">
-      <input id="messageInput" autocomplete="off" /><button>Send</button>
-    </form>
-
-
-
-
-    <script src="/socket.io/socket.io.js"></script>
+</div> -->
+    <script src="./components/messaging/messaging.js"></script>
     <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
     <script>
     var socket = io();
@@ -42,7 +48,7 @@
       return false;
     });
     socket.on('chat message', function(msg){
-      $('#messages').append($('<li>').text(msg));
+      $('#messageBox').append($('<li>').text(msg));
     });
     </script>
 

@@ -139,7 +139,7 @@
 
 
 /*Fab*/
-.btn-circle{
+.fac{
   background-color:dodgerblue;
   width: 60px;
   height: 60px;
@@ -148,22 +148,24 @@
   font-size: 12px;
   line-height: 1.42;
   border-radius: 30px;
-  float:right;
   position:fixed;
-  right:60px;
+  left:60px;
   top:500px;
   border:0px;
-  box-shadow: 0px 0px 30px 4px rgba(0,0,0,0.75);
+  box-shadow: 0px 10px 47px 0px rgba(0,0,0,0.75);
 
 
 }
-.btn-circle:hover{
+
+.fac:hover{
   transition:.5s;
   color:dodgerblue;
   background-color:#333333;
-  box-shadow: 0px 0px 35px 4px rgba(0,0,0,0.50);
+  box-shadow: 0px 10px 35px 0px rgba(0,0,0,0.50);
 }
-
+.fac:active{
+  background-color:#00c1ff;
+}
 #messageList{
   text-align:center;
   height:200px;
@@ -172,6 +174,21 @@
   top:300px;
   max-width:100px;
 }
+#messageInput{
+  position:absolute;
+}
+#messageBox{
+  position:fixed;
+  top: auto;
+  bottom: 30%;
+  margin-bottom: 2px;
+  left:60px;
+  top:10px;
+  height:60px;
+}
+
+
+
 /*End Fab*/
 
 
