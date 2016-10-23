@@ -30,8 +30,8 @@
       return $http({
         method: 'POST',
         url: '/api/search',
-        headers: {'Content-Type': 'application/json'},
-        data: {locationName: locName}
+        headers: { 'Content-Type': 'application/json' },
+        data: { locationName: locName }
       });
     }
   }
