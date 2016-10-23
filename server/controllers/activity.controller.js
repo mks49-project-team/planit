@@ -6,7 +6,7 @@ var rp = require('request-promise');
 var activityController = {};
 
 activityController.GET = function(req, res) {
-  console.log('inside the activity controller.GET', req);
+  // console.log('inside the activity controller.GET', req);
   PossibleActivities
     .findAll({
       where: { uuid: req.query.uuid }
@@ -23,7 +23,7 @@ activityController.GET = function(req, res) {
 activityController.POST = function(req, res) {
   // console.log('inside the activity controller.POST');
   // make API request to Yelp
-  console.log('req in activityController', req);
+  // console.log('req in activityController', req);
   yelpSearch(req.locationName)
     .then(function(searchResults) {
       //saves search results to the database;
@@ -46,7 +46,7 @@ activityController.POST = function(req, res) {
 };
 
 activityController.POSTEXPEDIA = function(req, res) {
-  console.log('Posting from Expedia!', req)
+  // console.log('Posting from Expedia!', req)
   var url = "http://terminal2.expedia.com/x/activities/search?location=" + req.locationName + "&apikey=OPwVzGiq1hnLYYTDwQI2Uqjt5OPrt767"
   var options = {
     method: "POST",
@@ -59,7 +59,6 @@ activityController.POSTEXPEDIA = function(req, res) {
         expediaResult['uuid'] = req.uuid;
       })
       PossibleExpedia.bulkCreate(body.activities);
-      res.status(200).json(body);
     })
 }
 
