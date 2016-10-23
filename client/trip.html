@@ -10,13 +10,18 @@
   <div class="btn-group dropup">
     <button  id="messageFAB" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
       <span class="glyphicon glyphicon-comment"></span>
-      <span class="sr-only">Toggle Dropdown</span>
+      <!-- <span class="sr-only">Toggle Dropdown</span> -->
     </button>
     <ul id="messageBox" class="dropdown-menu">
-      <li>Hello</li>
+      <div class="messageList">
+        <ul id="messages">
+        </ul>
 
+      </div>
+
+      <form>
       <input id="messageInput" type="text" name="" />
-
+      </form>
     </ul>
 
 
@@ -32,14 +37,36 @@
     <script src="./components/messaging/messaging.js"></script>
     <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
     <script>
+    var app = require('express')();
+    var http = require('http').Server(app);
+    var io = require('socket.io')(http);
     var socket = io();
+
+    var port = process.env.PORT || 8000
+
+
+    io.on('connection', function(socket){
+      console.log('user connected')
+      socket.on('chat message', function(message){
+        io.emit('chat message', message);
+      });
+      socket.on('disconnect', function(){
+        console.log('a user disconnected')
+      })
+    })
+
+
+    http.listen(port, function(){
+      console.log('listening on port: ', port)
+    })
+
     $('form').submit(function(){
       socket.emit('chat message', $('#messageInput').val());
       $('#messageInput').val('');
       return false;
     });
     socket.on('chat message', function(msg){
-      $('#messageBox').append($('<li>').text(msg));
+      $('#messages').append($('<li>').text(msg));
     });
     </script>
 
