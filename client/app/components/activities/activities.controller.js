@@ -82,6 +82,6 @@
     setTimeout(function() {
       vm.getActivities(vm.uuid);
       vm.getExpedia(vm.uuid);
-    }, 1500);
+    }, 2000);
   }
 })();
