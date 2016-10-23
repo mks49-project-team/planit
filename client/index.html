@@ -8,9 +8,15 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.1/angular-ui-router.min.js"></script>
 
+    <!-- Bootstrap Javascript -->
+    <script   src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
     <!-- Styles -->
     <link rel="stylesheet" href="http://bootswatch.com/yeti/bootstrap.min.css">
     <link rel="stylesheet" href="/assets/styles.css">
+
+
 
     <!-- App -->
     <script src="./app/app.module.js"></script>
@@ -53,6 +59,24 @@
         <div class="navbar-header">
           <a ui-sref="search"><img id="planitNavLogo" src="assets/planit-logo.png"></a>
         </div>
+
+
+      <!-- How it works modal -->
+        <span id="howToButton"><button type="button" id="howToButton" class="btn" data-toggle="modal" data-target=".bs-example-modal-lg">How it works</button>
+        </span>
+        <div id="howToModal" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+          <div class="modal-dialog modal-lg" role="document">
+            <div id="howToContent" class="modal-content">
+              <h1>Welcome to Planit!</h1>
+              <hr>
+
+              <h4 id="howToPara">If this is your first time using planit, don't be too afraid. Simply enter a city that you are visiting or interested in visiting into the search bar, and we'll whip up some of the top-rated places for you and your friends to go during that trip. You can explore your options, select points of interest and create an itinerary, or simply chat with your fellow adventurers. Happy travels!</h4>
+            </div>
+          </div>
+        </div>
+
+
+
       </div>
     </nav>
 
