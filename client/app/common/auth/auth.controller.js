@@ -1,5 +1,4 @@
 (function() {
-
  'use strict';
 
   angular
@@ -10,30 +9,29 @@
 
   function AuthController($scope, $state, authService) {
     var vm = this;
-    vm.windowLocation = null;
-    vm.getHash = getHash
+    vm.getHash = getHash;
 
-    function getHash() {
-      console.log("You clicked me!")
-      return authService.getHash()
-        .then(function(data) {
-          console.log("this is data", data)
-          vm.windowLocation = data.data
-          if (!window.location.href.includes('uuid')) {
-            window.location.replace(window.location.href + "?uuid=" + vm.windowLocation);
-          }
-          return data.data;
-        })
-        .then(function(hash) {
-          vm.uuid = hash;
-          $scope.$parent.uuid = hash;
-          console.log('vm.uuid', $scope.parent, $scope.$parent.uuid );
-        })
-        .catch(function(err) {
-          console.log('err in auth', err)
-        })
+/* *
+*  All information for a trip is tied to a Universally Unique Identifier (UUID) or hash.
+*
+*  getHash():
+*  - retrieves the hash created when a search is submitted in SearchController
+*  - sets the uuid of the ParentController
+*  - changes the window location href
+* */
+
+  function getHash() {
+    return authService.getHash()
+      .then(function(hash) {
+        $scope.$parent.uuid = hash;
+        if (!window.location.href.includes('uuid')) {
+          window.location.replace(window.location.href + '?uuid=' + hash);
+        }
+        return hash;
+      })
+      .catch(function(err) {
+        console.log('err in AuthController getHash', err);
+      });
     }
-    // vm.getHash();
   }
-
 })();

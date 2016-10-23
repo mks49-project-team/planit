@@ -14,5 +14,5 @@
         templateUrl: './app/common/auth/auth.html',
         controller: 'AuthController as vm'
       });
-  }
+  }  
 })();
