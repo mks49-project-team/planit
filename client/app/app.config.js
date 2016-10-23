@@ -38,6 +38,10 @@
             controller: 'AuthController as vm',
             parent: 'parent'
           }
+          // 'messaging': {
+          //   templateUrl: './messaging/messaging.html',
+          //   parent: 'parent'
+          // }
         }
       });
 
