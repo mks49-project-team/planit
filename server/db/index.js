@@ -8,12 +8,12 @@ var Trip = require('../models').Trip(db);
 PossibleActivities.belongsTo(Trip);
 PossibleExpedia.belongsTo(Trip);
 SavedActivities.belongsTo(Trip);
-Trip.hasMany(PossibleActivities, {as: 'PossibleActivitiesId'});
-Trip.hasMany(PossibleExpedia, {as: 'PossibleExpediaId'})
-Trip.hasMany(SavedActivities, {as: 'SavedActivitiesId'});
+Trip.hasMany(PossibleActivities, {foreignKey: 'PossibleActivitiesId', constraints: false});
+Trip.hasMany(PossibleExpedia, {foreignKey: 'PossibleExpediaId', constraints: false});
+Trip.hasMany(SavedActivities, {foreignKey: 'SavedActivitiesId', constraints: false});
 
 // Option { force: true } overwrites existing tables.
-db.sync();
+db.sync({force:true});
 
 /* *
  *  To test if you've setup your routes and connection to the
