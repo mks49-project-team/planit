@@ -10,8 +10,11 @@
   function ActivityController($scope, $state, activityService) {
     var vm = this;
     vm.possibleActivities = [];
+    vm.possibleExpedia = [];
     vm.getActivities = getActivities;
     vm.getSelectedActivity = getSelectedActivity;
+    vm.getExpedia = getExpedia;
+    vm.getSelectedExpediaActivity = getSelectedExpediaActivity;
     vm.uuid;
 
     /* *
@@ -55,6 +58,22 @@
       vm.getActivities(vm.uuid);
     }
 
+    function getExpedia(uuid) {
+      return activityService.getExpedia(uuid)
+        .then(function(data) {
+          vm.possibleExpedia = data
+        })
+        .catch(function(err) {
+          console.log('err in getExpedia', err);
+        });
+    }
+
+    function getSelectedExpediaActivity(activity) {
+      console.log('clicked on expedia activity', activity);
+      $scope.$parent.selectedExpediaActivity = activity;
+      vm.getExpedia(vm.uuid);
+    }
+
     /* *
     * There is a setTimeout here because we need to retrieve the uuid value
     * before getting a trip's possible activities.
@@ -62,6 +81,7 @@
 
     setTimeout(function() {
       vm.getActivities(vm.uuid);
+      vm.getExpedia(vm.uuid);
     }, 1500);
   }
 })();

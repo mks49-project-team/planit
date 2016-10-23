@@ -9,7 +9,8 @@
 
     function activityService($http) {
       var service = {
-        getActivities: getActivities
+        getActivities: getActivities,
+        getExpedia: getExpedia
       };
 
       return service;
@@ -20,6 +21,20 @@
         return $http({
           method: 'GET',
           url: '/api/activity',
+          params: { uuid: uuid }
+        })
+        .then(function(res) {
+          return res.data;
+        })
+        .catch(function(err) {
+          return err;
+        });
+      }
+
+      function getExpedia(uuid) {
+        return $http({
+          method: 'GET',
+          url: '/api/expedia',
           params: { uuid: uuid }
         })
         .then(function(res) {

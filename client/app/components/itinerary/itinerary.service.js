@@ -70,7 +70,7 @@
     function getSavedExpediaActivities(uuid) {
       return $http({
         method: 'GET',
-        url: '/api/itinerary-expedia',
+        url: '/api/itinerary/expedia',
         params: { uuid: uuid }
       })
       .then(function(res) {
@@ -82,10 +82,10 @@
     }
 
     function postSavedExpediaActivity(activity) {
-      console.log('activity in itinearry service postSavedActivity', activity);
+      console.log('activity in itinerary service postSavedExpediaActivity', activity);
       return $http({
         method: 'POST',
-        url: '/api/itinerary-expedia',
+        url: '/api/itinerary/expedia',
         data: activity
       })
       .then(function(res) {
@@ -99,7 +99,7 @@
     function deleteSelectedExpediaActivity(activity) {
       return $http({
         method: 'DELETE',
-        url: '/api/itinerary-expedia',
+        url: '/api/itinerary/expedia',
         data: activity
       })
       .then(function(res) {

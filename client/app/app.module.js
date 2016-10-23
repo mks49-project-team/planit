@@ -11,7 +11,7 @@
       'app.auth',
       'app.search',
       'app.activityList',
-      'app.expedia',
+      // 'app.expedia',
       'app.itinerary'
     ]);
 })();

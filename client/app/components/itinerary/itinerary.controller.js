@@ -39,6 +39,7 @@
     $scope.$on('selectedExpediaActivityChange', function(event, args) {
       vm.postSavedExpediaActivity(args.val);
       vm.getSavedExpediaActivities(vm.uuid);
+      console.log('savedExpediaActivities', vm.savedExpediaActivities);
     });
 
     function getSavedActivities(uuid) {
@@ -74,7 +75,8 @@
     function getSavedExpediaActivities(uuid) {
       return itineraryService.getSavedExpediaActivities(uuid)
         .then(function(data) {
-          vm.savedActivities = data;
+          vm.savedExpediaActivities = data;
+          console.log('got saved expedia activities', vm.savedExpediaActivities);
         })
         .catch(function(err) {
           console.log('err in getSavedActivities', err);

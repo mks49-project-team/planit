@@ -5,7 +5,9 @@ var itineraryRouter = express.Router();
 
 itineraryRouter.get('/', itineraryController.GET);
 itineraryRouter.post('/', itineraryController.POST);
-itineraryRouter.delete('/', itineraryController.DELETE);
+
+itineraryRouter.get('/expedia', itineraryController.GETEXPEDIA);
+itineraryRouter.post('/expedia', itineraryController.POSTEXPEDIA);
 
 module.exports = {
   itineraryRouter: itineraryRouter
