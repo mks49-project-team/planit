@@ -8,36 +8,23 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.1/angular-ui-router.min.js"></script>
 
-    <!-- Bootstrap Javascript -->
-    <script   src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
     <!-- Styles -->
     <link rel="stylesheet" href="http://bootswatch.com/yeti/bootstrap.min.css">
     <link rel="stylesheet" href="/assets/styles.css">
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+
+    <!-- Bootstrap Javascript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <!-- App -->
     <script src="./app/app.module.js"></script>
     <script src="./app/app.config.js"></script>
     <script src="./app/app.controller.js"></script>
 
-    <!-- Itinerary -->
-    <script src="./app/components/itinerary/itinerary.module.js"></script>
-    <script src="./app/components/itinerary/itinerary.controller.js"></script>
-    <script src="./app/components/itinerary/itinerary.service.js"></script>
-    <script src="./app/components/itinerary/itinerary.route.js"></script>
-
-    <!-- Activities -->
-    <script src="./app/components/activities/activities.module.js"></script>
-    <script src="./app/components/activities/activities.controller.js"></script>
-    <script src="./app/components/activities/activities.service.js"></script>
-    <script src="./app/components/activities/activities.route.js"></script>
-
-    <!-- Search -->
-    <script src="./app/common/search/search.module.js"></script>
-    <script src="./app/common/search/search.controller.js"></script>
-    <script src="./app/common/search/search.service.js"></script>
-    <script src="./app/common/search/search.route.js"></script>
+    <!-- Google Autocomplete -->
+    <script src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places" type="text/javascript"></script>
 
     <!-- Auth -->
     <script src="./app/common/auth/auth.module.js"></script>
@@ -45,9 +32,23 @@
     <script src="./app/common/auth/auth.service.js"></script>
     <script src="./app/common/auth/auth.route.js"></script>
 
-     <!-- Google Autocomplete -->
-     <script src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places" type="text/javascript"></script>
+    <!-- Search -->
+    <script src="./app/common/search/search.module.js"></script>
+    <script src="./app/common/search/search.controller.js"></script>
+    <script src="./app/common/search/search.service.js"></script>
+    <script src="./app/common/search/search.route.js"></script>
 
+    <!-- Activities -->
+    <script src="./app/components/activities/activities.module.js"></script>
+    <script src="./app/components/activities/activities.controller.js"></script>
+    <script src="./app/components/activities/activities.service.js"></script>
+    <script src="./app/components/activities/activities.route.js"></script>
+
+    <!-- Itinerary -->
+    <script src="./app/components/itinerary/itinerary.module.js"></script>
+    <script src="./app/components/itinerary/itinerary.controller.js"></script>
+    <script src="./app/components/itinerary/itinerary.service.js"></script>
+    <script src="./app/components/itinerary/itinerary.route.js"></script>
 
   </head>
   <body>
@@ -86,8 +87,7 @@
       <small class="footerContent">PlanIt: a travel helper application. <br>
       Created By: <br>
 
-      <small class="githubLinks"><a href="https://github.com/oliv3rwang"> Oliver Wang </a></small>
-      |
+      <small class="githubLinks"><a href="https://github.com/oliv3rwang"> Oliver Wang </a></small>|
       <small class="githubLinks"><a href="https://github.com/dfle"> Dianne Le </a></small>|
       <small class="githubLinks"><a href="https://github.com/jongsoojong"> Jongsoo Yoon </a></small>|
       <small class="githubLinks"><a href="https://github.com/jbieleism"> Justin Biele </a></small>
