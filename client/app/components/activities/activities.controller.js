@@ -1,8 +1,7 @@
 (function() {
-
  'use strict';
 
-  angular
+ angular
     .module('app.activityList')
     .controller('ActivityController', ActivityController);
 
@@ -16,21 +15,24 @@
     vm.getExpedia = getExpedia;
     vm.uuid;
 
+    /* *
+    * ActivityController listens for a change in ParentController's uuid value
+    * and gets the possible activities from /api/activity for the trip with that uuid.
+    *
+    * It also sets selectedActivity of the ParentController on user-click in getSelectedActivity().
+    * */
+
     $scope.$on('uuidChange', function(event, args) {
-      // console.log('change detected', event, args.val);
       vm.uuid = args.val;
-      console.log('args.val', args.val);
       vm.getActivities(args.val);
       vm.getExpedia(args.val);
     });
 
     function getActivities(uuid) {
-      // $scope.$parent.test = 'overwrite parent test from activity controller';
-      console.log('inside controller getActivities', uuid);
       return activityService.getActivities(uuid)
         .then(function(data) {
-          data.forEach(function(entry){
-            console.log(entry, 'entry');
+          // format the address of each location for display
+          data.forEach(function(entry) {
             var splitz = entry.address.split('');
             for (var i = 0; i < splitz.length; i++) {
               var temp = '';
@@ -44,31 +46,33 @@
             entry.address = splitz;
           });
           vm.possibleActivities = data;
-          console.log('got possibleActivities', data);
         })
         .catch(function(err) {
-          console.log("There was an error: ", err);
-          return err;
+          console.log('There was an error in getActivities: ', err);
         });
     }
 
     function getSelectedActivity(activity) {
-      console.log('inside activities.controller. you clicked on this:', activity);
-      console.log('This is the parent', $scope.$parent.test);
       $scope.$parent.selectedActivity = activity;
-      $scope.$parent.console();
       vm.getActivities(vm.uuid);
     }
 
     function getExpedia(uuid) {
       return activityService.getExpedia(uuid)
-      .then(function(data) {
-        console.log("THIS IS EXPEDIA DATA!!!!", data);
-      })
+        .then(function(data) {
+          console.log('THIS IS EXPEDIA DATA!!!!', data);
+        })
+        .catch(function(err) {
+          console.log('err in getExpedia', err);
+        });
     }
 
+    /* *
+    * There is a setTimeout here because we need to retrieve the uuid value
+    * before getting a trip's possible activities.
+    * */
+
     setTimeout(function() {
-      console.log(vm.uuid, 'this is activities.controller');
       vm.getActivities(vm.uuid);
       vm.getExpedia(vm.uuid);
     }, 1500);

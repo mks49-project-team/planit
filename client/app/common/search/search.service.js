@@ -1,6 +1,4 @@
-// contains the logic of the controller. Exmaple: making the api request to our own server when someone searches
-// for a destination.
-(function(){
+(function() {
   'use strict';
 
   angular
@@ -11,32 +9,30 @@
 
   function searchService($http) {
     var service = {
-      autoComplete : autoComplete,
-      submit: submit
+      autoComplete: autoComplete,
+      submitSearch: submitSearch
     };
 
     return service;
 
-    ////////////////////
+    ///////////////
 
     function autoComplete() {
       var options = {
         types: ['(cities)']
       };
 
-    var input = document.getElementById('searchTextField');
-    var autocomplete = new google.maps.places.Autocomplete(input, options);
+      var input = document.getElementById('searchTextField');
+      var autocomplete = new google.maps.places.Autocomplete(input, options);
     };
 
-    function submit(locName) {
+    function submitSearch(locName) {
       return $http({
         method: 'POST',
         url: '/api/search',
-        headers: {'Content-Type': 'application/json'},
-        data: {locationName: locName}
-      })
+        headers: { 'Content-Type': 'application/json' },
+        data: { locationName: locName }
+      });
     }
   }
-
-
-})()
+})();

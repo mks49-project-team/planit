@@ -9,10 +9,20 @@
 
   function ParentController($scope, $state) {
     var parent = this;
-    $scope.test = 'test';
-    $scope.selectedActivity = '';
     $scope.uuid = '';
-    $scope.possibleActivities = [];
+    $scope.selectedActivity = '';
+
+    /* *
+    * ParentController
+    *   - $scope.uuid is set by AuthController
+    *   - $scope.selectedActivity is set by ActivityController
+    *
+    * ParentController watches for changes in these values and then broadcasts
+    * these changes to its children.
+    *
+    * ActivityController and ItineraryController listens for changes in $scope.uuid.
+    * ItineraryController listens for changes in $scope.SearchController.
+    * */
 
     $scope.$watch('selectedActivity', function(newVal, oldVal) {
       if (newVal !== oldVal) {
@@ -25,17 +35,5 @@
         $scope.$broadcast('uuidChange', { val: newVal });
       }
     });
-
-    // $scope.$watch('possibleActivities', function(newVal, oldVal) {
-    //   if (newVal !== oldVal) {
-    //     $scope.$broadcast('possibleActivitiesChange', { val: newVal });
-    //   }
-    // });
-
-    $scope.console = function() {
-      console.log('$scope.selectedActivity: ', $scope.selectedActivity);
-    }
-
-    console.log('scope', $scope);
   }
 })();

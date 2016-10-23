@@ -1,3 +1,8 @@
+/* *
+* Main app routes are here and in search.route.js
+* The remaining route files (auth, activities and itinerary) exist for testing.
+* */
+
 (function() {
   'use strict';
 
@@ -23,7 +28,7 @@
             controller: 'ActivityController as vm',
             parent: 'parent'
           },
-          'itinerary' : {
+          'itinerary': {
             templateUrl: './app/components/itinerary/itinerary.html',
             controller: 'ItineraryController as vm',
             parent: 'parent'
@@ -34,14 +39,8 @@
             parent: 'parent'
           }
         }
-      })
-      // .state('parent.search', {
-      //   url: 'explore',
-      //   templateUrl: './app/common/search/search.html',
-      //   controller: 'SearchController as vm',
-      //   parent: 'parent'
-      // })
+      });
 
-      $urlRouterProvider.otherwise('explore');
+    $urlRouterProvider.otherwise('explore');
   }
 })();

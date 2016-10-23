@@ -50,7 +50,6 @@
     }
 
     // delete selected activity from possible activities
-    // !!! select api route with JB
     function deleteSelectedActivity(activity) {
       return $http({
         method: 'DELETE',
