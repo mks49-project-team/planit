@@ -13,13 +13,15 @@
     vm.possibleActivities = [];
     vm.getActivities = getActivities;
     vm.getSelectedActivity = getSelectedActivity;
+    vm.getExpedia = getExpedia;
     vm.uuid;
-    
+
     $scope.$on('uuidChange', function(event, args) {
       // console.log('change detected', event, args.val);
       vm.uuid = args.val;
       console.log('args.val', args.val);
       vm.getActivities(args.val);
+      vm.getExpedia(args.val);
     });
 
     function getActivities(uuid) {
@@ -57,9 +59,17 @@
       vm.getActivities(vm.uuid);
     }
 
+    function getExpedia(uuid) {
+      return activityService.getExpedia(uuid)
+      .then(function(data) {
+        console.log("THIS IS EXPEDIA DATA!!!!", data);
+      })
+    }
+
     setTimeout(function() {
       console.log(vm.uuid, 'this is activities.controller');
       vm.getActivities(vm.uuid);
+      vm.getExpedia(vm.uuid);
     }, 1500);
   }
 })();

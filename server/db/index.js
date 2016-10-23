@@ -13,7 +13,7 @@ Trip.hasMany(PossibleExpedia, {as: 'PossibleExpediaId'})
 Trip.hasMany(SavedActivities, {as: 'SavedActivitiesId'});
 
 // Option { force: true } overwrites existing tables.
-db.sync();
+db.sync({ force: true });
 
 /* *
  *  To test if you've setup your routes and connection to the
