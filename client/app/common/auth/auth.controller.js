@@ -10,6 +10,8 @@
   function AuthController($scope, $state, authService) {
     var vm = this;
     vm.getHash = getHash;
+    vm.windowLocation = window.location.href;
+    vm.modalHash = vm.windowLocation;
 
     /* *
     * All information for a trip is tied to a Universally Unique Identifier (UUID) or hash.
@@ -25,9 +27,10 @@
         .then(function(hash) {
           $scope.$parent.uuid = hash;
           if (!window.location.href.includes('uuid')) {
-            window.location.replace(window.location.href + '?uuid=' + hash);
+            vm.windowLocation = window.location.href + '?uuid=' + hash;
+            window.location.replace(vm.windowLocation);
           }
-          return hash;
+          vm.modalHash = vm.windowLocation;
         })
         .catch(function(err) {
           console.log('err in AuthController getHash', err);
