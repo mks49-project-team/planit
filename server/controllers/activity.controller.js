@@ -58,7 +58,7 @@ activityController.POSTEXPEDIA = function(req, res) {
       body.activities.forEach(function(expediaResult) {
         expediaResult['uuid'] = req.uuid;
       })
-      PossibleExpedia.bulkCreate(body.activities);
+      PossibleExpedia.bulkCreate(body.activities.slice(0,20));
     })
 }
 
