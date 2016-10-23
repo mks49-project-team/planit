@@ -11,7 +11,10 @@
     var service = {
       getSavedActivities: getSavedActivities,
       postSavedActivity: postSavedActivity,
-      deleteSelectedActivity: deleteSelectedActivity
+      deleteSelectedActivity: deleteSelectedActivity,
+      getSavedExpediaActivities: getSavedExpediaActivities,
+      postSavedExpediaActivity: postSavedExpediaActivity,
+      deleteSelectedExpediaActivity: deleteSelectedExpediaActivity
     };
 
     return service;
@@ -54,6 +57,49 @@
       return $http({
         method: 'DELETE',
         url: '/api/itinerary',
+        data: activity
+      })
+      .then(function(res) {
+        return res.data;
+      })
+      .catch(function(err) {
+        return err;
+      });
+    }
+
+    function getSavedExpediaActivities(uuid) {
+      return $http({
+        method: 'GET',
+        url: '/api/itinerary-expedia',
+        params: { uuid: uuid }
+      })
+      .then(function(res) {
+        return res.data;
+      })
+      .catch(function(err) {
+        return err;
+      });
+    }
+
+    function postSavedExpediaActivity(activity) {
+      console.log('activity in itinearry service postSavedActivity', activity);
+      return $http({
+        method: 'POST',
+        url: '/api/itinerary-expedia',
+        data: activity
+      })
+      .then(function(res) {
+        return res.data;
+      })
+      .catch(function(err) {
+        return err;
+      });
+    }
+
+    function deleteSelectedExpediaActivity(activity) {
+      return $http({
+        method: 'DELETE',
+        url: '/api/itinerary-expedia',
         data: activity
       })
       .then(function(res) {

@@ -2,24 +2,24 @@
   'use strict';
 
   angular
-    .module('app.activityList')
-    .factory('activityService', activityService);
+    .module('app.expedia')
+    .factory('expediaService', expediaService);
 
-    activityService.$inject = ['$http'];
+    expediaService.$inject = ['$http'];
 
-    function activityService($http) {
+    function expediaService($http) {
       var service = {
-        getActivities: getActivities
+        getExpedia: getExpedia
       };
 
       return service;
 
       ///////////////
 
-      function getActivities(uuid) {
+      function getExpedia(uuid) {
         return $http({
           method: 'GET',
-          url: '/api/activity',
+          url: '/api/expedia',
           params: { uuid: uuid }
         })
         .then(function(res) {

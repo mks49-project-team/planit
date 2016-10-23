@@ -11,6 +11,7 @@
     var parent = this;
     $scope.uuid = '';
     $scope.selectedActivity = '';
+    $scope.selectedExpediaActivity = '';
 
     /* *
     * ParentController
@@ -20,9 +21,15 @@
     * ParentController watches for changes in these values and then broadcasts
     * these changes to its children.
     *
-    * ActivityController and ItineraryController listens for changes in $scope.uuid.
+    * ActivityController and ItineraryController listen for changes in $scope.uuid.
     * ItineraryController listens for changes in $scope.SearchController.
     * */
+
+    $scope.$watch('uuid', function(newVal, oldVal) {
+      if (newVal !== oldVal) {
+        $scope.$broadcast('uuidChange', { val: newVal });
+      }
+    });
 
     $scope.$watch('selectedActivity', function(newVal, oldVal) {
       if (newVal !== oldVal) {
@@ -30,9 +37,9 @@
       }
     });
 
-    $scope.$watch('uuid', function(newVal, oldVal) {
+    $scope.$watch('selectedExpediaActivity', function(newVal, oldVal) {
       if (newVal !== oldVal) {
-        $scope.$broadcast('uuidChange', { val: newVal });
+        $scope.$broadcast('selectedExpediaActivityChange', { val: newVal });
       }
     });
   }
