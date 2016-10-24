@@ -14,7 +14,7 @@ Planit is a travel helper application where a group of friends can plan a trip t
 
 or visit https://planit-demo.herokuapp.com/
 
-###Built With
+### Built With
 
 * [Angular](https://angularjs.org/)
 * [POSTGRESQL](https://postgresql.org/)
@@ -23,6 +23,7 @@ or visit https://planit-demo.herokuapp.com/
 * [Express](http://expressjs.com/)
 
 ### Client App Information
+#### Directory Tree
 ```
 |-- Planit
     |-- .env
@@ -94,19 +95,34 @@ or visit https://planit-demo.herokuapp.com/
             |-- index.js
             |-- itinerary.router.js
             |-- search.router.js
-```            
-
-##Authors
+```
+#### REST/CRUD Outline:
+```           
+|   Endpoint             |   Method   |  Response                                          |
+|------------------------|:----------:|----------------------------------------------------|
+| /api/activity          |  GET       | Get Yelp results for a location.                   |
+| /api/activity          |  POST      | Save Yelp results for a trip.                      |
+| /api/activity/expedia  |  GET       | Get Expedia results for a location.                |
+| /api/activity/expedia  |  POST      | Save Expedia results for a trip.                   |
+| /api/auth              |  GET       | Get UUID for a trip.                               |
+| /api/auth/#/trip/:uuid |  GET       | Get all saved data for a trip.                     |
+| /api/itinerary         |  GET       | Get Yelp activities saved to a trip's itinerary.   |
+| /api/itinerary         |  POST      | Save a Yelp activity to a trip's itinerary.        |
+| /api/itinerary/expedia |  GET       | Get Expedia activities saved to a trip's itinerary.|
+| /api/itinerary/expedia |  POST      | Save an Expedia activity to a trip's itinerary.    |
+| /api/search            |  POST      | Post location to database and autocomplete query.  |
+```
+## Authors
 
 - Oliver Wang
 - Dianne Le
 - Justin Biele
 - Jongsoo Yoon
 
-##License
+## License
 
 ISC
 
-##Acknowledgments
+## Acknowledgments
 
-- Makersquare LA.
+- Makersquare LA aka Hack Reactor LA
