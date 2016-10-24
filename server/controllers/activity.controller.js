@@ -46,20 +46,19 @@ activityController.POST = function(req, res) {
 };
 
 activityController.POSTEXPEDIA = function(req, res) {
-  // console.log('Posting from Expedia!', req)
-  var url = "http://terminal2.expedia.com/x/activities/search?location=" + req.locationName + "&apikey=OPwVzGiq1hnLYYTDwQI2Uqjt5OPrt767"
+  var url = 'http://terminal2.expedia.com/x/activities/search?location=' + req.locationName + '&apikey=OPwVzGiq1hnLYYTDwQI2Uqjt5OPrt767';
   var options = {
-    method: "POST",
+    method: 'POST',
     uri: url,
     json: true
-  }
+  };
   rp(options)
     .then(function(body) {
       body.activities.forEach(function(expediaResult) {
         expediaResult['uuid'] = req.uuid;
-      })
+      });
       PossibleExpedia.bulkCreate(body.activities.slice(0,20));
-    })
+    });
 }
 
 module.exports = {

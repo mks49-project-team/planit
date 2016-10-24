@@ -1,8 +1,6 @@
 var Sequelize = require('sequelize');
 var randomstring = require('randomstring')
 
-
-
 module.exports = function(db) {
   var Trip = db.define('trip', {
     uuid: {type: Sequelize.STRING},
@@ -12,6 +10,6 @@ module.exports = function(db) {
   // Creating random string as endpoint
   Trip.hook('beforeValidate', function(trip, options) {
     trip.uuid = randomstring.generate(10);
-  })
+  });
   return Trip;
 };
