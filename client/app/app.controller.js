@@ -17,12 +17,13 @@
     * ParentController
     *   - $scope.uuid is set by AuthController
     *   - $scope.selectedActivity is set by ActivityController
+    *   - $scope.selectedExpediaActivity is set by ActivityController
     *
     * ParentController watches for changes in these values and then broadcasts
     * these changes to its children.
     *
     * ActivityController and ItineraryController listen for changes in $scope.uuid.
-    * ItineraryController listens for changes in $scope.SearchController.
+    * ItineraryController listens for changes in $scope.selectedActivity and $scope.selectedExpediaActivity.
     * */
 
     $scope.$watch('uuid', function(newVal, oldVal) {

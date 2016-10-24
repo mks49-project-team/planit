@@ -24,7 +24,7 @@
 
       var input = document.getElementById('searchTextField');
       var autocomplete = new google.maps.places.Autocomplete(input, options);
-    };
+    }
 
     function submitSearch(locName) {
       return $http({

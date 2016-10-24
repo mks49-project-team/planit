@@ -19,18 +19,11 @@
 
     /* *
     * ActivityController listens for a change in ParentController's uuid value
-    * and gets the possible activities from /api/activity for the trip with that uuid.
+    * and gets the possible activities from /api/activity and /api/expedia for the trip with that uuid.
     *
-    * It also sets selectedActivity of the ParentController on user-click in getSelectedActivity().
+    * It also sets selectedActivity and selectedExpediaActivity of the ParentController on user-click
+    * in getSelectedActivity().
     * */
-    $scope.tabs = [
-      { title:"Yelp Activities", content: "Yelp Content" },
-      { title:"Expedia Activities", content: "Expedia Content"}
-    ];
-
-    $scope.model = {
-      name: 'Tabs'
-    };
 
     $scope.$on('uuidChange', function(event, args) {
       vm.uuid = args.val;
@@ -69,7 +62,7 @@
     function getExpedia(uuid) {
       return activityService.getExpedia(uuid)
         .then(function(data) {
-          vm.possibleExpedia = data
+          vm.possibleExpedia = data;
         })
         .catch(function(err) {
           console.log('err in getExpedia', err);

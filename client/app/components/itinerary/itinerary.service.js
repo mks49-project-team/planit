@@ -21,7 +21,7 @@
 
     ///////////////
 
-    // populate the itinerary section with previously selected activities
+    // populate the itinerary section with previously selected yelp activities
     function getSavedActivities(uuid) {
       return $http({
         method: 'GET',
@@ -36,7 +36,7 @@
       });
     }
 
-    // add selected activity to saved activities
+    // add selected activity to saved yelp activities
     function postSavedActivity(activity) {
       console.log('activity in itinearry service postSavedActivity', activity);
       return $http({
@@ -52,7 +52,7 @@
       });
     }
 
-    // delete selected activity from possible activities
+    // delete selected activity from possible yelp activities
     function deleteSelectedActivity(activity) {
       return $http({
         method: 'DELETE',
@@ -67,6 +67,7 @@
       });
     }
 
+    // populate the itinerary section with previously selected expedia activities
     function getSavedExpediaActivities(uuid) {
       return $http({
         method: 'GET',
@@ -81,6 +82,7 @@
       });
     }
 
+    // add selected activity to saved expedia activities
     function postSavedExpediaActivity(activity) {
       console.log('activity in itinerary service postSavedExpediaActivity', activity);
       return $http({
@@ -96,6 +98,7 @@
       });
     }
 
+    // delete selected activity from possible expedia activities
     function deleteSelectedExpediaActivity(activity) {
       return $http({
         method: 'DELETE',
