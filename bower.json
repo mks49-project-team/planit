@@ -1,0 +1,28 @@
+{
+  "name": "planit",
+  "description": "collaborative social planning app",
+  "main": "index.js",
+  "authors": [
+    "Oliver Wang",
+    "Dianne Le",
+    "Justin Biele",
+    "Jongsoo Yoon"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/djoj/planit",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.5.8",
+    "angular-ui-router": "^0.3.1",
+    "angular-bootstrap": "^2.2.0",
+    "jquery": "^3.1.1",
+    "bootstrap": "^3.3.7"
+  }
+}
