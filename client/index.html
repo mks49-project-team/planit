@@ -31,7 +31,6 @@
     <script src="./app/common/auth/auth.module.js"></script>
     <script src="./app/common/auth/auth.controller.js"></script>
     <script src="./app/common/auth/auth.service.js"></script>
-    <script src="./app/common/auth/auth.route.js"></script>
 
     <!-- Search -->
     <script src="./app/common/search/search.module.js"></script>
@@ -43,65 +42,56 @@
     <script src="./app/components/activities/activities.module.js"></script>
     <script src="./app/components/activities/activities.controller.js"></script>
     <script src="./app/components/activities/activities.service.js"></script>
-    <script src="./app/components/activities/activities.route.js"></script>
-
-    <!-- Expedia -->
-    <script src="./app/components/expedia/expedia.module.js"></script>
-    <script src="./app/components/expedia/expedia.controller.js"></script>
-    <script src="./app/components/expedia/expedia.service.js"></script>
-    <script src="./app/components/expedia/expedia.route.js"></script>
 
     <!-- Itinerary -->
     <script src="./app/components/itinerary/itinerary.module.js"></script>
     <script src="./app/components/itinerary/itinerary.controller.js"></script>
     <script src="./app/components/itinerary/itinerary.service.js"></script>
-    <script src="./app/components/itinerary/itinerary.route.js"></script>
 
   </head>
   <body>
 
+    <!-- Nav bar -->
     <nav class="navbar navbar-default">
       <div class="container-fluid">
         <div class="navbar-header">
           <a ui-sref="search"><img id="planitNavLogo" src="assets/planit-logo.png"></a>
         </div>
 
-
-      <!-- How it works modal -->
-        <span id="howToButton"><button type="button" id="howToButton" class="btn" data-toggle="modal" data-target=".bs-example-modal-lg">How it works</button>
+        <!-- How it works modal -->
+        <span id="howToButton">
+          <button type="button" id="howToButton" class="btn" data-toggle="modal" data-target=".bs-example-modal-lg">How it works</button>
         </span>
         <div id="howToModal" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
           <div class="modal-dialog modal-lg" role="document">
             <div id="howToContent" class="modal-content">
               <h1>Welcome to Planit!</h1>
               <hr>
-
-              <h4 id="howToPara">If this is your first time using planit, don't be too afraid. Simply enter a city that you are visiting or interested in visiting into the search bar, and we'll whip up some of the top-rated places for you and your friends to go during that trip. You can explore your options, select points of interest and create an itinerary, or simply chat with your fellow adventurers. Happy travels!</h4>
+              <h4 id="howToPara">
+                If this is your first time using planit, don't be too afraid.
+                Simply enter a city that you are visiting or interested in visiting into the search bar, and we'll whip up some of the top-rated places for you and your friends to go during that trip.
+                You can explore your options or select points of interest and create an itinerary.
+                Happy travels!
+              </h4>
             </div>
           </div>
         </div>
-
-
-
       </div>
     </nav>
 
+    <!-- UI view -->
     <div ui-view></div>
-    <!-- <div class="buffer">
-        <hr>
-    </div> -->
+
+    <!-- Footer -->
     <div class="footer">
       <small class="footerContent">PlanIt: a travel helper application. <br>
       Created By: <br>
-
       <small class="githubLinks"><a href="https://github.com/oliv3rwang"> Oliver Wang </a></small>|
       <small class="githubLinks"><a href="https://github.com/dfle"> Dianne Le </a></small>|
       <small class="githubLinks"><a href="https://github.com/jongsoojong"> Jongsoo Yoon </a></small>|
       <small class="githubLinks"><a href="https://github.com/jbieleism"> Justin Biele </a></small>
-
       </small>
     </div>
-
 
   </body>
 </html>

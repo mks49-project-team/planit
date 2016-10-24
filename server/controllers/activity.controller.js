@@ -6,7 +6,6 @@ var rp = require('request-promise');
 var activityController = {};
 
 activityController.GET = function(req, res) {
-  // console.log('inside the activity controller.GET', req);
   PossibleActivities
     .findAll({
       where: { uuid: req.query.uuid }
@@ -20,16 +19,11 @@ activityController.GET = function(req, res) {
 };
 
 activityController.POST = function(req, res) {
-  // console.log('inside the activity controller.POST');
-  // make API request to Yelp
-  // console.log('req in activityController', req);
   yelpSearch(req.locationName)
     .then(function(searchResults) {
-      //saves search results to the database;
       searchResults.forEach(function(searchResult) {
         searchResult['uuid'] = req.uuid;
       });
-      console.log(searchResults, 'searchResults');
       PossibleActivities.bulkCreate(searchResults);
     })
     .then(function(savedActivities) {
@@ -42,23 +36,21 @@ activityController.POST = function(req, res) {
 };
 
 activityController.POSTEXPEDIA = function(req, res) {
-  // console.log('Posting from Expedia!', req)
-  var url = "http://terminal2.expedia.com/x/activities/search?location=" +
-  req.locationName + "&apikey=OPwVzGiq1hnLYYTDwQI2Uqjt5OPrt767";
+  var url = 'http://terminal2.expedia.com/x/activities/search?location=' + req.locationName + '&apikey=OPwVzGiq1hnLYYTDwQI2Uqjt5OPrt767';
   var options = {
-    method: "POST",
+    method: 'POST',
     uri: url,
     json: true
-  }
+  };
   rp(options)
     .then(function(body) {
       body.activities.forEach(function(expediaResult) {
         expediaResult['uuid'] = req.uuid;
-      })
-      // slicing possible options to top 20, will refactor later for multiple pages
+      });
+      // Limit expedia results to 20.
       PossibleExpedia.bulkCreate(body.activities.slice(0,20));
     });
-};
+}
 
 module.exports = {
   activityController: activityController

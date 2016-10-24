@@ -1,5 +1,7 @@
 /* *
 * The main app module contains ParentController.
+* ParentController has children app.auth, app.activityList and app.itinerary.
+* app.search is solo.
 * */
 
 (function() {
@@ -12,7 +14,6 @@
       'app.auth',
       'app.search',
       'app.activityList',
-      // 'app.expedia',
       'app.itinerary'
     ]);
 })();

@@ -22,8 +22,8 @@
     /* *
     * ItineraryController
     *   - listens for a change in ParentController's uuid and selectedActivity values
-    *   - gets the saved activities from /api/itinerary for the trip with that uuid
-    *   - deletes the selectedActivity from possibleActivities
+    *   - gets the saved activities from /api/itinerary and /api/itinerary/expedia for the trip with that uuid
+    *   - deletes the selectedActivity from possibleActivities and possibleExpedia tables
     * */
 
     $scope.$on('uuidChange', function(event, args) {
@@ -76,7 +76,6 @@
       return itineraryService.getSavedExpediaActivities(uuid)
         .then(function(data) {
           vm.savedExpediaActivities = data;
-          console.log('got saved expedia activities', vm.savedExpediaActivities);
         })
         .catch(function(err) {
           console.log('err in getSavedActivities', err);

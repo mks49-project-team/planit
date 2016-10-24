@@ -1,6 +1,5 @@
 /* *
 * Main app routes are here and in search.route.js
-* The remaining route files (auth, activities and itinerary) exist for testing.
 * */
 
 (function() {
@@ -37,16 +36,7 @@
             templateUrl: './app/common/auth/auth.html',
             controller: 'AuthController as vm',
             parent: 'parent'
-          },
-          // 'expedia': {
-          //   templateUrl: './app/components/expedia/expedia.html',
-          //   controller: 'ExpediaController as vm',
-          //   parent: 'parent'
-          // },
-          // 'messaging': {
-          //   templateUrl: './messaging/messaging.html',
-          //   parent: 'parent'
-          // }
+          }
         }
       });
 
