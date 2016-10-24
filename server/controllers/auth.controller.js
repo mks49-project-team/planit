@@ -1,14 +1,19 @@
 var Trip = require('../db').Trip;
-var activityController = require('./activity.controller').activityController;
+var activityController = require('./activity.controller');
 
 var authController = {};
 
+/* *
+ * Ask Jongsoo and Oliver
+ * */
 authController.GET = function(req, res) {
   res.status(200).send(authController.hash);
 };
 
-// find trip where hash is matched in DB then post the data to page
-
+/* *
+* Get the correct possible and saved activities when a user directly navigates
+* to the trip view by using the shareable link.
+* */
 authController.GETHASH = function(req, res) {
   Trip.findOne({
     where: {
@@ -16,16 +21,12 @@ authController.GETHASH = function(req, res) {
     }
   })
   .then(function(trip) {
-    activityController.POST(trip.dataValues.locationName)
-    res.redirect('/#/trip/?uuid='+req.params.hash);
+    activityController.POST(trip.dataValues.locationName);
+    res.redirect('/#/trip/?uuid=' + req.params.hash);
   })
   .catch(function(err) {
-    console.log("Invalid hash", err);
     res.status(404).send(err);
-  })
-
+  });
 };
 
-module.exports = {
-  authController: authController
-};
+module.exports = authController;

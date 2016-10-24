@@ -5,8 +5,10 @@ var PossibleExpedia = require('../db').PossibleExpedia;
 
 var itineraryController = {};
 
+/* *
+ * Get all previously found Yelp activities for a specific trip/uuid.
+ * */
 itineraryController.GET = function(req, res) {
-  console.log('inside itineraryController.GET');
   SavedActivities.findAll({
     where: { uuid: req.query.uuid }
   })
@@ -14,11 +16,14 @@ itineraryController.GET = function(req, res) {
     res.status(200).json(activity);
   })
   .catch(function(err) {
-    console.log('err in getting selected activity', err);
     res.status(204).send(err);
   });
 };
 
+/* *
+ * Save the user-selected Yelp activity to the SavedActivities table and
+ * delete it from the table of PossibleActivities for a specific trip/uuid.
+ * */
 itineraryController.POST = function(req, res) {
   SavedActivities.create({
     name: req.body.name,
@@ -32,23 +37,25 @@ itineraryController.POST = function(req, res) {
   .then(function(activity) {
     PossibleActivities.destroy({
       where: {
-        name: activity.name
+        name: activity.name,
+        uuid: activity.uuid
       }
     })
     .then(function(numDeleted) {
       res.status(201).json(numDeleted);
     })
     .catch(function(err) {
-      console.log('err in deleting selected activity', err);
       res.status(204).send(err);
     });
   })
   .catch(function(err) {
-    console.log('err in saving selected activity', err);
     res.status(204).send(err);
   });
 };
 
+/* *
+ * Get all previously found Expedia activities for a specific trip/uuid.
+ * */
 itineraryController.GETEXPEDIA = function(req, res) {
   SavedExpedia.findAll({
     where: { uuid: req.query.uuid }
@@ -57,11 +64,14 @@ itineraryController.GETEXPEDIA = function(req, res) {
     res.status(200).json(activity);
   })
   .catch(function(err) {
-    console.log('err in getting selected activity', err);
     res.status(204).send(err);
   });
 };
 
+/* *
+ * Save the user-selected Expedia activity to the SavedActivities table and
+ * delete it from the table of PossibleActivities for a specific trip/uuid.
+ * */
 itineraryController.POSTEXPEDIA = function(req, res) {
   SavedExpedia.create({
     title: req.body.title,
@@ -73,23 +83,20 @@ itineraryController.POSTEXPEDIA = function(req, res) {
   .then(function(activity) {
     PossibleExpedia.destroy({
       where: {
-        title: activity.title
+        title: activity.title,
+        uuid: activity.uuid
       }
     })
     .then(function(numDeleted) {
       res.status(201).json(numDeleted);
     })
     .catch(function(err) {
-      console.log('err in deleting selected activity', err);
       res.status(204).send(err);
     });
   })
   .catch(function(err) {
-    console.log('err in saving selected activity', err);
     res.status(204).send(err);
   });
 };
 
-module.exports = {
-  itineraryController: itineraryController
-};
+module.exports = itineraryController;

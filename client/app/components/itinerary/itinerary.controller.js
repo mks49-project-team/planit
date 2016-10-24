@@ -13,10 +13,8 @@
     vm.savedExpediaActivities = [];
     vm.getSavedActivities = getSavedActivities;
     vm.postSavedActivity = postSavedActivity;
-    vm.deleteSelectedActivity = deleteSelectedActivity;
     vm.getSavedExpediaActivities = getSavedExpediaActivities;
     vm.postSavedExpediaActivity = postSavedExpediaActivity;
-    vm.deleteSelectedExpediaActivity = deleteSelectedExpediaActivity;
     vm.uuid;
 
     /* *
@@ -62,16 +60,6 @@
         });
     }
 
-    function deleteSelectedActivity(activity) {
-      return itineraryService.deleteSelectedActivity(activity)
-        .then(function(data) {
-          console.log('deleted activity', data);
-        })
-        .catch(function(err) {
-          console.log('err in deleteSelectedActivity', err);
-        });
-    }
-
     function getSavedExpediaActivities(uuid) {
       return itineraryService.getSavedExpediaActivities(uuid)
         .then(function(data) {
@@ -89,16 +77,6 @@
         })
         .catch(function(err) {
           console.log('err in postSavedActivity', err);
-        });
-    }
-
-    function deleteSelectedExpediaActivity(activity) {
-      return itineraryService.deleteSelectedExpediaActivity(activity)
-        .then(function(data) {
-          console.log('deleted activity', data);
-        })
-        .catch(function(err) {
-          console.log('err in deleteSelectedActivity', err);
         });
     }
 

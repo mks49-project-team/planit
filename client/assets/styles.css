@@ -9,10 +9,16 @@ h4 {
 }
 #searchTextField{
   color: white;
-  background-color: transparent;
+  background-color: rgba(0,0,0,0.5);
   text-align:center;
+  font-size: 28px;
+  width: 50%;
 }
-
+#search{
+  position: relative;
+  top: 30%;
+  transform: translateY(-50%);
+}
 /*index.html*/
 #planitNavLogo{
   top:10px;

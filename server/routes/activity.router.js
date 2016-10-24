@@ -6,6 +6,7 @@ var activityRouter = express.Router();
 activityRouter.get('/', activityController.GET);
 activityRouter.post('/', activityController.POST);
 
-module.exports = {
-  activityRouter: activityRouter
-};
+activityRouter.get('/expedia', activityController.GETEXPEDIA);
+activityRouter.post('/expedia', activityController.POSTEXPEDIA);
+
+module.exports = activityRouter;

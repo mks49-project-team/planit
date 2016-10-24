@@ -9,6 +9,4 @@ itineraryRouter.post('/', itineraryController.POST);
 itineraryRouter.get('/expedia', itineraryController.GETEXPEDIA);
 itineraryRouter.post('/expedia', itineraryController.POSTEXPEDIA);
 
-module.exports = {
-  itineraryRouter: itineraryRouter
-};
+module.exports = itineraryRouter;

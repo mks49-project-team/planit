@@ -30,6 +30,9 @@
       searchService.submitSearch(vm.search)
         .then(function() {
           $location.path('/trip');
+        })
+        .catch(function(err) {
+          console.log('err in SearchController submitSearch', err);
         });
     }
 

@@ -6,6 +6,4 @@ var authRouter = express.Router();
 authRouter.get('/#/trip/:hash', authController.GETHASH);
 authRouter.get('/', authController.GET);
 
-module.exports = {
-  authRouter: authRouter
-};
+module.exports = authRouter;

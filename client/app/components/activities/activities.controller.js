@@ -19,7 +19,7 @@
 
     /* *
     * ActivityController listens for a change in ParentController's uuid value
-    * and gets the possible activities from /api/activity and /api/expedia for the trip with that uuid.
+    * and gets the possible activities from /api/activity and /api/activity/expedia for the trip with that uuid.
     *
     * It also sets selectedActivity and selectedExpediaActivity of the ParentController on user-click
     * in getSelectedActivity().
