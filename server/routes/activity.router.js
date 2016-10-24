@@ -8,4 +8,4 @@ activityRouter.post('/', activityController.POST);
 
 module.exports = {
   activityRouter: activityRouter
-}
+};

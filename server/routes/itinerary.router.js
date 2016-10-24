@@ -11,4 +11,4 @@ itineraryRouter.post('/expedia', itineraryController.POSTEXPEDIA);
 
 module.exports = {
   itineraryRouter: itineraryRouter
-}
+};

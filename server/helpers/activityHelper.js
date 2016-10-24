@@ -1,13 +1,12 @@
 var Yelp = require('yelp');
 
+// Helper function which acquires the Yelp NPM module.
 
 var yelpQuery = new Yelp ({
-
   consumer_key: 'AokJ1I73m9ZXRKsQwAFk3w',
   consumer_secret: 'RtuBaAZctDIRcvTKWBphtGeXVG0',
   token: 'L5Q9dkCBNNr-GwZDl81mliC8z5OtWJjr',
   token_secret: '5UIuf3CH89z_ODFJsfQA5RDoFLQ'
-
 });
 
 
@@ -16,7 +15,6 @@ function yelpSearch(locationSearch, tripId) {
   return yelpQuery.search({location: locationSearch})
     .then(function(data) {
       var businessEntry = [];
-      // console.log('this is the data baybay')
       data.businesses.forEach(function(business) {
         businessEntry.push({
           name: business.name,

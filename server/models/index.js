@@ -10,4 +10,4 @@ module.exports = {
   SavedActivities: SavedActivities,
   SavedExpedia: SavedExpedia,
   Trip: Trip
-}
+};

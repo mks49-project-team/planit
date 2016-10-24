@@ -3,7 +3,6 @@ var PossibleActivities = require('../db').PossibleActivities;
 var SavedExpedia = require('../db').SavedExpedia;
 var PossibleExpedia = require('../db').PossibleExpedia;
 
-
 var itineraryController = {};
 
 itineraryController.GET = function(req, res) {
@@ -21,7 +20,6 @@ itineraryController.GET = function(req, res) {
 };
 
 itineraryController.POST = function(req, res) {
-  console.log('inside itineraryController.POST', req.body);
   SavedActivities.create({
     name: req.body.name,
     rating: req.body.rating,
@@ -52,7 +50,6 @@ itineraryController.POST = function(req, res) {
 };
 
 itineraryController.GETEXPEDIA = function(req, res) {
-  console.log('inside itineraryController.GETEXPEDIA');
   SavedExpedia.findAll({
     where: { uuid: req.query.uuid }
   })
@@ -66,7 +63,6 @@ itineraryController.GETEXPEDIA = function(req, res) {
 };
 
 itineraryController.POSTEXPEDIA = function(req, res) {
-  console.log('inside itineraryController.POSTEXPEDIA', req.body);
   SavedExpedia.create({
     title: req.body.title,
     imageUrl: req.body.imageUrl,

@@ -4,16 +4,10 @@ var express = require('express');
  * */
 
 var itineraryRouter = require('./itinerary.router').itineraryRouter;
-
 var activityRouter = require('./activity.router').activityRouter;
-
 var expediaRouter = require('./expedia.router').expediaRouter;
-
 var searchRouter = require('./search.router').searchRouter;
-
 var authRouter = require('./auth.router').authRouter;
-
-
 
 var router = express.Router();
 
@@ -27,9 +21,6 @@ router.use('/expedia', expediaRouter);
 router.use('/search', searchRouter);
 router.use('/auth', authRouter);
 
-
-
-
 module.exports = {
   router: router
-}
+};
