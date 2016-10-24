@@ -20,7 +20,7 @@ Trip.hasMany(SavedActivities, {foreignKey: 'SavedActivitiesId', constraints: fal
 Trip.hasMany(SavedExpedia, {foreignKey: 'SavedExpediaId', constraints: false});
 
 // Option {force: true} overwrites existing tables.
-db.sync({force: true});
+db.sync();
 
 module.exports = {
   db: db,
