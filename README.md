@@ -23,7 +23,7 @@ or visit https://planit-demo.herokuapp.com/
 * [Express](http://expressjs.com/)
 
 ### Client App Information
-
+```
 |-- Planit
     |-- .env
     |-- .gitignore
@@ -94,6 +94,7 @@ or visit https://planit-demo.herokuapp.com/
             |-- index.js
             |-- itinerary.router.js
             |-- search.router.js
+```            
 
 ##Authors
 
