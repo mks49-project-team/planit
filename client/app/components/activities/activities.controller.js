@@ -28,6 +28,7 @@
     $scope.$on('uuidChange', function(event, args) {
       vm.uuid = args.val;
       vm.getActivities(args.val);
+      vm.getExpedia(args.val);
     });
 
     function getActivities(uuid) {
