@@ -3,10 +3,6 @@
   "version": "1.0.0",
   "description": "collaborative social planning app",
   "main": "index.js",
-  "engines": {
-    "node": "6.6.0",
-    "npm": "3.10.3"
-  },
   "scripts": {
     "start": "nodemon server/server.js"
   },
@@ -27,6 +23,7 @@
     "express": "^4.14.0",
     "morgan": "^1.7.0",
     "mysql": "^2.11.1",
+    "nodemon": "^1.11.0",
     "path": "^0.12.7",
     "pg": "^6.1.0",
     "pg-hstore": "^2.3.2",
@@ -35,9 +32,5 @@
     "request-promise": "^4.1.1",
     "sequelize": "^3.24.3",
     "yelp": "^1.0.1"
-  },
-  "devDependencies": {
-    "morgan": "^1.7.0",
-    "nodemon": "^1.11.0"
   }
 }
