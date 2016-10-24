@@ -15,7 +15,6 @@ activityController.GET = function(req, res) {
       res.status(200).json(activity);
     })
     .catch(function(err) {
-      console.log('Error in retrieving activities: ', err)
       res.status(418).send(err);
     });
 };
@@ -28,26 +27,24 @@ activityController.POST = function(req, res) {
     .then(function(searchResults) {
       //saves search results to the database;
       searchResults.forEach(function(searchResult) {
-        console.log(searchResult['tripId']);
         searchResult['uuid'] = req.uuid;
       });
       console.log(searchResults, 'searchResults');
       PossibleActivities.bulkCreate(searchResults);
     })
     .then(function(savedActivities) {
-      console.log('things have been saved i guess');
       res.status(200).json(savedActivities);
     })
     .catch(function(err) {
       console.log('Error in posting possible activities: ', err)
       res.status(418).send(err);
     });
-
 };
 
 activityController.POSTEXPEDIA = function(req, res) {
   // console.log('Posting from Expedia!', req)
-  var url = "http://terminal2.expedia.com/x/activities/search?location=" + req.locationName + "&apikey=OPwVzGiq1hnLYYTDwQI2Uqjt5OPrt767"
+  var url = "http://terminal2.expedia.com/x/activities/search?location=" +
+  req.locationName + "&apikey=OPwVzGiq1hnLYYTDwQI2Uqjt5OPrt767";
   var options = {
     method: "POST",
     uri: url,
@@ -58,9 +55,10 @@ activityController.POSTEXPEDIA = function(req, res) {
       body.activities.forEach(function(expediaResult) {
         expediaResult['uuid'] = req.uuid;
       })
+      // slicing possible options to top 20, will refactor later for multiple pages
       PossibleExpedia.bulkCreate(body.activities.slice(0,20));
-    })
-}
+    });
+};
 
 module.exports = {
   activityController: activityController

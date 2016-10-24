@@ -14,8 +14,8 @@ var db = require('./db').db;
 
 var port = process.env.PORT || 8000
 
-app.use(morgan('dev'));
 app.use(cors());
+app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use('/', express.static(path.join(__dirname, '../client')));

@@ -8,4 +8,4 @@ searchRouter.post('/', searchController.POST);
 
 module.exports = {
   searchRouter: searchRouter
-}
+};

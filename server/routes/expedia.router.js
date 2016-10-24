@@ -7,4 +7,4 @@ expediaRouter.get('/', expediaController.GET);
 
 module.exports = {
   expediaRouter: expediaRouter
-}
+};
