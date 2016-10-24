@@ -71,7 +71,6 @@
     }
 
     function getSelectedExpediaActivity(activity) {
-      console.log('clicked on expedia activity', activity);
       $scope.$parent.selectedExpediaActivity = activity;
       vm.getExpedia(vm.uuid);
     }
