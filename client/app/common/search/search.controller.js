@@ -38,7 +38,7 @@
 
     function init() {
       vm.autoComplete();
-      google.maps.event.addDomListener(window, 'load', vm.autoComplete);
+      // google.maps.event.addDomListener(window, 'load', vm.autoComplete);
     }
 
     init();
