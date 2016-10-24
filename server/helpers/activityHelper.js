@@ -1,18 +1,15 @@
 var Yelp = require('yelp');
 
-// Helper function which acquires the Yelp NPM module.
-
-var yelpQuery = new Yelp ({
-  consumer_key: 'AokJ1I73m9ZXRKsQwAFk3w',
-  consumer_secret: 'RtuBaAZctDIRcvTKWBphtGeXVG0',
-  token: 'L5Q9dkCBNNr-GwZDl81mliC8z5OtWJjr',
-  token_secret: '5UIuf3CH89z_ODFJsfQA5RDoFLQ'
+var yelpQuery = new Yelp({
+  consumer_key: process.env.yelp_consumer_key,
+  consumer_secret: process.env.yelp_consumer_secret,
+  token: process.env.yelp_token,
+  token_secret: process.env.yelp_token_secret
 });
-
 
 function yelpSearch(locationSearch, tripId) {
   var tripId = tripId;
-  return yelpQuery.search({location: locationSearch})
+  return yelpQuery.search({ location: locationSearch })
     .then(function(data) {
       var businessEntry = [];
       data.businesses.forEach(function(business) {
@@ -24,13 +21,13 @@ function yelpSearch(locationSearch, tripId) {
           image: business.image_url,
           description: business.snippet_text,
           tripId: tripId
-
         });
       });
+
       return businessEntry;
     })
     .catch(function(err) {
-      console.log('There was an error: ', err);
+      return err;
     });
 };
 

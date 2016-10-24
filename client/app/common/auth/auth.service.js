@@ -11,7 +11,7 @@
     var service = {
       getHash: getHash
     };
-    
+
     return service;
 
     ///////////////

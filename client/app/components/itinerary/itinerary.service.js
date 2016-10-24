@@ -11,10 +11,8 @@
     var service = {
       getSavedActivities: getSavedActivities,
       postSavedActivity: postSavedActivity,
-      deleteSelectedActivity: deleteSelectedActivity,
       getSavedExpediaActivities: getSavedExpediaActivities,
       postSavedExpediaActivity: postSavedExpediaActivity,
-      deleteSelectedExpediaActivity: deleteSelectedExpediaActivity
     };
 
     return service;
@@ -52,21 +50,6 @@
       });
     }
 
-    // delete selected activity from possible yelp activities
-    function deleteSelectedActivity(activity) {
-      return $http({
-        method: 'DELETE',
-        url: '/api/itinerary',
-        data: activity
-      })
-      .then(function(res) {
-        return res.data;
-      })
-      .catch(function(err) {
-        return err;
-      });
-    }
-
     // populate the itinerary section with previously selected expedia activities
     function getSavedExpediaActivities(uuid) {
       return $http({
@@ -87,21 +70,6 @@
       console.log('activity in itinerary service postSavedExpediaActivity', activity);
       return $http({
         method: 'POST',
-        url: '/api/itinerary/expedia',
-        data: activity
-      })
-      .then(function(res) {
-        return res.data;
-      })
-      .catch(function(err) {
-        return err;
-      });
-    }
-
-    // delete selected activity from possible expedia activities
-    function deleteSelectedExpediaActivity(activity) {
-      return $http({
-        method: 'DELETE',
         url: '/api/itinerary/expedia',
         data: activity
       })

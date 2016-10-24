@@ -4,8 +4,7 @@
   "description": "collaborative social planning app",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon server/server.js",
-    "lint": "jscs server"
+    "start": "nodemon server/server.js"
   },
   "repository": {
     "type": "git",
@@ -18,27 +17,18 @@
   },
   "homepage": "https://github.com/djoj/planit#readme",
   "dependencies": {
-    "angular-ui-bootstrap": "^2.2.0",
-    "bcrypt": "^0.8.7",
     "body-parser": "^1.15.2",
     "cors": "^2.8.1",
-    "crypto": "0.0.3",
     "dotenv": "^2.0.0",
     "express": "^4.14.0",
-    "jquery": "^3.1.1",
-    "mysql": "^2.11.1",
     "path": "^0.12.7",
-    "pg": "^6.1.0",
-    "pg-hstore": "^2.3.2",
     "randomstring": "^1.1.5",
     "request": "^2.75.0",
     "request-promise": "^4.1.1",
     "sequelize": "^3.24.3",
-    "socket.io": "^1.5.0",
     "yelp": "^1.0.1"
   },
   "devDependencies": {
-    "jscs": "^3.0.7",
     "morgan": "^1.7.0",
     "nodemon": "^1.11.0"
   }

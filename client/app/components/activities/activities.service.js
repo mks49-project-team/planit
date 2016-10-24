@@ -34,7 +34,7 @@
       function getExpedia(uuid) {
         return $http({
           method: 'GET',
-          url: '/api/expedia',
+          url: '/api/activity/expedia',
           params: { uuid: uuid }
         })
         .then(function(res) {

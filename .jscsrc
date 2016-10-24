@@ -1,9 +1,0 @@
-{
-    "preset": "node-style-guide",
-    "validateLineBreaks": false,
-    "validateIndentation": false,
-    "maximumLineLength": false,
-    "requireTrailingComma": false,
-    "requireSpaceAfterLineComment": false,
-    "requireCapitalizedComments": false
-}
