@@ -37,7 +37,6 @@
     $scope.$on('selectedExpediaActivityChange', function(event, args) {
       vm.postSavedExpediaActivity(args.val);
       vm.getSavedExpediaActivities(vm.uuid);
-      console.log('savedExpediaActivities', vm.savedExpediaActivities);
     });
 
     function getSavedActivities(uuid) {
@@ -53,7 +52,6 @@
     function postSavedActivity(activity) {
       return itineraryService.postSavedActivity(activity)
         .then(function(data) {
-          console.log('saved this activity', data);
         })
         .catch(function(err) {
           console.log('err in postSavedActivity', err);
@@ -73,7 +71,6 @@
     function postSavedExpediaActivity(activity) {
       return itineraryService.postSavedExpediaActivity(activity)
         .then(function(data) {
-          console.log('saved this activity', data);
         })
         .catch(function(err) {
           console.log('err in postSavedActivity', err);
