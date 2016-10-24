@@ -97,7 +97,7 @@ or visit https://planit-demo.herokuapp.com/
             |-- search.router.js
 ```
 #### REST/CRUD Outline:
-```           
+          
 |   Endpoint             |   Method   |  Response                                          |
 |------------------------|:----------:|----------------------------------------------------|
 | /api/activity          |  GET       | Get Yelp results for a location.                   |
@@ -111,7 +111,7 @@ or visit https://planit-demo.herokuapp.com/
 | /api/itinerary/expedia |  GET       | Get Expedia activities saved to a trip's itinerary.|
 | /api/itinerary/expedia |  POST      | Save an Expedia activity to a trip's itinerary.    |
 | /api/search            |  POST      | Post location to database and autocomplete query.  |
-```
+
 ## Authors
 
 - Oliver Wang
