@@ -23,6 +23,14 @@
     *
     * It also sets selectedActivity of the ParentController on user-click in getSelectedActivity().
     * */
+    $scope.tabs = [
+      { title:"Yelp Activities", content: "Yelp Content" },
+      { title:"Expedia Activities", content: "Expedia Content"}
+    ];
+
+    $scope.model = {
+      name: 'Tabs'
+    };
 
     $scope.$on('uuidChange', function(event, args) {
       vm.uuid = args.val;
