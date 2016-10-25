@@ -6,7 +6,7 @@ Planit is a travel helper application where a group of friends can plan a trip t
 - Refactor SQL database to use relationships.
 - Refactor API calls, wrapping them in a promise.
 - A trip/room should be password-protected.
-- A user should be able to authenticate his/her identity, or sign-up, sign-in, log-out.
+- A user should be able to authenticate his/her identity, or sign-up, sign-in, sign-out.
 - Multiple users should be able to chat inside a trip (sockets).
 - A user should be able to comment on each saved activity in the itinerary.
 - A user should be able to delete a saved activity from the itinerary.
