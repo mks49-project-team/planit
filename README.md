@@ -2,15 +2,25 @@
 
 Planit is a travel helper application where a group of friends can plan a trip together. It is a collaborative social planning app that is designed to facilitate a group trip.
 
+### TODOS
+- Refactor SQL database to use relationships.
+- Refactor API calls, wrapping them in a promise.
+- A trip/room should be password-protected.
+- A user should be able to authenticate his/her identity, or sign-up, sign-in, log-out.
+- Multiple users should be able to chat inside a trip (sockets).
+- A user should be able to comment on each saved activity in the itinerary.
+- A user should be able to delete a saved activity from the itinerary.
+- A user should be able to click an 'Attend' button on an activity in the itinerary that indicates to other users that he/she will attend.
+- A user should be able to save multiple trips.
+- A user should be able to see travel information for a location ([TuGo API](http://developer.tugo.com/)).
+
 ## Getting Started
 
 ### Prerequisites
 
-1. Run npm install to install the dependencies required for the app.
-
-2. Run npm start to start the server.
-
-3. Go to localhost:8000
+1. Run `npm install`.  
+2. Run `npm start`.  
+3. Go to localhost:8000.  
 
 or visit https://planit-demo.herokuapp.com/
 
