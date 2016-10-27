@@ -4,8 +4,6 @@
     <meta charset="utf-8">
     <title>Planit</title>
 
-    <!-- socket.io -->
-    <script src="/socket.io/socket.io.js"></script>
 
     <!-- Angular CDNs -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
@@ -51,8 +49,10 @@
     <script src="./app/components/itinerary/itinerary.controller.js"></script>
     <script src="./app/components/itinerary/itinerary.service.js"></script>
 
-    <!-- chat -->
-    <script src="./app/components/chat/chat.js"></script>
+    <!-- Chat -->
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="./app/components/chat/chat.module.js"></script>
+    <script src="./app/components/chat/chat.controller.js"></script>
 
   </head>
   <body>

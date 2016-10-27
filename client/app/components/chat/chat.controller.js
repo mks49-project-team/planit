@@ -1,14 +1,16 @@
-angular.module('app.chat', [])
-  // .factory('chatService', function(){
-  //
-  //   return {
-  //
-  //   }
-  // })
-  .controller('chatController', function($scope, $window){
+// (function() {
+//   "use strict";
+//
+  angular
+    .module('app.chat')
+    .controller('chatController', chatController);
+
+  chatController.$inject = ['$scope', '$window'];
+
+  function chatController($scope, $window) {
     var vm = this;
     vm.messages = [];
-    
+
     var socket = io.connect($window.location.origin);
 
     socket.on('message created', function(msg){
@@ -22,7 +24,12 @@ angular.module('app.chat', [])
       console.log('vm.newMsg: ', vm.newMsg);
       socket.emit('new message', vm.newMsg);
       vm.newMsg = "";
-    }
+    };
+  }
 
-
-  });
+//
+//
+//
+//   });
+//
+// })();
