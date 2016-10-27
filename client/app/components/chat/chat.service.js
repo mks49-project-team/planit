@@ -9,10 +9,12 @@
 //
 //   function chatService($window){
 //
-//     var socket = io.connect($window.location.origin);
+//     function getHash(){
+//
+//     }
 //
 //     return {
-//       socket: socket
+//       getHash: getHash
 //     }
 //   }
 // })();

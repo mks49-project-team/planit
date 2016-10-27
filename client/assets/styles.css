@@ -130,13 +130,13 @@ form.tab-form-demo .tab-pane {
 }
 /*end Auth template*/
 
-/*Fab*/
+/*Chat*/
 
 #chatbox{
-  width: 200px;
-  height: 250px;
+  width: 250px;
+  height: 300px;
   position: fixed;
-  left: 0;
+  left: 2%;
   bottom: 10px;
 }
 #chat{
@@ -151,11 +151,12 @@ form.tab-form-demo .tab-pane {
   height: 100%;
   border: 1px solid #5bc0de;
   position: relative;
+  box-shadow: 5px 5px 10px gray;
 }
 #messages{
   width: 90%;
   height: 80%;
-  overflow: auto;
+  overflow-y: scroll;
   background-color: white;
   border: 1px solid gray;
   list-style-type: none;
@@ -167,12 +168,15 @@ form.tab-form-demo .tab-pane {
   left: 50%;
   transform: translateX(-50%);
 }
+#messages li {
+  white-space: normal;
+}
 
 #messageInput{
   width: 90%;
   font-size: 12px;
   position: absolute;
-  bottom: 5px;
+  bottom: 10px;
   left: 50%;
   transform: translateX(-50%);
 }
@@ -182,4 +186,5 @@ form.tab-form-demo .tab-pane {
   height: 50px;
   border-radius: 50%;
   background-color: #14A2F9;
+  box-shadow: 5px 5px 5px grey;
 }
