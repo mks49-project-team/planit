@@ -2,6 +2,7 @@ var rp = require('request-promise');
 var PossibleActivities = require('../db').PossibleActivities;
 var PossibleExpedia = require('../db').PossibleExpedia;
 var yelpSearch = require('../helpers/activityHelper').yelpSearch;
+var Trip = require('../db').Trip;
 
 var activityController = {};
 
@@ -9,16 +10,23 @@ var activityController = {};
  * Get all previously found Yelp activities for a specific trip/uuid.
  * */
 activityController.GET = function(req, res) {
+  console.log('poopie' ,req.query, "poopie2")
+  Trip.findOne({where: {uuid: req.query.uuid}})
+    .then(function(trip) {
+      console.log('sasasa', trip, 'asasas')
+      console.log('sasasa', trip.dataValues.id, 'asasas')
   PossibleActivities
     .findAll({
-      where: { uuid: req.query.uuid }
+      where: { trip_id: trip.dataValues.id}
     })
     .then(function(activity) {
+      console.log(activity, 'actactact')
       res.status(200).json(activity);
     })
     .catch(function(err) {
       res.status(418).send(err);
     });
+  });
 };
 
 /* *
@@ -26,10 +34,14 @@ activityController.GET = function(req, res) {
  * and save them to the PossibleActivities table with the correct uuid.
  * */
 activityController.POST = function(req, res) {
-  yelpSearch(req.locationName)
+  console.log(req.uuid, 'abcdefg', req)
+  yelpSearch(req.locationName, req.uuid)
     .then(function(searchResults) {
+      //*****
+      console.log('startLALA', searchResults, 'efghi')
       searchResults.forEach(function(searchResult) {
-        searchResult['uuid'] = req.uuid;
+        console.log(searchResult.trip_id, ' eqeqeq ', req.uuid, 'should be same')
+        searchResult.trip_id = req.uuid;
       });
       PossibleActivities.bulkCreate(searchResults);
     })

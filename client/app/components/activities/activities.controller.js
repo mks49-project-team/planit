@@ -26,6 +26,9 @@
     * */
 
     $scope.$on('uuidChange', function(event, args) {
+      console.log(args, 'lalalala')
+      console.log(event, 'this is event')
+      
       vm.uuid = args.val;
       vm.getActivities(args.val);
       vm.getExpedia(args.val);
@@ -34,6 +37,7 @@
     function getActivities(uuid) {
       return activityService.getActivities(uuid)
         .then(function(data) {
+
           // format the address of each location for display
           data.forEach(function(entry) {
             var splitz = entry.address.split('');

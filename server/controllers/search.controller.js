@@ -9,18 +9,23 @@ var searchController = {};
  * */
 searchController.POST = function(req, res) {
   return Trip.create({
-    uuid: 'testuuid',
+    //uuid: 'testuuid',
     password: 'testpw',
     locationName: req.body.locationName
   })
+
+  //yelp search?
+  
   .then(function(activity) {
+    console.log(activity, "123123")
+
     activityController.POST({
       locationName: activity.dataValues.locationName,
-      uuid: activity.dataValues.uuid
+      uuid: activity.dataValues.id
     });
     activityController.POSTEXPEDIA({
       locationName: activity.dataValues.locationName,
-      uuid: activity.dataValues.uuid
+      uuid: activity.dataValues.id
     });
     authController.hash = activity.dataValues.uuid;
     res.status(201).send(activity);
