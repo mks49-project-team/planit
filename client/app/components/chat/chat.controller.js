@@ -1,9 +1,9 @@
-// (function() {
-//   "use strict";
-//
+(function(){
+  'use strict';
+
   angular
-    .module('app.chat')
-    .controller('chatController', chatController);
+  .module('app.chat')
+  .controller('chatController', chatController);
 
   chatController.$inject = ['$scope', '$window'];
 
@@ -12,6 +12,7 @@
     vm.messages = [];
 
     var socket = io.connect($window.location.origin);
+
 
     socket.on('message created', function(msg){
       console.log('new message from server: ', msg);
@@ -26,10 +27,4 @@
       vm.newMsg = "";
     };
   }
-
-//
-//
-//
-//   });
-//
-// })();
+})();
