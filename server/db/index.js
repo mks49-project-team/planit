@@ -8,7 +8,6 @@ var Chat = require('../models').Chat(db);
 var PossibleActivities = require('../models').PossibleActivities(db);
 var SavedActivities = require('../models').SavedActivities(db);
 var PossibleExpedia = require('../models').PossibleExpedia(db);
-
 var SavedExpedia = require('../models').SavedExpedia(db);
 
 // Assign table relationships USERS
@@ -43,7 +42,7 @@ Trip.hasMany(SavedActivities,	  {foreignKey: 'trip_id', constraints: false});
 
 
 // Option {force: true} drop the table if it already exists
-db.sync({force: true});
+db.sync();
 
 module.exports = {
   db: db,

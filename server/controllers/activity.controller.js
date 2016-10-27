@@ -69,6 +69,7 @@ activityController.GETEXPEDIA = function(req, res) {
       where: { trip_id: trip.dataValues.id }
     })
     .then(function(expediaActivity) {
+      console.log(expediaActivity, '12121212')
       res.status(200).send(expediaActivity);
     })
     .catch(function(err) {
@@ -93,12 +94,21 @@ activityController.POSTEXPEDIA = function(req, res) {
     .then(function(body) {
       console.log(body, 'dddddd')
       console.log('rrrr', req, 'rrrrr')
-      body.activities.forEach(function(expediaResult) {
-        expediaResult.trip_id = req.uuid;
+      body.activities.slice(0, 20)
+      var data = body.activities.map(function(expediaResult) {
+        //// PUT USER_ID HERE WHEN READY!!!!!!!!
+        return {
+          trip_id: req.uuid,
+          title: expediaResult.title,
+          imageUrl: expediaResult.imageUrl,
+          recommendationScore: expediaResult.recommendationScore,
+          fromPrice: expediaResult.fromPrice
+        }
       });
+      console.log(data, 'shouldbetripid2')
 
       // Limit expedia results to 20.
-      PossibleExpedia.bulkCreate(body.activities.slice(0, 20));
+      PossibleExpedia.bulkCreate(data);
     });
 };
 
