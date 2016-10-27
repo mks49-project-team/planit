@@ -25,6 +25,7 @@
       searchService.autoComplete();
     }
 
+    //vm.search is address (santa monica), first thing, goes to serachService first.
     function submitSearch() {
       vm.search = document.getElementById('searchTextField').value;
       searchService.submitSearch(vm.search)

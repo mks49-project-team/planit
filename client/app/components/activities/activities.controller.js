@@ -65,8 +65,10 @@
     }
 
     function getExpedia(uuid) {
+        console.log('getexpedia UUUID', uuid, 'getexpedia UUUUID')
       return activityService.getExpedia(uuid)
         .then(function(data) {
+          console.log('getExpedia12', data, 'getExpedia123')
           vm.possibleExpedia = data;
         })
         .catch(function(err) {
