@@ -14,24 +14,29 @@
 
     var socket = io.connect($window.location.origin);
 
+    socket.on('connect', function(){
+      socket.emit('new user', 'lu');
 
-    socket.on('message created', function(msg){
-      console.log('new message from server: ', msg);
-      $scope.$apply(function(){
-        vm.messages.push(msg);
+      socket.on('message created', function(data){
+        $scope.$apply(function(){
+          vm.messages.push(data);
+        });
       });
-    });
+
+    })
+
+
+
 
     vm.sendMsg = function(){
-      console.log('vm.newMsg: ', vm.newMsg);
-      socket.emit('new message', vm.newMsg);
-      vm.newMsg = "";
+      socket.emit('new message', {
+        username: 'lu',
+        text: vm.text
+      });
+      vm.text = "";
     };
 
-    vm.toggleChatDisplay = function(){
-      vm.showChatBox = !vm.showChatBox;
-      console.log('hit');
-    }
+
 
   }
 })();
