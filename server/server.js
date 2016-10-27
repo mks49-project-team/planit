@@ -10,7 +10,8 @@ var router = require('./routes');
 
 var app = express();
 var server = require('http').Server(app);
-var io = require('socket.io')(server);
+require('./sockets.js').listen(server);
+
 
 var db = require('./db').db;
 
@@ -30,13 +31,6 @@ app.use(function(req, res) {
   res.send('Error 404: Page not found');
 });
 
-io.on('connection', function(socket){
-  console.log('user connected');
-  socket.on('new message', function(data){
-    console.log('msg: ', data);
-    io.emit('message created', data);
-  });
-})
 
 server.listen(port, function() {
   console.log(`server listening on port ${port}`);
