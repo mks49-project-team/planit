@@ -11,8 +11,10 @@ function yelpSearch(locationSearch, tripId) {
   var tripId = tripId;
   return yelpQuery.search({ location: locationSearch })
     .then(function(data) {
+      console.log(data, 'this is data in yelpSearch activityHelper a1b2')
       var businessEntry = [];
       data.businesses.forEach(function(business) {
+        console.log(business, 'sexytime')
         businessEntry.push({
           name: business.name,
           rating: business.rating,
@@ -20,10 +22,10 @@ function yelpSearch(locationSearch, tripId) {
           address: business.location.display_address,
           image: business.image_url,
           description: business.snippet_text,
-          tripId: tripId
+          trip_id: tripId
         });
       });
-
+      console.log(businessEntry, 'asdfasdf')
       return businessEntry;
     })
     .catch(function(err) {

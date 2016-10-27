@@ -2,6 +2,7 @@ var rp = require('request-promise');
 var PossibleActivities = require('../db').PossibleActivities;
 var PossibleExpedia = require('../db').PossibleExpedia;
 var yelpSearch = require('../helpers/activityHelper').yelpSearch;
+var Trip = require('../db').Trip;
 
 var activityController = {};
 
@@ -9,16 +10,23 @@ var activityController = {};
  * Get all previously found Yelp activities for a specific trip/uuid.
  * */
 activityController.GET = function(req, res) {
+  console.log('poopie' ,req.query, "poopie2")
+  Trip.findOne({where: {uuid: req.query.uuid}})
+    .then(function(trip) {
+      console.log('sasasa', trip, 'asasas')
+      console.log('sasasa', trip.dataValues.id, 'asasas')
   PossibleActivities
     .findAll({
-      where: { uuid: req.query.uuid }
+      where: { trip_id: trip.dataValues.id}
     })
     .then(function(activity) {
+      console.log(activity, 'actactact')
       res.status(200).json(activity);
     })
     .catch(function(err) {
       res.status(418).send(err);
     });
+  });
 };
 
 /* *
@@ -26,12 +34,16 @@ activityController.GET = function(req, res) {
  * and save them to the PossibleActivities table with the correct uuid.
  * */
 activityController.POST = function(req, res) {
-  console.log('req: ', req.locationName);
-  yelpSearch(req.locationName)
+  console.log(req.uuid, 'abcdefg', req)
+  yelpSearch(req.locationName, req.uuid)
     .then(function(searchResults) {
-      searchResults.forEach(function(searchResult) {
-        searchResult['uuid'] = req.uuid;
-      });
+      //*****
+      console.log('startLALA', searchResults, 'efghi')
+      //searchResults are businessEntry from activity helper
+      // searchResults.forEach(function(searchResult) {
+      //   console.log(searchResult.trip_id, ' eqeqeq ', req.uuid, 'should be same')
+      //   searchResult.trip_id = req.uuid;
+      // });
       PossibleActivities.bulkCreate(searchResults);
     })
     .then(function(savedActivities) {
@@ -46,9 +58,15 @@ activityController.POST = function(req, res) {
  * Get all previously found Expedia activities for a specific trip/uuid.
  * */
 activityController.GETEXPEDIA = function(req, res) {
+  console.log("qwer", req.query, 'qwer')
+  Trip.findOne({where: {uuid: req.query.uuid}})
+    .then(function(trip) {
+      console.log(trip, 'trippings')
+  console.log('yyyyy', req.query, 'yyyyy')
+  console.log('xxxxx', req, 'xxxxx')
   PossibleExpedia
     .findAll({
-      where: { uuid: req.query.uuid }
+      where: { trip_id: trip.dataValues.id }
     })
     .then(function(expediaActivity) {
       res.status(200).send(expediaActivity);
@@ -57,6 +75,7 @@ activityController.GETEXPEDIA = function(req, res) {
       console.log('Error in retrieving activities: ', err);
       res.status(418).send(err);
     });
+  });
 };
 
 /* *
@@ -72,8 +91,10 @@ activityController.POSTEXPEDIA = function(req, res) {
   };
   rp(options)
     .then(function(body) {
+      console.log(body, 'dddddd')
+      console.log('rrrr', req, 'rrrrr')
       body.activities.forEach(function(expediaResult) {
-        expediaResult['uuid'] = req.uuid;
+        expediaResult.trip_id = req.uuid;
       });
 
       // Limit expedia results to 20.
