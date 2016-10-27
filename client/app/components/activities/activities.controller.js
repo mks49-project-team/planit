@@ -16,6 +16,7 @@
     vm.getExpedia = getExpedia;
     vm.getSelectedExpediaActivity = getSelectedExpediaActivity;
     vm.uuid;
+    
 
     /* *
     * ActivityController listens for a change in ParentController's uuid value
@@ -32,6 +33,8 @@
       vm.uuid = args.val;
       vm.getActivities(args.val);
       vm.getExpedia(args.val);
+      console.log(vm.getExpedia, 'uiop');
+    console.log(vm.uuid, 'poiu')
     });
 
     function getActivities(uuid) {
@@ -89,6 +92,6 @@
     setTimeout(function() {
       vm.getActivities(vm.uuid);
       vm.getExpedia(vm.uuid);
-    }, 2000);
+    }, 5000);
   }
 })();

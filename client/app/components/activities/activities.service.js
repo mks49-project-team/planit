@@ -32,12 +32,14 @@
       }
 
       function getExpedia(uuid) {
+        console.log(uuid, 'in getExpedia activitIES boobies')
         return $http({
           method: 'GET',
           url: '/api/activity/expedia',
           params: { uuid: uuid }
         })
         .then(function(res) {
+          console.log(res.data, 'lucylucy')
           return res.data;
         })
         .catch(function(err) {

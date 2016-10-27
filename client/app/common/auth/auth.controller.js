@@ -23,6 +23,7 @@
     * */
 
     function getHash() {
+      console.log('hashing baby')
       return authService.getHash()
         .then(function(hash) {
           $scope.$parent.uuid = hash;
