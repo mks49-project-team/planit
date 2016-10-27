@@ -11,6 +11,7 @@
     var vm = this;
     vm.messages = [];
 
+
     var socket = io.connect($window.location.origin);
 
 
@@ -26,5 +27,11 @@
       socket.emit('new message', vm.newMsg);
       vm.newMsg = "";
     };
+
+    vm.toggleChatDisplay = function(){
+      vm.showChatBox = !vm.showChatBox;
+      console.log('hit');
+    }
+
   }
 })();
