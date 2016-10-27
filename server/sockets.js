@@ -7,7 +7,6 @@ function listen(server) {
     console.log('user connected');
 
     socket.on('new user', function(data){
-      console.log('new user: ', data);
       socket.join(data.room);
       // broadcast to everyone in user's room
       io.in(data.room)
