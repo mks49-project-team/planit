@@ -81,7 +81,7 @@
     * There is a setTimeout here because we need to retrieve the uuid value
     * before getting a trip's saved activities.
     * */
-
+    // waiting for auth controller to get uuid (getHash)
     setTimeout(function() {
       vm.getSavedActivities(vm.uuid);
       vm.getSavedExpediaActivities(vm.uuid);

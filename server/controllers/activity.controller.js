@@ -26,6 +26,7 @@ activityController.GET = function(req, res) {
  * and save them to the PossibleActivities table with the correct uuid.
  * */
 activityController.POST = function(req, res) {
+  console.log('req: ', req.locationName);
   yelpSearch(req.locationName)
     .then(function(searchResults) {
       searchResults.forEach(function(searchResult) {

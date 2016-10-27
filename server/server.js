@@ -9,6 +9,9 @@ var rp = require('request-promise');
 var router = require('./routes');
 
 var app = express();
+var server = require('http').Server(app);
+require('./sockets.js').listen(server);
+
 
 var db = require('./db').db;
 
@@ -28,6 +31,7 @@ app.use(function(req, res) {
   res.send('Error 404: Page not found');
 });
 
-app.listen(port, function() {
+
+server.listen(port, function() {
   console.log(`server listening on port ${port}`);
 });

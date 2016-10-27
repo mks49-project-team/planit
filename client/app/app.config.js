@@ -36,6 +36,11 @@
             templateUrl: './app/common/auth/auth.html',
             controller: 'AuthController as vm',
             parent: 'parent'
+          },
+          'chat':{
+            templateUrl: './app/components/chat/chat.html',
+            controller: 'chatController as vm',
+            parent: 'parent'
           }
         }
       });
