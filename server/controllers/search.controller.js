@@ -14,6 +14,7 @@ searchController.POST = function(req, res) {
     locationName: req.body.locationName
   })
   .then(function(activity) {
+    // yelp search
     activityController.POST({
       locationName: activity.dataValues.locationName,
       uuid: activity.dataValues.uuid

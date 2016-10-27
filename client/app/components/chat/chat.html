@@ -1,0 +1,23 @@
+<div id='chatbox'>
+
+  <!-- <button id="messageFAB" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" ng-click="vm.toggleChatDisplay()">
+    <span class="glyphicon glyphicon-comment"></span>
+    <!-- <span class="sr-only">Toggle Dropdown</span> -->
+  <!-- </button> -->
+
+
+    <ul id="messages">
+      <li ng-repeat='msg in vm.messages track by $index'>{{msg}}</li>
+    </ul>
+
+
+
+
+    <form ng-submit="vm.sendMsg()">
+      <input id="messageInput" type="text" autocomplete="off" ng-model="vm.newMsg"/>
+    </form>
+
+
+
+
+</div>
