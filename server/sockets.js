@@ -26,7 +26,6 @@ function listen(server) {
         .emit('message created', data);
 
       var trip_id;
-      console.log('line 29++++++++++++', data.room);
       // save message to db
       Trip.findOne({
         where: {
