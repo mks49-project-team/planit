@@ -169,7 +169,7 @@ form.tab-form-demo .tab-pane {
   margin-bottom: 5px;
   margin-top: 20px;
   font-size: 12px;
-  padding: 5px 5px 5px 5px;
+  padding: 5px 5px 50px 5px;
   position: absolute;
   left: 50%;
   transform: translateX(-50%);

@@ -16,18 +16,19 @@
         initChat(uuid);
       });
 
-    function initChat(uuid){
-      vm.messages = [];
+      function initChat(uuid){
+        vm.messages = [];
 
-      var socket = io.connect($window.location.origin);
+        var socket = io.connect($window.location.origin);
 
-      socket.on('connect', function(){
+        socket.on('connect', function(){
 
         // get previous chat history if it exists
         chatService.getChat(uuid)
           .then(function(chats){
             if(chats.length > 0){
               vm.messages = chats;
+              updateScroll();
             }
           });
 
@@ -40,6 +41,7 @@
           console.log('message from server: ', data);
           $scope.$apply(function(){
             vm.messages.push(data);
+            updateScroll();
           });
         });
       });
@@ -53,6 +55,13 @@
         });
         vm.text = '';
       };
+
+      function updateScroll() {
+        var element = document.getElementById('messages');
+        // console.log(element.scrollHeight);
+        element.scrollTop = element.scrollHeight -100;
+
+      }
     }
   }
 })();

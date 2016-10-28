@@ -22,6 +22,8 @@
       UserAuthService.postSignupUserData(vm.username, vm.password, vm.email)
       .then(function(data){
         console.log(data, 'grabgrabgrab')
+        localStorage.setItem('token', data.data.token);
+        localStorage.setItem('username', data.data.username);
       })
     }
 
