@@ -13,6 +13,13 @@
     $scope.selectedActivity = '';
     $scope.selectedExpediaActivity = '';
 
+    parent.userLogOut = function() {
+      localStorage.clear();
+    }
+
+    parent.isUserLoggedIn = function() {
+      return !!localStorage.getItem('id');
+    }
     /* *
     * ParentController
     *   - $scope.uuid is set by AuthController

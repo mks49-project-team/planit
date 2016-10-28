@@ -5,9 +5,9 @@
     .module('app.activityList')
     .controller('ActivityController', ActivityController);
 
-  ActivityController.$inject = ['$scope', '$state', 'activityService', '$location'];
+  ActivityController.$inject = ['$scope', '$state', 'activityService', '$location', 'UserAuthService'];
 
-  function ActivityController($scope, $state, activityService, $location) {
+  function ActivityController($scope, $state, activityService, $location, UserAuthService) {
     var vm = this;
     vm.possibleActivities = [];
     vm.possibleExpedia = [];
@@ -18,6 +18,8 @@
     vm.uuid;
     
 
+    
+
     /* *
     * ActivityController listens for a change in ParentController's uuid value
     * and gets the possible activities from /api/activity and /api/activity/expedia for the trip with that uuid.
@@ -25,23 +27,24 @@
     * It also sets selectedActivity and selectedExpediaActivity of the ParentController on user-click
     * in getSelectedActivity().
     * */
-if (localStorage.getItem('id') === null) {
+    if (localStorage.getItem('id') === null) {
+        UserAuthService.fromShared = $location.url();
+        console.log(UserAuthService.fromShared, 'this should be the uuid with trip')
+        console.log($location.url(UserAuthService.fromShared).$$search.uuid, 'poo')
         $location.path('/signup')
-      } else {
-    $scope.$on('uuidChange', function(event, args) {
-      
+    } else {
+      $scope.$on('uuidChange', function(event, args) {
+
       console.log(args, 'lalalala')
       console.log(event, 'this is event')
-      
       vm.uuid = args.val;
-      
       vm.getActivities(args.val);
       vm.getExpedia(args.val);
-    
       console.log(vm.getExpedia, 'uiop');
-    console.log(vm.uuid, 'poiu')
-    });
-}
+      console.log(vm.uuid, 'poiu')
+      });
+    }
+
     function getActivities(uuid) {
       return activityService.getActivities(uuid)
         .then(function(data) {
@@ -95,8 +98,12 @@ if (localStorage.getItem('id') === null) {
     * */
 
     setTimeout(function() {
+      if (UserAuthService.fromExplored === true) {
+      console.log('USING TIMEOUT BABY')
       vm.getActivities(vm.uuid);
       vm.getExpedia(vm.uuid);
+      }
     }, 5000);
+    
   }
 })();
