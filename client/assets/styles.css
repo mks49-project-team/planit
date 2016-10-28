@@ -143,25 +143,31 @@ form.tab-form-demo .tab-pane {
   width: 90%;
   height: 70%;
   margin: 0px 0px;
-  background-color: #14A2F9;
-  border-radius: 4px;
+  /*background-color: -o-linear-gradient(top,rgba(91,192,222,1) 0%,rgba(63,134,155,1) 100%);*/
+  background-color: #5bc0de;
+  border-radius: 10px;
+  border: 1px solid #4899b1;
+  -moz-box-shadow: inset -1px -2px 11px rgba(0,0,0,0.5);
+  -webkit-box-shadow: inset -1px -2px -1px rgba(0,0,0,0.5);
+  box-shadow: inset -1px -2px -1px rgba(0,0,0,0.5);
 }
 #chat-wrapper{
   width: 100%;
   height: 100%;
-  border: 1px solid #14A2F9;
+  border-radius: 10px;
   position: relative;
   box-shadow: 5px 5px 10px gray;
 }
 #messages{
   width: 95%;
-  height: 80%;
+  height: 75%;
   overflow-y: scroll;
   background-color: #ededed;
   border: 1px solid #dddddd;
+  border-radius: 10px;
   list-style-type: none;
   margin-bottom: 5px;
-  margin-top: 5px;
+  margin-top: 20px;
   font-size: 12px;
   padding: 5px 5px 5px 5px;
   position: absolute;
@@ -177,6 +183,7 @@ form.tab-form-demo .tab-pane {
   margin-bottom: 5px;
   padding: 2px 5px 2px 5px;
   line-height: 1.5;
+  border-radius: 8px;
 }
 .message-container:hover > .chat-time{
   display: block;
@@ -191,9 +198,6 @@ form.tab-form-demo .tab-pane {
   font-size: 10px;
   color: #5c5c5c;
   display: none;
-}
-.chat-text{
-  /*float: left;*/
 }
 #messageInput{
   width: 95%;
@@ -210,6 +214,15 @@ form.tab-form-demo .tab-pane {
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  background-color: #14A2F9;
+  background-color: #5bc0de;
   box-shadow: 5px 5px 5px grey;
+  border: 1px solid #4899b1;
+  outline: none;
+}
+#chat-button:hover{
+  background-color:#31b0d5;
+}
+#chat-button:active{
+  box-shadow: 1px 1px 1px grey;
+  transform: translate(5px,5px);
 }
