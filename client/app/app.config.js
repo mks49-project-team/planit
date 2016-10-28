@@ -19,6 +19,11 @@
         templateUrl: '../trip.html',
         controller: 'ParentController as parent'
       })
+      .state('userauth', {
+        url: '/signup',
+        templateUrl: './app/common/userAuth/user.auth.html',
+        controller: 'UserAuthController as vm',
+      })
       .state('parent.trip', {
         url: 'trip',
         views: {
