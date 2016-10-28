@@ -26,7 +26,6 @@ function listen(server) {
         .emit('message created', data);
 
       var trip_id;
-      console.log('line 29++++++++++++', data.room);
       // save message to db
       Trip.findOne({
         where: {
@@ -34,7 +33,6 @@ function listen(server) {
         }
       })
       .then(function(trip){
-        console.log('trip: ', trip);
         trip_id = trip.id;
 
         Users.findOne({

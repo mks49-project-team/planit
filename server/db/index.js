@@ -11,7 +11,6 @@ var PossibleExpedia = require('../models').PossibleExpedia(db);
 var SavedExpedia = require('../models').SavedExpedia(db);
 
 // Assign table relationships USERS
-
 Users.hasMany(Chat, 			  {foreignKey: 'user_id', constraints: false});
 Users.hasMany(PossibleExpedia, 	  {foreignKey: 'user_id', constraints: false});
 Users.hasMany(PossibleActivities, {foreignKey: 'user_id', constraints: false});
