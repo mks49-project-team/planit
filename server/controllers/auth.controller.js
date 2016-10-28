@@ -7,6 +7,8 @@ var authController = {};
  * Ask Jongsoo and Oliver
  * */
 authController.GET = function(req, res) {
+  console.log('atleastthisworks', authController)
+
   res.status(200).send(authController.hash);
 };
 

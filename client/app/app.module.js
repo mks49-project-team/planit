@@ -16,6 +16,7 @@
       'app.activityList',
       'app.itinerary',
       'app.chat',
-      'ngAnimate'
+      'ngAnimate',
+      'app.userAuth'
     ]);
 })();
