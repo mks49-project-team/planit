@@ -70,6 +70,9 @@
         <div class="navbar-header">
           <a ui-sref="search"><img id="planitNavLogo" src="assets/planit-logo.png"></a>
         </div>
+        <span ng-controller="ParentController as parent" class="navbar-header">
+          <button type="button" class="btn" id="howToButton" ng-click="parent.userLogOut()" ng-if="parent.isUserLoggedIn()">Log out</button>
+        </span>
 
         <!-- How it works modal -->
         <span id="howToButton">

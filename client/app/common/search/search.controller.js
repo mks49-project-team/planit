@@ -5,13 +5,14 @@
     .module('app.search')
     .controller('SearchController', SearchController);
 
-  SearchController.$inject = ['$location', '$state', 'searchService'];
+  SearchController.$inject = ['$location', '$state', 'searchService', 'UserAuthService'];
 
-  function SearchController($location, $state, searchService) {
+  function SearchController($location, $state, searchService, UserAuthService) {
     var vm = this;
     vm.search = '';
     vm.autoComplete = autoComplete;
     vm.submitSearch = submitSearch;
+   
 
     /* *
     * autoComplete() automatically completes user-inputted location queries.
@@ -28,6 +29,8 @@
     //vm.search is address (santa monica), first thing, goes to serachService first.
     function submitSearch() {
       if (localStorage.getItem('id') === null) {
+        UserAuthService.fromExplored = true;
+        console.log(UserAuthService.fromShared, 'bbbttt', UserAuthService.fromExplored)
         $location.path('/signup')
       } else {
       vm.search = document.getElementById('searchTextField').value;
