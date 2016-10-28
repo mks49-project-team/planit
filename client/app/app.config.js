@@ -49,7 +49,7 @@
           },
           'calendar':{
             templateUrl: './app/components/calendar/calendar.html',
-            controller: 'chatController as vm',
+            controller: 'CalendarController as vm',
             parent: 'parent'
           }
         }
