@@ -9,6 +9,7 @@
 
     function chatController($scope, $window, chatService) {
       var vm = this;
+      vm.otherUserTyping;
 
       var uuid;
       $scope.$on('uuidChange', function(event, args){
@@ -18,6 +19,8 @@
 
       function initChat(uuid){
         vm.messages = [];
+        var typing = false;
+        var timeoutID = undefined;
 
         var socket = io.connect($window.location.origin);
 
@@ -44,9 +47,23 @@
             updateScroll();
           });
         });
+
+        socket.on('is typing', function(data){
+          $scope.$apply(function(){
+            vm.otherUserTyping = true;
+            vm.typingUser = data.username;
+          });
+        });
+
+        socket.on('stopped typing', function(data){
+          $scope.$apply(function(){
+            vm.otherUserTyping = false;
+            console.log('stopped: ', vm.otherUserTyping);
+          });
+        });
       });
 
-      vm.sendMsg = function(){
+      vm.sendMsg = function() {
         socket.emit('new message', {
           username: $window.localStorage.username,
           text: vm.text,
@@ -54,13 +71,35 @@
           timestamp: new Date()
         });
         vm.text = '';
-      };
+      }
+
+      vm.sendTypingEvent = function(event) {
+        if(typing === false && event.keyCode !== 13){
+          typing = true;
+          socket.emit('user typing', {
+            username: $window.localStorage.username,
+            room: uuid
+          });
+          timeoutID = setTimeout(resetTyping, 1000);
+        } else {
+          window.clearTimeout(timeoutID);
+          timeoutID = setTimeout(resetTyping, 1000);
+        }
+      }
+
+      function resetTyping(){
+        console.log('resetting', typing);
+        // resets typing event
+        typing = false;
+        socket.emit('user stopped typing', {
+          username: $window.localStorage.username,
+          room: uuid
+        });
+      }
 
       function updateScroll() {
         var element = document.getElementById('messages');
-        // console.log(element.scrollHeight);
-        element.scrollTop = element.scrollHeight -100;
-
+        element.scrollTop = element.scrollHeight;
       }
     }
   }

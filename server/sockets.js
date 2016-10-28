@@ -19,6 +19,16 @@ function listen(server) {
           room: data.room,
           timestamp: new Date()
         });
+
+    });
+
+    socket.on('user typing', function(data){
+      io.in(data.room)
+        .emit('is typing', data);
+    });
+    socket.on('user stopped typing', function(data){
+      io.in(data.room)
+        .emit('stopped typing', data);
     });
 
     socket.on('new message', function(data){

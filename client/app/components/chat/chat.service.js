@@ -15,11 +15,9 @@
         url: '/api/chats/' + room
       })
       .then(function(response){
-        console.log('getchat response: ',response);
         return response.data;
       })
       .catch(function(err){
-        console.log('error getting chat from server: ', err);
         return err;
       });
     }

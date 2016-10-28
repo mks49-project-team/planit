@@ -16,9 +16,10 @@
       </div>
     </div>
 
+    <div id="typing-msg" ng-show="vm.otherUserTyping">{{vm.typingUser}} is typing</div>
 
     <form type="submit" ng-submit="vm.sendMsg()">
-      <input id="messageInput" type="text" autocomplete="off" ng-model="vm.text"/></input>
+      <input id="messageInput" type="text" autocomplete="off" ng-model="vm.text" ng-keypress="vm.sendTypingEvent($event)"/></input>
     </form>
   </div>
 
