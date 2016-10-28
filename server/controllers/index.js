@@ -3,5 +3,7 @@ module.exports = {
   activityController: require('./activity.controller'),
   searchController: require('./search.controller'),
   authController: require('./auth.controller'),
-  usersController: require('./users.controller')
+  usersController: require('./users.controller'),
+  chatsController: require('./chats.controller')
+
 };
