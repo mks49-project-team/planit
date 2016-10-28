@@ -26,6 +26,7 @@
       console.log('hashing baby')
       return authService.getHash()
         .then(function(hash) {
+          console.log(hash, "greenhash")
           $scope.$parent.uuid = hash;
           if (!window.location.href.includes('uuid')) {
             vm.windowLocation = window.location.href + '?uuid=' + hash;
