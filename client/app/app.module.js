@@ -11,12 +11,15 @@
     .module('app', [
       'ui.router',
       'ui.bootstrap',
+      'ui.calendar',
+      'angularModalService',
       'app.auth',
       'app.search',
       'app.activityList',
       'app.itinerary',
       'app.chat',
       'ngAnimate',
-      'app.userAuth'
+      'app.userAuth',
+      'app.calendar'
     ]);
 })();

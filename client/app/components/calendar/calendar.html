@@ -1,0 +1,31 @@
+<h4>Calendar</h4>
+
+
+
+  <div class="span8 calendar" calendar="myCalendar" config="vm.uiConfig.calendar" ui-calendar="vm.uiConfig.calendar" ng-model="vm.eventSources">
+  </div>
+  <div>
+    <form ng-submit="vm.test()">
+      <input type="text" size="50" ng-model="vm.form.title" required>
+      <button type="submit">Submit</button>
+      <br>
+      <select ng-model="vm.form.year" ng-options="x for x in vm.years" required>
+        <option value="">- Choose Year -</option>
+      </select>
+      <select ng-model="vm.form.month" ng-options="month.value as month.name for month in vm.months" ng-change="vm.getDays()" required>
+        <option value="">- Choose Month -</option>
+      </select>
+      <select ng-model="vm.form.day" ng-options="x for x in vm.form.days" required>
+        <option value="">- Choose Day -</option>
+      </select>
+      <select ng-model="vm.form.startHour" ng-options="hour.value as hour.name for hour in vm.hours" required>
+        <option value="">- Hour -</option>
+      </select>
+      <select ng-model="vm.form.startMinute" ng-options="x for x in vm.minutes" required>
+        <option value="">- Minute -</option>
+      </select>
+<!--       <select ng-model="vm.form.amOrPm" ng-options="x for x in vm.amOrPm" ng-change="vm.adjustHour()" required>
+        <option value="">- AM/PM -</option>
+      </select> -->
+    </form>
+  </div>

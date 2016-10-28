@@ -46,6 +46,11 @@
             templateUrl: './app/components/chat/chat.html',
             controller: 'chatController as vm',
             parent: 'parent'
+          },
+          'calendar':{
+            templateUrl: './app/components/calendar/calendar.html',
+            controller: 'chatController as vm',
+            parent: 'parent'
           }
         }
       });
