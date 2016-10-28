@@ -27,6 +27,9 @@
 
     //vm.search is address (santa monica), first thing, goes to serachService first.
     function submitSearch() {
+      if (localStorage.getItem('id') === null) {
+        $location.path('/signup')
+      } else {
       vm.search = document.getElementById('searchTextField').value;
       searchService.submitSearch(vm.search)
         .then(function() {
@@ -35,6 +38,7 @@
         .catch(function(err) {
           console.log('err in SearchController submitSearch', err);
         });
+     }
     }
 
     function init() {

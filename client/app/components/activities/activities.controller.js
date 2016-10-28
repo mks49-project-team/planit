@@ -5,9 +5,9 @@
     .module('app.activityList')
     .controller('ActivityController', ActivityController);
 
-  ActivityController.$inject = ['$scope', '$state', 'activityService'];
+  ActivityController.$inject = ['$scope', '$state', 'activityService', '$location'];
 
-  function ActivityController($scope, $state, activityService) {
+  function ActivityController($scope, $state, activityService, $location) {
     var vm = this;
     vm.possibleActivities = [];
     vm.possibleExpedia = [];
@@ -25,18 +25,23 @@
     * It also sets selectedActivity and selectedExpediaActivity of the ParentController on user-click
     * in getSelectedActivity().
     * */
-
+if (localStorage.getItem('id') === null) {
+        $location.path('/signup')
+      } else {
     $scope.$on('uuidChange', function(event, args) {
+      
       console.log(args, 'lalalala')
       console.log(event, 'this is event')
       
       vm.uuid = args.val;
+      
       vm.getActivities(args.val);
       vm.getExpedia(args.val);
+    
       console.log(vm.getExpedia, 'uiop');
     console.log(vm.uuid, 'poiu')
     });
-
+}
     function getActivities(uuid) {
       return activityService.getActivities(uuid)
         .then(function(data) {
