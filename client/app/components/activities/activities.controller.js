@@ -16,7 +16,7 @@
     vm.getExpedia = getExpedia;
     vm.getSelectedExpediaActivity = getSelectedExpediaActivity;
     vm.uuid;
-    
+
 
     /* *
     * ActivityController listens for a change in ParentController's uuid value
@@ -25,11 +25,10 @@
     * It also sets selectedActivity and selectedExpediaActivity of the ParentController on user-click
     * in getSelectedActivity().
     * */
-
     $scope.$on('uuidChange', function(event, args) {
       console.log(args, 'lalalala')
       console.log(event, 'this is event')
-      
+
       vm.uuid = args.val;
       vm.getActivities(args.val);
       vm.getExpedia(args.val);

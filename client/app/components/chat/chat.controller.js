@@ -2,19 +2,19 @@
   'use strict';
 
   angular
-  .module('app.chat')
-  .controller('chatController', chatController);
+    .module('app.chat')
+    .controller('chatController', chatController);
 
-  chatController.$inject = ['$scope', '$window', 'chatService'];
+    chatController.$inject = ['$scope', '$window', 'chatService'];
 
-  function chatController($scope, $window, chatService) {
-    var vm = this;
+    function chatController($scope, $window, chatService) {
+      var vm = this;
 
-    var uuid;
-    $scope.$on('uuidChange', function(event, args){
-      uuid = args.val;
-      initChat(uuid);
-    });
+      var uuid;
+      $scope.$on('uuidChange', function(event, args){
+        uuid = args.val;
+        initChat(uuid);
+      });
 
     function initChat(uuid){
       vm.messages = [];
@@ -32,7 +32,7 @@
           });
 
         socket.emit('new user', {
-          username: 'mike',//$window.localStorage.user,
+          username: $window.localStorage.username,
           room: uuid
         });
 
@@ -42,12 +42,11 @@
             vm.messages.push(data);
           });
         });
-
-      })
+      });
 
       vm.sendMsg = function(){
         socket.emit('new message', {
-          username: 'mike',
+          username: $window.localStorage.username,
           text: vm.text,
           room: uuid,
           timestamp: new Date()
@@ -55,8 +54,5 @@
         vm.text = '';
       };
     }
-
-
-
   }
 })();
