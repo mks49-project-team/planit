@@ -23,12 +23,13 @@
 
       socket.on('connect', function(){
 
-        // get previous chat history
-        vm.messages = chatService.getChat(uuid)
-        // .then(function(data){
-        //   console.log('get chat: ', data);
-        //   vm.messages.push(data);
-        // })
+        // get previous chat history if it exists
+        chatService.getChat(uuid)
+          .then(function(chats){
+            if(chats.length > 0){
+              vm.messages = chats;
+            }
+          });
 
         socket.emit('new user', {
           username: 'mike',//$window.localStorage.user,

@@ -33,7 +33,6 @@ function listen(server) {
         }
       })
       .then(function(trip){
-        console.log('trip: ', trip);
         trip_id = trip.id;
 
         Users.findOne({

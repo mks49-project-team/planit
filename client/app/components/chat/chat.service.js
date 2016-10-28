@@ -12,13 +12,10 @@
       // retrieves chat for trip
       return $http({
         method: 'GET',
-        url: '/api/chats',
-        params: {
-          trip_uuid: room
-        }
+        url: '/api/chats/' + room
       })
       .then(function(response){
-        console.log(response);
+        console.log('getchat response: ',response);
         return response.data;
       })
       .catch(function(err){
