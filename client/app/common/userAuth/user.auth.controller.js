@@ -31,7 +31,8 @@
       .then(function(data){
         console.log(data.data, 'backendbackend')
         localStorage.setItem('token',  data.data.token);
-        localStorage.setItem('id', data.data.id)
+        localStorage.setItem('id', data.data.id);
+        localStorage.setItem('username', data.data.username);
       })
     }
   }
