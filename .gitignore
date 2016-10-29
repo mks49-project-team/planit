@@ -2,8 +2,3 @@
 .env
 bower_components
 node_modules
-client/lib/*
-!client/lib/fullcalendar
-!client/lib/fullcalendar/*
-!client/lib/angular-ui-calendar
-!client/lib/angular-ui-calendar/*
