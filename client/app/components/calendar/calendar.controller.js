@@ -191,7 +191,7 @@
 
     vm.uiConfig = {
       calendar: {
-        height: 450,
+        height: 300,
         defaultView: 'basicWeek',
         timezone: 'local',
         editable: true,
@@ -222,6 +222,4 @@
       vm.form.startHour = null;
       vm.form.startMinute = null;
     }
-
-  }
 })();

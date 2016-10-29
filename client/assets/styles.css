@@ -57,6 +57,7 @@ h4 {
   width:100%;
   text-align:center;
   color:white;
+  margin-top: 75px;
 }
 .footerContent{
   position:relative;
@@ -239,6 +240,7 @@ form.tab-form-demo .tab-pane {
   box-shadow: 2px 2px 8px #a1a1a1;
   color: #454545;
 }
+
 /* AUTH STYLING GUIDE BELOW */
 #userAuthContainer{
   width:100%;
@@ -273,4 +275,28 @@ form.tab-form-demo .tab-pane {
 }
 #inp{
   text-align:center;
+}
+
+#calendarBottom {
+  margin-bottom: 58px;
+ }
+
+.span8 {
+  width: 66%;
+  float: left;
+}
+
+.span4 {
+  width: 33%;
+  float: left;
+  vertical-align: auto;
+
+}
+
+.jeffCalendar {
+  margin-top: 75px;
+}
+
+.formClass {
+  margin-top: 87px;
 }
