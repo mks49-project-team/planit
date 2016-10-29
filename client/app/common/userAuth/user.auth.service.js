@@ -5,14 +5,27 @@
     .module('app.userAuth')
     .factory('UserAuthService', UserAuthService);
 
-  UserAuthService.$inject = ['$http'];
+  UserAuthService.$inject = ['$http', '$location'];
 
-  function UserAuthService($http) {
+  function UserAuthService($http, $location) {
     var service = {
       postSignupUserData: postSignupUserData,
-      getLoginUserData: getLoginUserData
+      getLoginUserData: getLoginUserData,
+      fromExplored: false,
+      fromShared: '',
+      redirectOnLogin: redirectOnLogin
     };
     return service;
+
+    function redirectOnLogin() {
+       if (!!service.fromExplored) {
+        $location.path('/');
+       } else {
+        console.log('should go to saved')
+        var uuidFromUrl = $location.url(service.fromShared).$$search.uuid;
+        $location.url('/trip?uuid=' + uuidFromUrl)
+       }
+    }
 
     function postSignupUserData(username, password, email) {
       return $http({
