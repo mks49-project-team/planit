@@ -9,9 +9,10 @@
 
   angular
     .module('app', [
+      'app.calendar',
+      'ui.calendar',
       'ui.router',
       'ui.bootstrap',
-      'ui.calendar',
       'angularModalService',
       'app.auth',
       'app.search',
@@ -19,7 +20,6 @@
       'app.itinerary',
       'app.chat',
       'ngAnimate',
-      'app.userAuth',
-      'app.calendar'
+      'app.userAuth'
     ]);
 })();

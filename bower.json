@@ -1,0 +1,34 @@
+{
+  "name": "planit",
+  "description": "collaborative social planning app",
+  "main": "index.js",
+  "authors": [
+    "Oliver Wang",
+    "Dianne Le",
+    "Justin Biele",
+    "Jongsoo Yoon"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/jeffyoo/planit",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "client/lib",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-ui-calendar": "^1.0.2",
+    "scheduler": "^4.3.1",
+    "moment": "^2.15.2",
+    "bootstrap": "^3.3.7",
+    "angular-modal-service": "^0.10.1",
+    "fullcalendar": "^3.0.1"
+  },
+  "resolutions": {
+    "moment": ">=2.5.0",
+    "angular": "~1.5.x",
+    "fullcalendar": "^3.0.1"
+  }
+}
