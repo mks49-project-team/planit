@@ -19,6 +19,14 @@ function listen(server) {
           room: data.room,
           timestamp: new Date()
         });
+
+    });
+
+    socket.on('user typing', function(data){
+      socket.broadcast.to(data.room).emit('is typing', data);
+    });
+    socket.on('user stopped typing', function(data){
+      socket.broadcast.to(data.room).emit('stopped typing', data);
     });
 
     socket.on('new message', function(data){
@@ -52,7 +60,6 @@ function listen(server) {
           .catch(function(err){
             console.log('error saving chat to db: ', err);
           });
-
         })
         .catch(function(err){
           console.log('error finding user in save chat: ', err);
