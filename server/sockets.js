@@ -11,20 +11,20 @@ function listen(server) {
 
     socket.on('new user', function(data){
       socket.join(data.room);
-      // broadcast to everyone in user's room
-      io.in(data.room)
+      // broadcast to everyone in user's room including sender
+      io.to(data.room)
         .emit('message created', {
           username: 'Planit',
           text: data.username + ' has joined!',
           room: data.room,
           timestamp: new Date()
         });
-
     });
 
     socket.on('user typing', function(data){
       socket.broadcast.to(data.room).emit('is typing', data);
     });
+
     socket.on('user stopped typing', function(data){
       socket.broadcast.to(data.room).emit('stopped typing', data);
     });
@@ -64,14 +64,11 @@ function listen(server) {
         .catch(function(err){
           console.log('error finding user in save chat: ', err);
         });
-
       });
     });
-
   });
 
   return io;
-
 }
 
 module.exports = {

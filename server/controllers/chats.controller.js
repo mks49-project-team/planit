@@ -39,11 +39,9 @@ chatsController.GETCHATS = function(req, res){
 
         Promise.all(promises)
           .then(function(chatObjs){
-            console.log('line 42+++++++++++', chatObjs);
             res.send(chatObjs);
           })
           .catch(function(err){
-            console.log('error getting chats: ', err);
             res.send(err);
           })
       });
