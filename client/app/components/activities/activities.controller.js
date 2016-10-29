@@ -5,9 +5,9 @@
     .module('app.activityList')
     .controller('ActivityController', ActivityController);
 
-  ActivityController.$inject = ['$scope', '$state', 'activityService', '$location', 'UserAuthService'];
+  ActivityController.$inject = ['$scope', '$state', 'activityService', '$location', 'UserAuthService', 'searchService'];
 
-  function ActivityController($scope, $state, activityService, $location, UserAuthService) {
+  function ActivityController($scope, $state, activityService, $location, UserAuthService, searchService) {
     var vm = this;
     vm.possibleActivities = [];
     vm.possibleExpedia = [];
@@ -17,9 +17,43 @@
     vm.getSelectedExpediaActivity = getSelectedExpediaActivity;
     vm.uuid;
     vm.trip_id;
+    vm.loadingPage = searchService.loadingPage;
+    vm.loadingStatus = 0;
+    vm.renderLoadPage = renderLoadPage;
+    vm.res;
 
-
-    
+    function renderLoadPage() {
+        var time;
+        var res;
+        var timeInsert;
+        console.log(vm.loadingPage, 'loaddatpage');
+        vm.loadingStatus = vm.loadingStatus + 20;
+        time = vm.loadingStatus;
+        timeInsert = time + '%'
+        vm.res = {"width":timeInsert}
+        console.log(vm.res, 'this should happen like 4-5 times *****')
+        return vm.res;
+      }
+    var y = setInterval(vm.renderLoadPage, 1000)
+      // if (vm.loadingPage === true) {
+      //   for(var i = 0; i < 5; i++) {
+      //     time = vm.loadingStatus + 20;
+      //     timeInsert = time + '%'
+      //     res = {"width":timeInsert}
+      //     console.log(res, 'disdares');
+      //     return setTimeout({
+      //       time
+      //     }, 1000)
+          
+      //   }
+      // }
+      setTimeout(function(){
+        vm.loadingPage = false;
+        console.log(vm.loadingPage, 'should be false baby babaaaa')
+        clearInterval(y);
+      }, 5500)
+      
+    // }
 
     /* *
     * ActivityController listens for a change in ParentController's uuid value
@@ -101,7 +135,7 @@
     * There is a setTimeout here because we need to retrieve the uuid value
     * before getting a trip's possible activities.
     * */
-
+``
     setTimeout(function() {
       console.log(vm.uuid, 'WHAT THE FUCK IS THIS THIS BETTER BE TRIP ID DAMNIT *****')
       //if (UserAuthService.fromExplored === true) {

@@ -10,13 +10,14 @@
   function searchService($http) {
     var service = {
       autoComplete: autoComplete,
-      submitSearch: submitSearch
+      submitSearch: submitSearch,
+      loadingPage: loadingPage
+
     };
 
     return service;
-
-    ///////////////
-
+    var loadingPage = false;
+    /////////////// 
     function autoComplete() {
       var options = {
         types: ['(cities)']
@@ -27,13 +28,15 @@
     }
 
     function submitSearch(locName) {
+      service.loadingPage = true; 
       console.log(locName, 'zxcvzxcv')
+      console.log(loadingPage, 'someart')
       return $http({
         method: 'POST',
         url: '/api/search',
         headers: { 'Content-Type': 'application/json' },
         data: { locationName: locName }
-      });
+      })
     }
   }
 })();
