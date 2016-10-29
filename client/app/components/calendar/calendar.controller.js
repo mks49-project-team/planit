@@ -183,13 +183,6 @@
       }
     }
 
-    // vm.adjustHour = function() {
-    //   if (vm.form.amOrPm === "PM") {
-    //     vm.form.startHour = vm.form.startHour + 12;
-    //   }
-    //     console.log(vm.form.startHour)
-    // }
-
     vm.eventSources = [
     {
       events:[
@@ -202,12 +195,12 @@
 
     vm.uiConfig = {
       calendar: {
-        height: 450,
+        height: 300,
         defaultView: 'basicWeek',
         timezone: 'local',
         editable: true,
         fixedWeekCount: false,
-        // aspectRatio: 2,
+        // aspectRatio: 1,
 
         header: {
           //where are these options??
@@ -221,11 +214,13 @@
           console.log('Clicked on: ' + date.format());
           console.log('Coordinates: ' + jsEvent.pageX + ',' + jsEvent.pageY);
           console.log('Current view: ' + view.name);
-
+          vm.createEventModal();
+          // vm.testing();
         },
         eventClick: function(event, jsEvent, view) {
           if (event) {
             console.log(event)
+
           }
         }
         // viewRender: function(view, element) {
@@ -240,6 +235,10 @@
 
     // }
 
+    vm.testing = function(){
+      console.log('wtff')
+    }
+
     vm.test = function() {
       var date = moment(vm.form.year + "-" + vm.form.month + "-" + vm.form.day + " " + vm.form.startHour + ":" + vm.form.startMinute, "YYYY-MM-DD HH:mm");
 
@@ -251,13 +250,6 @@
         }
       )
 
-      // vm.showCreateEventModal = function() {
-
-      // }
-
-      // vm.showEditEventModal = function() {
-
-      // }
 
       vm.form.title = null;
       vm.form.year = null;
@@ -267,6 +259,14 @@
       vm.form.startMinute = null;
     }
 
+    vm.createEventModal = function() {
+      // console.log($scope.$parent)
+      CreateEventController();
+    }
+
+    // vm.editEventModal = function() {
+
+    // }
 
 
     }

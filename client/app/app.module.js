@@ -20,6 +20,7 @@
       'app.itinerary',
       'app.chat',
       'ngAnimate',
-      'app.userAuth'
+      'app.userAuth',
+      'app.createEventModal'
     ]);
 })();

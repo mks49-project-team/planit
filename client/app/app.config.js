@@ -51,6 +51,11 @@
             templateUrl: './app/components/calendar/calendar.html',
             controller: 'CalendarController as vm',
             parent: 'parent'
+          },
+          'createEventModal':{
+            templateUrl: './app/components/createEventModal/createEventModal.html',
+            controller: 'CreateEventModalController',
+            parent: 'parent'
           }
         }
       });
