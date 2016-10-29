@@ -131,7 +131,6 @@ form.tab-form-demo .tab-pane {
 /*end Auth template*/
 
 /*Chat*/
-
 #chatbox{
   width: 300px;
   height: 375px;
@@ -143,7 +142,6 @@ form.tab-form-demo .tab-pane {
   width: 90%;
   height: 70%;
   margin: 0px 0px;
-  /*background-color: -o-linear-gradient(top,rgba(91,192,222,1) 0%,rgba(63,134,155,1) 100%);*/
   background-color: #5bc0de;
   border-radius: 10px;
   border: 1px solid #4899b1;
@@ -176,7 +174,6 @@ form.tab-form-demo .tab-pane {
   box-shadow: inset 2px 2px 2px 0px #dddddd;
 }
 .message-container {
-  /*white-space: normal;*/
   background: #e6e6e6;
   border: 1px solid #b8b8b8;
   box-shadow: 1px 1px 6px #a1a1a1;
@@ -188,7 +185,6 @@ form.tab-form-demo .tab-pane {
 .message-container:hover > .chat-time{
   display: block;
 }
-
 .chat-username{
   float: left;
   font-size: 12px;
@@ -243,7 +239,6 @@ form.tab-form-demo .tab-pane {
   box-shadow: 2px 2px 8px #a1a1a1;
   color: #454545;
 }
-
 /* AUTH STYLING GUIDE BELOW */
 #userAuthContainer{
   width:100%;
@@ -264,10 +259,6 @@ form.tab-form-demo .tab-pane {
   text-align: center;
   margin:auto;
   text-shadow: none;
-
-  /*position:relative;
-  
-  height:700px;*/
   color:black;
   border: white solid 1px;
 }

@@ -6,10 +6,13 @@
     "Oliver Wang",
     "Dianne Le",
     "Justin Biele",
-    "Jongsoo Yoon"
+    "Jongsoo Yoon",
+    "Lucy Ji",
+    "Jeffrey Yoo",
+    "Sergey Sarkisyan"
   ],
   "license": "ISC",
-  "homepage": "https://github.com/jeffyoo/planit",
+  "homepage": "https://github.com/mks49-project-team/planit",
   "ignore": [
     "**/.*",
     "node_modules",
@@ -23,7 +26,6 @@
     "scheduler": "^4.3.1",
     "moment": "^2.15.2",
     "bootstrap": "^3.3.7",
-    "angular-modal-service": "^0.10.1",
     "fullcalendar": "^3.0.1"
   },
   "resolutions": {

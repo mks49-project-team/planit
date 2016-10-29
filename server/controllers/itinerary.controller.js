@@ -9,9 +9,10 @@ var itineraryController = {};
  * Get all previously found Yelp activities for a specific trip/uuid.
  * */
 itineraryController.GET = function(req, res) {
-  console.log('bnbnbn', req.query, 'bnbnbn')
   SavedActivities.findAll({
-    where: { trip_id: req.query.uuid }
+    where: {
+      trip_id: req.query.uuid
+    }
   })
   .then(function(activity) {
     res.status(200).json(activity);
@@ -26,7 +27,6 @@ itineraryController.GET = function(req, res) {
  * delete it from the table of PossibleActivities for a specific trip/uuid.
  * */
 itineraryController.POST = function(req, res) {
-  console.log(req.body, 'uuuuuu')
   SavedActivities.create({
     name: req.body.name,
     rating: req.body.rating,
@@ -76,7 +76,6 @@ itineraryController.GETEXPEDIA = function(req, res) {
  * delete it from the table of PossibleActivities for a specific trip/uuid.
  * */
 itineraryController.POSTEXPEDIA = function(req, res) {
-  console.log('ertyerty', req.body, 'ertyerty')
   SavedExpedia.create({
     title: req.body.title,
     imageUrl: req.body.imageUrl,
@@ -86,7 +85,6 @@ itineraryController.POSTEXPEDIA = function(req, res) {
     trip_id: req.body.trip_id
   })
   .then(function(activity) {
-    console.log('dfghdfgh', activity, 'dfghdfgh')
     PossibleExpedia.destroy({
       where: {
         title: activity.dataValues.title,
