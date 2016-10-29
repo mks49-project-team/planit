@@ -9,11 +9,17 @@
 
   angular
     .module('app', [
+      'app.calendar',
+      'ui.calendar',
       'ui.router',
       'ui.bootstrap',
       'app.auth',
       'app.search',
       'app.activityList',
-      'app.itinerary'
+      'app.itinerary',
+      'app.chat',
+      'app.userAuth'
+      'ngAnimate',
+      'app.userAuth'
     ]);
 })();

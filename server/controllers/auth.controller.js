@@ -21,6 +21,7 @@ authController.GETHASH = function(req, res) {
     }
   })
   .then(function(trip) {
+    // refactor?? currently re-queries and saves yelp results to database
     activityController.POST(trip.dataValues.locationName);
     res.redirect('/#/trip/?uuid=' + req.params.hash);
   })

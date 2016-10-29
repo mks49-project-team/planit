@@ -1,0 +1,29 @@
+<div id='chatbox'>
+
+  <button type="button" id="chat-button" class="btn btn-default" data-toggle="collapse" data-target="#chat">
+    <span class="glyphicon glyphicon-comment"></span>
+  </button>
+
+
+  <div id="chat" class="collapse">
+    <div id="chat-wrapper">
+    <div id="messages">
+      <div class="message-container" ng-repeat='msg in vm.messages track by $index'>
+        <span class="chat-username">{{msg.username}}</span>
+        <span class="chat-time">{{msg.timestamp | date : 'short'}}</span>
+        <br>
+        <span class="chat-text">{{msg.text}}</span>
+      </div>
+    </div>
+
+    <div id="typing-msg" ng-show="vm.otherUserTyping">...{{vm.typingUser}} is typing</div>
+
+    <form type="submit" ng-submit="vm.sendMsg()">
+      <input id="messageInput" type="text" autocomplete="off" ng-model="vm.text" ng-keypress="vm.sendTypingEvent($event)"/></input>
+    </form>
+  </div>
+
+  </div>
+
+
+</div>

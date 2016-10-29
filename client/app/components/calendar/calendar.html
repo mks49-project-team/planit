@@ -1,0 +1,29 @@
+<div class="jeffCalendar">
+  <h4 class="container">Calendar</h4>
+  <div class="row-fluid">
+    <div class="span8 calendar container" calendar="myCalendar" config="vm.uiConfig.calendar" ui-calendar="vm.uiConfig.calendar" ng-model="vm.eventSources">
+    </div>
+    <div class="span4 container">
+      <form ng-submit="vm.test()" class="formClass">
+        <input type="text" size="50" ng-model="vm.form.title" required>
+        <button type="submit">Submit</button>
+        <br>
+        <select ng-model="vm.form.year" ng-options="x for x in vm.years" required>
+          <option value="">- Choose Year -</option>
+        </select>
+        <select ng-model="vm.form.month" ng-options="month.value as month.name for month in vm.months" ng-change="vm.getDays()" required>
+          <option value="">- Choose Month -</option>
+        </select>
+        <select ng-model="vm.form.day" ng-options="x for x in vm.form.days" required>
+          <option value="">- Choose Day -</option>
+        </select>
+        <select ng-model="vm.form.startHour" ng-options="hour.value as hour.name for hour in vm.hours" required>
+          <option value="">- Hour -</option>
+        </select>
+        <select ng-model="vm.form.startMinute" ng-options="x for x in vm.minutes" required>
+          <option value="">- Minute -</option>
+        </select>
+      </form>
+    </div>
+  </div>
+</div>

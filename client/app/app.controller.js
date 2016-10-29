@@ -5,14 +5,22 @@
     .module('app')
     .controller('ParentController', ParentController);
 
-  ParentController.$inject = ['$scope', '$state'];
+  ParentController.$inject = ['$scope', '$state', '$location'];
 
-  function ParentController($scope, $state) {
+  function ParentController($scope, $state, $location) {
     var parent = this;
     $scope.uuid = '';
     $scope.selectedActivity = '';
     $scope.selectedExpediaActivity = '';
 
+    parent.userLogOut = function() {
+      localStorage.clear();
+      $location.path('/')
+    }
+
+    parent.isUserLoggedIn = function() {
+      return !!localStorage.getItem('id');
+    }
     /* *
     * ParentController
     *   - $scope.uuid is set by AuthController

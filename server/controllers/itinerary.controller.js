@@ -10,7 +10,9 @@ var itineraryController = {};
  * */
 itineraryController.GET = function(req, res) {
   SavedActivities.findAll({
-    where: { uuid: req.query.uuid }
+    where: {
+      trip_id: req.query.uuid
+    }
   })
   .then(function(activity) {
     res.status(200).json(activity);
@@ -32,13 +34,14 @@ itineraryController.POST = function(req, res) {
     address: req.body.address,
     image: req.body.image,
     description: req.body.description,
-    uuid: req.body.uuid
+    user_id: req.body.user_id,
+    trip_id: req.body.trip_id,
   })
   .then(function(activity) {
     PossibleActivities.destroy({
       where: {
-        name: activity.name,
-        uuid: activity.uuid
+        name: activity.dataValues.name,
+        trip_id: activity.dataValues.trip_id
       }
     })
     .then(function(numDeleted) {
@@ -58,7 +61,7 @@ itineraryController.POST = function(req, res) {
  * */
 itineraryController.GETEXPEDIA = function(req, res) {
   SavedExpedia.findAll({
-    where: { uuid: req.query.uuid }
+    where: { trip_id: req.query.uuid }
   })
   .then(function(activity) {
     res.status(200).json(activity);
@@ -78,13 +81,14 @@ itineraryController.POSTEXPEDIA = function(req, res) {
     imageUrl: req.body.imageUrl,
     recommendationScore: req.body.recommendationScore,
     fromPrice: req.body.fromPrice,
-    uuid: req.body.uuid
+    user_id: req.body.user_id,
+    trip_id: req.body.trip_id
   })
   .then(function(activity) {
     PossibleExpedia.destroy({
       where: {
-        title: activity.title,
-        uuid: activity.uuid
+        title: activity.dataValues.title,
+        trip_id: activity.dataValues.trip_id
       }
     })
     .then(function(numDeleted) {

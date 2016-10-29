@@ -20,10 +20,9 @@ function yelpSearch(locationSearch, tripId) {
           address: business.location.display_address,
           image: business.image_url,
           description: business.snippet_text,
-          tripId: tripId
+          trip_id: tripId
         });
       });
-
       return businessEntry;
     })
     .catch(function(err) {

@@ -19,6 +19,11 @@
         templateUrl: '../trip.html',
         controller: 'ParentController as parent'
       })
+      .state('userauth', {
+        url: '/signup',
+        templateUrl: './app/common/userAuth/user.auth.html',
+        controller: 'UserAuthController as vm',
+      })
       .state('parent.trip', {
         url: 'trip',
         views: {
@@ -35,6 +40,21 @@
           'auth': {
             templateUrl: './app/common/auth/auth.html',
             controller: 'AuthController as vm',
+            parent: 'parent'
+          },
+          'chat':{
+            templateUrl: './app/components/chat/chat.html',
+            controller: 'chatController as vm',
+            parent: 'parent'
+          },
+          'calendar':{
+            templateUrl: './app/components/calendar/calendar.html',
+            controller: 'CalendarController as vm',
+            parent: 'parent'
+          },
+          'createEventModal':{
+            templateUrl: './app/components/createEventModal/createEventModal.html',
+            controller: 'CreateEventModalController',
             parent: 'parent'
           }
         }

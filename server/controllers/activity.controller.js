@@ -2,6 +2,7 @@ var rp = require('request-promise');
 var PossibleActivities = require('../db').PossibleActivities;
 var PossibleExpedia = require('../db').PossibleExpedia;
 var yelpSearch = require('../helpers/activityHelper').yelpSearch;
+var Trip = require('../db').Trip;
 
 var activityController = {};
 
@@ -9,16 +10,25 @@ var activityController = {};
  * Get all previously found Yelp activities for a specific trip/uuid.
  * */
 activityController.GET = function(req, res) {
-  PossibleActivities
-    .findAll({
-      where: { uuid: req.query.uuid }
-    })
-    .then(function(activity) {
-      res.status(200).json(activity);
-    })
-    .catch(function(err) {
-      res.status(418).send(err);
-    });
+  Trip.findOne({
+    where: {
+      uuid: req.query.uuid
+    }
+  })
+  .then(function(trip) {
+    PossibleActivities
+      .findAll({
+        where: {
+          trip_id: trip.dataValues.id
+        }
+      })
+      .then(function(activity) {
+        res.status(200).json(activity);
+      })
+      .catch(function(err) {
+        res.status(418).send(err);
+      });
+  });
 };
 
 /* *
@@ -26,11 +36,8 @@ activityController.GET = function(req, res) {
  * and save them to the PossibleActivities table with the correct uuid.
  * */
 activityController.POST = function(req, res) {
-  yelpSearch(req.locationName)
+  yelpSearch(req.locationName, req.uuid)
     .then(function(searchResults) {
-      searchResults.forEach(function(searchResult) {
-        searchResult['uuid'] = req.uuid;
-      });
       PossibleActivities.bulkCreate(searchResults);
     })
     .then(function(savedActivities) {
@@ -45,17 +52,25 @@ activityController.POST = function(req, res) {
  * Get all previously found Expedia activities for a specific trip/uuid.
  * */
 activityController.GETEXPEDIA = function(req, res) {
-  PossibleExpedia
+  Trip.findOne({
+    where: {
+      uuid: req.query.uuid
+    }
+  })
+  .then(function(trip) {
+    PossibleExpedia
     .findAll({
-      where: { uuid: req.query.uuid }
+      where: {
+        trip_id: trip.dataValues.id
+      }
     })
     .then(function(expediaActivity) {
       res.status(200).send(expediaActivity);
     })
     .catch(function(err) {
-      console.log('Error in retrieving activities: ', err);
       res.status(418).send(err);
     });
+  });
 };
 
 /* *
@@ -71,12 +86,18 @@ activityController.POSTEXPEDIA = function(req, res) {
   };
   rp(options)
     .then(function(body) {
-      body.activities.forEach(function(expediaResult) {
-        expediaResult['uuid'] = req.uuid;
+      body.activities.slice(0, 20)
+      var data = body.activities.map(function(expediaResult) {
+        return {
+          trip_id: req.uuid,
+          title: expediaResult.title,
+          imageUrl: expediaResult.imageUrl,
+          recommendationScore: expediaResult.recommendationScore,
+          fromPrice: expediaResult.fromPrice
+        }
       });
-
       // Limit expedia results to 20.
-      PossibleExpedia.bulkCreate(body.activities.slice(0, 20));
+      PossibleExpedia.bulkCreate(data);
     });
 };
 

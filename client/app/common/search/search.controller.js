@@ -5,13 +5,14 @@
     .module('app.search')
     .controller('SearchController', SearchController);
 
-  SearchController.$inject = ['$location', '$state', 'searchService'];
+  SearchController.$inject = ['$location', '$state', 'searchService', 'UserAuthService'];
 
-  function SearchController($location, $state, searchService) {
+  function SearchController($location, $state, searchService, UserAuthService) {
     var vm = this;
     vm.search = '';
     vm.autoComplete = autoComplete;
     vm.submitSearch = submitSearch;
+
 
     /* *
     * autoComplete() automatically completes user-inputted location queries.
@@ -26,6 +27,10 @@
     }
 
     function submitSearch() {
+      if (localStorage.getItem('id') === null) {
+        UserAuthService.fromExplored = true;
+        $location.path('/signup')
+      } else {
       vm.search = document.getElementById('searchTextField').value;
       searchService.submitSearch(vm.search)
         .then(function() {
@@ -34,6 +39,7 @@
         .catch(function(err) {
           console.log('err in SearchController submitSearch', err);
         });
+     }
     }
 
     function init() {

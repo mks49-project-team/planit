@@ -26,17 +26,19 @@
 
     $scope.$on('uuidChange', function(event, args) {
       vm.uuid = args.val;
-      vm.getSavedActivities(args.val);
+      //vm.getSavedActivities(args.val);
     });
 
     $scope.$on('selectedActivityChange', function(event, args) {
+      args.val.user_id = localStorage.getItem('id')
       vm.postSavedActivity(args.val);
-      vm.getSavedActivities(vm.uuid);
+      vm.getSavedActivities(args.val.trip_id);
     });
 
     $scope.$on('selectedExpediaActivityChange', function(event, args) {
+      args.val.user_id = localStorage.getItem('id')
       vm.postSavedExpediaActivity(args.val);
-      vm.getSavedExpediaActivities(vm.uuid);
+      vm.getSavedExpediaActivities(args.val.trip_id);
     });
 
     function getSavedActivities(uuid) {
@@ -81,7 +83,7 @@
     * There is a setTimeout here because we need to retrieve the uuid value
     * before getting a trip's saved activities.
     * */
-
+    // waiting for auth controller to get uuid (getHash)
     setTimeout(function() {
       vm.getSavedActivities(vm.uuid);
       vm.getSavedExpediaActivities(vm.uuid);

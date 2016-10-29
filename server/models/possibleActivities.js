@@ -1,5 +1,6 @@
 var Sequelize = require('sequelize');
 
+
 module.exports = function(db) {
   var PossibleActivities = db.define('possibleActivities', {
     name: { type: Sequelize.STRING },
@@ -7,8 +8,7 @@ module.exports = function(db) {
     stars: { type: Sequelize.STRING },
     image: { type: Sequelize.STRING },
     description: { type: Sequelize.STRING },
-    address: { type: Sequelize.STRING },
-    uuid: { type: Sequelize.STRING }
+    address: { type: Sequelize.STRING }
   });
 
   return PossibleActivities;

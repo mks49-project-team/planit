@@ -4,13 +4,15 @@
     <meta charset="utf-8">
     <title>Planit</title>
 
-    <!-- Angular CDNs -->
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.1/angular-ui-router.min.js"></script>
-
     <!-- Styles -->
     <link rel="stylesheet" href="https://bootswatch.com/yeti/bootstrap.min.css">
     <link rel="stylesheet" href="./assets/styles.css">
+    <link rel="stylesheet" href="./lib/fullcalendar/dist/fullcalendar.css">
+
+    <!-- Angular CDNs -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.1/angular-ui-router.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-animate.js"></script>
 
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
@@ -19,10 +21,9 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.2.0/ui-bootstrap-tpls.min.js"></script>
 
-    <!-- App -->
-    <script src="./app/app.module.js"></script>
-    <script src="./app/app.config.js"></script>
-    <script src="./app/app.controller.js"></script>
+    <!-- Moment -->
+    <script src="./lib/moment/min/moment.min.js"></script>
+
 
     <!-- Google Autocomplete -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD92hWKBL-u7p8q0xMMR6bQGCE3IWwbTZE&sensor=false&amp;libraries=places" type="text/javascript"></script>
@@ -48,6 +49,38 @@
     <script src="./app/components/itinerary/itinerary.controller.js"></script>
     <script src="./app/components/itinerary/itinerary.service.js"></script>
 
+    <!-- Chat -->
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="./app/components/chat/chat.module.js"></script>
+    <script src="./app/components/chat/chat.controller.js"></script>
+    <script src="./app/components/chat/chat.service.js"></script>
+
+    <!-- User Auth -->
+    <script src="./app/common/userAuth/user.auth.module.js"></script>
+    <script src="./app/common/userAuth/user.auth.controller.js"></script>
+    <script src="./app/common/userAuth/user.auth.service.js"></script>
+
+    <!-- Calendar -->
+    <!-- Angular UI Calendar -->
+    <script src="./lib/angular-ui-calendar/src/calendar.js"></script>
+    <script src="./lib/fullcalendar/dist/fullcalendar.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.2.0/ui-bootstrap-tpls.js"></script>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.2.0/ui-bootstrap-tpls.js"></script>
+    <script src="./lib/fullcalendar/dist/gcal.js"></script>
+    <script src="./app/components/calendar/calendar.module.js"></script>
+    <script src="./app/components/calendar/calendar.controller.js"></script>
+
+    <!-- Modal -->
+    <script src="./app/components/createEventModal/createEventModal.module.js"></script>
+    <script src="./app/components/createEventModal/createEventModal.controller.js"></script>
+
+    <!-- App -->
+    <script src="./app/app.module.js"></script>
+    <script src="./app/app.config.js"></script>
+    <script src="./app/app.controller.js"></script>
+
   </head>
   <body>
 
@@ -57,6 +90,9 @@
         <div class="navbar-header">
           <a ui-sref="search"><img id="planitNavLogo" src="assets/planit-logo.png"></a>
         </div>
+        <span ng-controller="ParentController as parent" class="navbar-header">
+          <button type="button" class="btn" id="howToButton" ng-click="parent.userLogOut()" ng-if="parent.isUserLoggedIn()">Log out</button>
+        </span>
 
         <!-- How it works modal -->
         <span id="howToButton">

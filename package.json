@@ -8,19 +8,20 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/djoj/planit.git"
+    "url": "git+https://github.com/mks49-project-team/planit.git"
   },
-  "author": "Oliver Wang, Dianne Le, Justin Biele, Jongsoo Yoon",
+  "author": "Oliver Wang, Dianne Le, Justin Biele, Jongsoo Yoon, Lucy Ji, Sergey Sarkisyan, Jeffrey Yoo",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/djoj/planit/issues"
+    "url": "https://github.com/mks49-project-team/planit/issues"
   },
-  "homepage": "https://github.com/djoj/planit#readme",
+  "homepage": "https://github.com/mks49-project-team/planit#readme",
   "dependencies": {
     "body-parser": "^1.15.2",
     "cors": "^2.8.1",
     "dotenv": "^2.0.0",
     "express": "^4.14.0",
+    "moment": "^2.15.2",
     "morgan": "^1.7.0",
     "mysql": "^2.11.1",
     "nodemon": "^1.11.0",
@@ -31,6 +32,7 @@
     "request": "^2.75.0",
     "request-promise": "^4.1.1",
     "sequelize": "^3.24.3",
+    "socket.io": "^1.5.1",
     "yelp": "^1.0.1"
   }
 }
