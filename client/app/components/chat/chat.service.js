@@ -21,19 +21,9 @@
         return err;
       });
     }
-      // standalone test function
-      // function getChat(uuid){
-      //   console.log('getchat uuid: ', uuid);
-      //   return [
-      //     {username: 'a', room: 'ulr6BRxQjU', text: 'asfasdf'},
-      //     {username: 'b', room: 'ulr6BRxQjU', text: 'blah'}
-      //   ];
-      // }
-
 
     return {
       getChat: getChat
     }
-
   }
 })();
