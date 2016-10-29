@@ -13,13 +13,11 @@
       'ui.calendar',
       'ui.router',
       'ui.bootstrap',
-      'angularModalService',
       'app.auth',
       'app.search',
       'app.activityList',
       'app.itinerary',
       'app.chat',
-      'ngAnimate',
       'app.userAuth'
     ]);
 })();

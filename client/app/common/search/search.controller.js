@@ -12,7 +12,7 @@
     vm.search = '';
     vm.autoComplete = autoComplete;
     vm.submitSearch = submitSearch;
-   
+
 
     /* *
     * autoComplete() automatically completes user-inputted location queries.
@@ -26,11 +26,9 @@
       searchService.autoComplete();
     }
 
-    //vm.search is address (santa monica), first thing, goes to serachService first.
     function submitSearch() {
       if (localStorage.getItem('id') === null) {
         UserAuthService.fromExplored = true;
-        console.log(UserAuthService.fromShared, 'bbbttt', UserAuthService.fromExplored)
         $location.path('/signup')
       } else {
       vm.search = document.getElementById('searchTextField').value;

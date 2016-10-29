@@ -4,12 +4,11 @@
     .module('app.calendar')
     .controller('CalendarController', CalendarController);
 
-  CalendarController.$inject = ['$scope', 'uiCalendarConfig', 'ModalService'];
+  CalendarController.$inject = ['$scope', 'uiCalendarConfig'];
 
-  function CalendarController($scope, $log, uiCalendarConfig, ModalService) {
+  function CalendarController($scope, uiCalendarConfig) {
 
     var vm = this;
-    vm.name = "jeff"
     vm.form = {};
     vm.years = [2016, 2017, 2018];
     vm.months = [
@@ -170,9 +169,6 @@
 
     vm.minutes = ["00","05","10","15","20","25","30","35","40","45","50","55","60"];
 
-    vm.modal = function(){
-
-    }
     vm.getDays = function() {
       if (vm.form.month === 4 || vm.form.month === 6 || vm.form.month === 9 || vm.form.month === 11) {
         vm.form.days = vm.days30;
@@ -183,13 +179,6 @@
       }
     }
 
-    // vm.adjustHour = function() {
-    //   if (vm.form.amOrPm === "PM") {
-    //     vm.form.startHour = vm.form.startHour + 12;
-    //   }
-    //     console.log(vm.form.startHour)
-    // }
-
     vm.eventSources = [
     {
       events:[
@@ -198,7 +187,7 @@
           start: '2016-10-28T22:00'
         }
       ]
-    }]
+    }];
 
     vm.uiConfig = {
       calendar: {
@@ -207,38 +196,13 @@
         timezone: 'local',
         editable: true,
         fixedWeekCount: false,
-        // aspectRatio: 2,
-
         header: {
-          //where are these options??
           left: 'month basicWeek basicDay agendaWeek agendaDay',
           center: 'title',
           right: 'today prev,next'
-        },
-
-        dayClick: function(date, jsEvent, view) {
-          console.log('dayDicked')
-          console.log('Clicked on: ' + date.format());
-          console.log('Coordinates: ' + jsEvent.pageX + ',' + jsEvent.pageY);
-          console.log('Current view: ' + view.name);
-
-        },
-        eventClick: function(event, jsEvent, view) {
-          if (event) {
-            console.log(event)
-          }
         }
-        // viewRender: function(view, element) {
-        //   $log.debug("View Changed: ", view.visStart, view.visEnd, view.start, view.end);
-        // }
       }
-    }
-
-    // vm.gotoDate = function(date) {
-
-    //   vm.uiConfig.calendar.fullCalendar('gotoDate', date);
-
-    // }
+    };
 
     vm.test = function() {
       var date = moment(vm.form.year + "-" + vm.form.month + "-" + vm.form.day + " " + vm.form.startHour + ":" + vm.form.startMinute, "YYYY-MM-DD HH:mm");
@@ -249,15 +213,7 @@
           start: date,
           stick: true
         }
-      )
-
-      // vm.showCreateEventModal = function() {
-
-      // }
-
-      // vm.showEditEventModal = function() {
-
-      // }
+      );
 
       vm.form.title = null;
       vm.form.year = null;
@@ -267,8 +223,5 @@
       vm.form.startMinute = null;
     }
 
-
-
-    }
+  }
 })();
-

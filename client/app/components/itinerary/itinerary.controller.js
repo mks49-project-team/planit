@@ -30,26 +30,20 @@
     });
 
     $scope.$on('selectedActivityChange', function(event, args) {
-      console.log('eventbaby', event, 'eventbaby')
-      console.log('argargargarg', args, 'argargargarg')
       args.val.user_id = localStorage.getItem('id')
       vm.postSavedActivity(args.val);
       vm.getSavedActivities(args.val.trip_id);
     });
 
     $scope.$on('selectedExpediaActivityChange', function(event, args) {
-      console.log('eveneven', event, 'eveneven')
-      console.log('oddodd', args, 'oddodd')
       args.val.user_id = localStorage.getItem('id')
       vm.postSavedExpediaActivity(args.val);
       vm.getSavedExpediaActivities(args.val.trip_id);
     });
 
     function getSavedActivities(uuid) {
-      console.log('qqqqqq', uuid, 'qqqqqq')
       return itineraryService.getSavedActivities(uuid)
         .then(function(data) {
-          console.log('wwwwww', data, 'wwwwww')
           vm.savedActivities = data;
         })
         .catch(function(err) {

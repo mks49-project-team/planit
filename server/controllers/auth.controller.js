@@ -7,8 +7,6 @@ var authController = {};
  * Ask Jongsoo and Oliver
  * */
 authController.GET = function(req, res) {
-  console.log('atleastthisworks', authController)
-
   res.status(200).send(authController.hash);
 };
 
@@ -17,14 +15,12 @@ authController.GET = function(req, res) {
 * to the trip view by using the shareable link.
 * */
 authController.GETHASH = function(req, res) {
-  console.log(req.params.hash, 'pooppooppoop')
   Trip.findOne({
     where: {
       uuid: req.params.hash
     }
   })
   .then(function(trip) {
-    console.log(trip, 'pooppoop')
     // refactor?? currently re-queries and saves yelp results to database
     activityController.POST(trip.dataValues.locationName);
     res.redirect('/#/trip/?uuid=' + req.params.hash);
