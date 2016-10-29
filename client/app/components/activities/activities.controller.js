@@ -49,7 +49,7 @@
     function getActivities(uuid) {
       return activityService.getActivities(uuid)
         .then(function(data) {
-
+          console.log('getActivities12', data, 'getActivities12')
           // format the address of each location for display
           data.forEach(function(entry) {
             var splitz = entry.address.split('');
@@ -73,6 +73,7 @@
 
     function getSelectedActivity(activity) {
       $scope.$parent.selectedActivity = activity;
+      console.log('llllll', activity, 'llllll')
       vm.getActivities(vm.uuid);
     }
 
@@ -90,6 +91,7 @@
 
     function getSelectedExpediaActivity(activity) {
       $scope.$parent.selectedExpediaActivity = activity;
+      console.log('eeeeee', activity, 'eeeeee')
       vm.getExpedia(vm.uuid);
     }
 
@@ -99,11 +101,11 @@
     * */
 
     setTimeout(function() {
-      if (UserAuthService.fromExplored === true) {
-      console.log('USING TIMEOUT BABY')
+      //if (UserAuthService.fromExplored === true) {
+      //console.log('USING TIMEOUT BABY')
       vm.getActivities(vm.uuid);
       vm.getExpedia(vm.uuid);
-      }
+      //}
     }, 5000);
     
   }
