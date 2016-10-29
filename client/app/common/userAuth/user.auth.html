@@ -1,16 +1,30 @@
-<div>
-<form ng-submit="vm.grabSignupUserData()">
-username <input ng-model="vm.username"> 
-password <input ng-model="vm.password" type="password"> 
-email <input ng-model="vm.email" type="email"> 
-<button>Sign up</button>
-</form>
-</div>
 
-<div>
-<form ng-submit="vm.grabLoginUserData(vm.user, vm.pass)">
-username <input ng-model="vm.user">
-password <input ng-model="vm.pass" type="password"> 
-<button>Log in</button>
-</form>
+<div id="userAuthContainer">
+
+<h3> Before we start, please Log in or</h3>
+
+	<div class="jumbotron" id="signUpContainer">
+		<form ng-submit="vm.grabLoginUserData(vm.user, vm.pass)">
+			<label class="control-label" id="signUpLabels" for="focusedInput">username</label></br>
+			<input id="inp" ng-model="vm.user" id="focusedInput"></br>
+			<label class="control-label" id="signUpLabels" for="focusedInput">password</label></br> 
+			<input id="inp" ng-model="vm.pass" type="password" id="focusedInput"></br> 
+		<button class="btn btn-success" id="but">Log in</button>
+		</form>
+	</div>
+
+<h3>Sign up</h3>
+
+	<div class="jumbotron" id="signUpContainer">
+		<form ng-submit="vm.grabSignupUserData()"> 
+		<label class="control-label" id="signUpLabels" for="focusedInput">username</label></br>
+		<input id="inp" ng-model="vm.username" id="focusedInput"></br>
+		<label class="control-label" id="signUpLabels" for="focusedInput">password</label></br> 
+		<input id="inp" ng-model="vm.password" type="password" id="focusedInput"></br> 
+		<label class="control-label" id="signUpLabels" for="focusedInput">email</label></br>  
+		<input id="inp" ng-model="vm.email" type="email" id="focusedInput"> </br>
+		<button class="btn btn-success" id="but">Sign up</button></br>
+		</form>
+	</div>
+
 </div>
