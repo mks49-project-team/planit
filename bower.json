@@ -25,12 +25,10 @@
     "angular-ui-calendar": "^1.0.2",
     "scheduler": "^4.3.1",
     "moment": "^2.15.2",
-    "bootstrap": "^3.3.7",
-    "fullcalendar": "^3.0.1"
+    "bootstrap": "^3.3.7"
   },
   "resolutions": {
     "moment": ">=2.5.0",
-    "angular": "~1.5.x",
-    "fullcalendar": "^3.0.1"
+    "angular": "~1.5.x"
   }
 }
