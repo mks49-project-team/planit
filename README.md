@@ -3,11 +3,8 @@
 Planit is a travel helper application where a group of friends can plan a trip together. It is a collaborative social planning app that is designed to facilitate a group trip.
 
 ### TODOS
-- Refactor SQL database to use relationships.
 - Refactor API calls, wrapping them in a promise.
 - A trip/room should be password-protected.
-- A user should be able to authenticate his/her identity, or sign-up, sign-in, log-out.
-- Multiple users should be able to chat inside a trip (sockets).
 - A user should be able to comment on each saved activity in the itinerary.
 - A user should be able to delete a saved activity from the itinerary.
 - A user should be able to click an 'Attend' button on an activity in the itinerary that indicates to other users that he/she will attend.
@@ -31,6 +28,7 @@ or visit https://planit-demo.herokuapp.com/
 * [Bootstrap](http://getbootstrap.com/)
 * [Node](https://nodejs.org/en/)
 * [Express](http://expressjs.com/)
+* [Socket.io](http://socket.io/)
 
 ### Client App Information
 #### Directory Tree
@@ -57,11 +55,16 @@ or visit https://planit-demo.herokuapp.com/
     |   |   |   |   |-- auth.module.js
     |   |   |   |   |-- auth.service.js
     |   |   |   |-- search
-    |   |   |       |-- search.controller.js
-    |   |   |       |-- search.html
-    |   |   |       |-- search.module.js
-    |   |   |       |-- search.route.js
-    |   |   |       |-- search.service.js
+    |   |   |   |   |-- search.controller.js
+    |   |   |   |   |-- search.html
+    |   |   |   |   |-- search.module.js
+    |   |   |   |   |-- search.route.js
+    |   |   |   |   |-- search.service.js
+    |   |   |   |-- userAuth   
+    |   |   |       |-- user.auth.controller.js
+    |   |   |       |-- user.auth.html
+    |   |   |       |-- user.auth.module.js
+    |   |   |       |-- user.auth.service.js
     |   |   |-- components
     |   |       |-- activities
     |   |       |   |-- activities.controller.js
@@ -69,22 +72,34 @@ or visit https://planit-demo.herokuapp.com/
     |   |       |   |-- activities.module.js
     |   |       |   |-- activities.service.js
     |   |       |-- itinerary
-    |   |           |-- itinerary.controller.js
-    |   |           |-- itinerary.html
-    |   |           |-- itinerary.module.js
-    |   |           |-- itinerary.service.js
+    |   |       |   |-- itinerary.controller.js
+    |   |       |   |-- itinerary.html
+    |   |       |   |-- itinerary.module.js
+    |   |       |   |-- itinerary.service.js
+    |   |       |-- calendar
+    |   |       |   |-- calendar.controller.js       
+    |   |       |   |-- calendar.html
+    |   |       |   |-- calendar.module.js
+    |   |       |-- chat
+    |   |           |-- chat.controller.js
+    |   |           |-- chat.html
+    |   |           |-- chat.module.js
+    |   |           |-- chat.service.js
     |   |-- assets
     |       |-- bridge.jpeg
     |       |-- planit-logo.png
     |       |-- styles.css
     |-- server
         |-- server.js
+        |-- sockets.js
         |-- controllers
         |   |-- activity.controller.js
         |   |-- auth.controller.js
+        |   |-- chats.controller.js
         |   |-- index.js
         |   |-- itinerary.controller.js
         |   |-- search.controller.js
+        |   |-- users.controller.js
         |-- db
         |   |-- db.js
         |   |-- index.js
@@ -99,12 +114,17 @@ or visit https://planit-demo.herokuapp.com/
         |   |-- savedActivities.js
         |   |-- savedExpedia.js
         |   |-- trip.js
+        |   |-- chat.js
+        |   |-- trip.js
+        |   |-- users.js
         |-- routes
             |-- activity.router.js
             |-- auth.router.js
             |-- index.js
             |-- itinerary.router.js
             |-- search.router.js
+            |-- chats.router.js
+            |-- users.router.js
 ```
 #### REST/CRUD Outline:
           
@@ -121,13 +141,21 @@ or visit https://planit-demo.herokuapp.com/
 | /api/itinerary/expedia |  GET       | Get Expedia activities saved to a trip's itinerary.|
 | /api/itinerary/expedia |  POST      | Save an Expedia activity to a trip's itinerary.    |
 | /api/search            |  POST      | Post location to database and autocomplete query.  |
+| /api/chats/:room       |  GET       | Get saved chat messages                            |
+| /api/users             |  GET       | user signin                                        |
+| /api/users             |  POST      | user signup                                        |
 
-## Authors
+## Original Authors
 
 - Oliver Wang
 - Dianne Le
 - Justin Biele
 - Jongsoo Yoon
+
+## Contributing Authors
+- Lucy Ji
+- Jeffrey Yoo
+- Sergey Sarkisyan
 
 ## License
 
