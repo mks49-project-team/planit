@@ -1,16 +1,16 @@
 <div>
 <form ng-submit="vm.grabSignupUserData()">
-username <input ng-model="vm.username"> {{vm.username}}
-password <input ng-model="vm.password"> {{vm.password}}
-email <input ng-model="vm.email"> {{vm.email}}
-<button>hi</button>
+username <input ng-model="vm.username"> 
+password <input ng-model="vm.password" type="password"> 
+email <input ng-model="vm.email" type="email"> 
+<button>Sign up</button>
 </form>
 </div>
 
 <div>
 <form ng-submit="vm.grabLoginUserData(vm.user, vm.pass)">
-username <input ng-model="vm.user"> {{vm.user}}
-password <input ng-model="vm.pass"> {{vm.pass}}
-<button>hi</button>
+username <input ng-model="vm.user">
+password <input ng-model="vm.pass" type="password"> 
+<button>Log in</button>
 </form>
 </div>
