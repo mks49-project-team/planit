@@ -23,7 +23,9 @@ chatsController.GETCHATS = function(req, res){
         var promises = chats.map(function(chat){
           return new Promise(function(resolve, reject){
             Users.findOne({
-              where: {id: chat.dataValues.user_id}
+              where: {
+                id: chat.dataValues.user_id
+              }
             })
             .then(function(user){
               var chatObj = {

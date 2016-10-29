@@ -36,7 +36,6 @@
 
     // add selected activity to saved yelp activities
     function postSavedActivity(activity) {
-      console.log('activity in itinearry service postSavedActivity', activity);
       return $http({
         method: 'POST',
         url: '/api/itinerary',
@@ -67,7 +66,6 @@
 
     // add selected activity to saved expedia activities
     function postSavedExpediaActivity(activity) {
-      console.log('activity in itinerary service postSavedExpediaActivity', activity);
       return $http({
         method: 'POST',
         url: '/api/itinerary/expedia',

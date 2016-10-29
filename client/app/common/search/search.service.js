@@ -27,7 +27,6 @@
     }
 
     function submitSearch(locName) {
-      console.log(locName, 'zxcvzxcv')
       return $http({
         method: 'POST',
         url: '/api/search',

@@ -16,7 +16,6 @@ usersController.GET = function(req, res) {
 		}
 	})
 	.then(function(data){
-		console.log(data, 'ppppppp');
 		res.send(data)
 	})
 }

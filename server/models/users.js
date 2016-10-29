@@ -5,9 +5,10 @@ module.exports = function(db) {
     username: { type: Sequelize.STRING },
     password: { type: Sequelize.STRING },
     email: { type: Sequelize.STRING },
-    token: { type: Sequelize.UUID,
-     		 defaultValue: Sequelize.UUIDV1
-     		}
+    token: {
+      type: Sequelize.UUID,
+     	defaultValue: Sequelize.UUIDV1
+    }
   });
 
   return Users;

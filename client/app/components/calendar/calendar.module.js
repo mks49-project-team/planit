@@ -9,5 +9,3 @@
 
   angular.module('app.calendar', []);
 })();
-
-//JEFF, i didn't do anything with the parent controller

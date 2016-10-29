@@ -19,7 +19,7 @@
     vm.trip_id;
 
 
-    
+
 
     /* *
     * ActivityController listens for a change in ParentController's uuid value
@@ -31,27 +31,18 @@
 
     if (localStorage.getItem('id') === null) {
         UserAuthService.fromShared = $location.url();
-        console.log(UserAuthService.fromShared, 'this should be the uuid with trip')
-        console.log($location.url(UserAuthService.fromShared).$$search.uuid, 'poo')
         $location.path('/signup')
     } else {
       $scope.$on('uuidChange', function(event, args) {
-
-      console.log(args, 'lalalala')
-      console.log(event, 'this is event')
-      vm.uuid = args.val;
-      vm.getActivities(args.val);
-      vm.getExpedia(args.val);
-      console.log(vm.getExpedia, 'uiop');
-      console.log(vm.uuid, 'poiu')
+        vm.uuid = args.val;
+        vm.getActivities(args.val);
+        vm.getExpedia(args.val);
       });
     }
 
     function getActivities(uuid) {
       return activityService.getActivities(uuid)
         .then(function(data) {
-
-          console.log('getActivities12', data, 'getActivities12')
           // format the address of each location for display
           data.forEach(function(entry) {
             var splitz = entry.address.split('');
@@ -75,15 +66,12 @@
 
     function getSelectedActivity(activity) {
       $scope.$parent.selectedActivity = activity;
-      console.log('llllll', activity, 'llllll')
       vm.getActivities(vm.uuid);
     }
 
     function getExpedia(uuid) {
-        console.log('getexpedia UUUID', uuid, 'getexpedia UUUUID')
       return activityService.getExpedia(uuid)
         .then(function(data) {
-          console.log('getExpedia12', data, 'getExpedia123')
           vm.possibleExpedia = data;
         })
         .catch(function(err) {
@@ -103,13 +91,10 @@
     * */
 
     setTimeout(function() {
-      console.log(vm.uuid, 'WHAT THE FUCK IS THIS THIS BETTER BE TRIP ID DAMNIT *****')
-      //if (UserAuthService.fromExplored === true) {
-      //console.log('USING TIMEOUT BABY')
       vm.getActivities(vm.uuid);
       vm.getExpedia(vm.uuid);
       //}
     }, 5000);
-    
+
   }
 })();

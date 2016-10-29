@@ -20,22 +20,17 @@
 
 
     function grabSignupUserData(){
-      console.log('it works?')
       UserAuthService.postSignupUserData(vm.username, vm.password, vm.email)
       .then(function(data){
-        console.log('grabgrabgrab should be here')
-        console.log(data, 'grabgrabgrab')
         UserAuthService.getLoginUserData(data.data.username, data.data.password)
           .then(function(signedin){
-            console.log(signedin, 'wtf does this gives us?')
-            //console.log(vm.username, vm.password)
             localStorage.setItem('token',  signedin.data.token);
             localStorage.setItem('id', signedin.data.id);
             localStorage.setItem('username', signedin.data.username);
             vm.redirectOnLogin();
           })
           .catch(function(err){
-          console.log(err)
+            console.log(err)
           })
       })
       .catch(function(err){
@@ -44,10 +39,8 @@
     }
 
     function grabLoginUserData($window){
-      console.log('grabbeddadata')
       UserAuthService.getLoginUserData(vm.user, vm.pass)
       .then(function(data){
-        console.log(data.data, 'backendbackend')
         localStorage.setItem('token',  data.data.token);
         localStorage.setItem('id', data.data.id);
         localStorage.setItem('username', data.data.username);
