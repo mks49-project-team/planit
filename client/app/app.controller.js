@@ -5,9 +5,9 @@
     .module('app')
     .controller('ParentController', ParentController);
 
-  ParentController.$inject = ['$scope', '$state'];
+  ParentController.$inject = ['$scope', '$state', '$location'];
 
-  function ParentController($scope, $state) {
+  function ParentController($scope, $state, $location) {
     var parent = this;
     $scope.uuid = '';
     $scope.selectedActivity = '';
@@ -15,6 +15,7 @@
 
     parent.userLogOut = function() {
       localStorage.clear();
+      $location.path('/')
     }
 
     parent.isUserLoggedIn = function() {

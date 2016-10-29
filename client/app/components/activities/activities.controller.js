@@ -16,6 +16,7 @@
     vm.getExpedia = getExpedia;
     vm.getSelectedExpediaActivity = getSelectedExpediaActivity;
     vm.uuid;
+    vm.trip_id;
 
 
     
@@ -49,6 +50,7 @@
     function getActivities(uuid) {
       return activityService.getActivities(uuid)
         .then(function(data) {
+
           console.log('getActivities12', data, 'getActivities12')
           // format the address of each location for display
           data.forEach(function(entry) {
@@ -101,6 +103,7 @@
     * */
 
     setTimeout(function() {
+      console.log(vm.uuid, 'WHAT THE FUCK IS THIS THIS BETTER BE TRIP ID DAMNIT *****')
       //if (UserAuthService.fromExplored === true) {
       //console.log('USING TIMEOUT BABY')
       vm.getActivities(vm.uuid);
