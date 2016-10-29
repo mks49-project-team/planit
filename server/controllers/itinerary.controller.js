@@ -9,8 +9,9 @@ var itineraryController = {};
  * Get all previously found Yelp activities for a specific trip/uuid.
  * */
 itineraryController.GET = function(req, res) {
+  console.log('bnbnbn', req.query, 'bnbnbn')
   SavedActivities.findAll({
-    where: { uuid: req.query.uuid }
+    where: { trip_id: req.query.uuid }
   })
   .then(function(activity) {
     res.status(200).json(activity);
@@ -25,6 +26,7 @@ itineraryController.GET = function(req, res) {
  * delete it from the table of PossibleActivities for a specific trip/uuid.
  * */
 itineraryController.POST = function(req, res) {
+  console.log(req.body, 'uuuuuu')
   SavedActivities.create({
     name: req.body.name,
     rating: req.body.rating,
@@ -32,13 +34,14 @@ itineraryController.POST = function(req, res) {
     address: req.body.address,
     image: req.body.image,
     description: req.body.description,
-    uuid: req.body.uuid
+    user_id: req.body.user_id,
+    trip_id: req.body.trip_id,
   })
   .then(function(activity) {
     PossibleActivities.destroy({
       where: {
-        name: activity.name,
-        uuid: activity.uuid
+        name: activity.dataValues.name,
+        trip_id: activity.dataValues.trip_id
       }
     })
     .then(function(numDeleted) {
@@ -58,7 +61,7 @@ itineraryController.POST = function(req, res) {
  * */
 itineraryController.GETEXPEDIA = function(req, res) {
   SavedExpedia.findAll({
-    where: { uuid: req.query.uuid }
+    where: { trip_id: req.query.uuid }
   })
   .then(function(activity) {
     res.status(200).json(activity);
@@ -73,18 +76,21 @@ itineraryController.GETEXPEDIA = function(req, res) {
  * delete it from the table of PossibleActivities for a specific trip/uuid.
  * */
 itineraryController.POSTEXPEDIA = function(req, res) {
+  console.log('ertyerty', req.body, 'ertyerty')
   SavedExpedia.create({
     title: req.body.title,
     imageUrl: req.body.imageUrl,
     recommendationScore: req.body.recommendationScore,
     fromPrice: req.body.fromPrice,
-    uuid: req.body.uuid
+    user_id: req.body.user_id,
+    trip_id: req.body.trip_id
   })
   .then(function(activity) {
+    console.log('dfghdfgh', activity, 'dfghdfgh')
     PossibleExpedia.destroy({
       where: {
-        title: activity.title,
-        uuid: activity.uuid
+        title: activity.dataValues.title,
+        trip_id: activity.dataValues.trip_id
       }
     })
     .then(function(numDeleted) {
