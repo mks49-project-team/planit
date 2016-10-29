@@ -5,9 +5,9 @@
     .module('app.activityList')
     .controller('ActivityController', ActivityController);
 
-  ActivityController.$inject = ['$scope', '$state', 'activityService', '$location', 'UserAuthService'];
+  ActivityController.$inject = ['$scope', '$state', 'activityService', '$location', 'UserAuthService', 'searchService'];
 
-  function ActivityController($scope, $state, activityService, $location, UserAuthService) {
+  function ActivityController($scope, $state, activityService, $location, UserAuthService, searchService) {
     var vm = this;
     vm.possibleActivities = [];
     vm.possibleExpedia = [];
@@ -17,7 +17,28 @@
     vm.getSelectedExpediaActivity = getSelectedExpediaActivity;
     vm.uuid;
     vm.trip_id;
+    vm.loadingPage = searchService.loadingPage;
+    vm.loadingStatus = 0;
+    vm.renderLoadPage = renderLoadPage;
+    vm.res;
 
+
+    function renderLoadPage() {
+        var time;
+        var res;
+        var timeInsert;
+        vm.loadingStatus = vm.loadingStatus + 20;
+        time = vm.loadingStatus;
+        timeInsert = time + '%'
+        vm.res = {"width":timeInsert}
+        return vm.res;
+      }
+      var loader = setInterval(vm.renderLoadPage, 1000)
+      
+      setTimeout(function(){
+        vm.loadingPage = false;
+        clearInterval(loader);
+      }, 5500)
 
 
 
@@ -81,7 +102,6 @@
 
     function getSelectedExpediaActivity(activity) {
       $scope.$parent.selectedExpediaActivity = activity;
-      console.log('eeeeee', activity, 'eeeeee')
       vm.getExpedia(vm.uuid);
     }
 
@@ -89,7 +109,7 @@
     * There is a setTimeout here because we need to retrieve the uuid value
     * before getting a trip's possible activities.
     * */
-
+``
     setTimeout(function() {
       vm.getActivities(vm.uuid);
       vm.getExpedia(vm.uuid);
