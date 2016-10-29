@@ -9,6 +9,7 @@
   function CalendarController($scope, $log, uiCalendarConfig, ModalService) {
 
     var vm = this;
+    vm.name = "jeff"
     vm.form = {};
     vm.years = [2016, 2017, 2018];
     vm.months = [
@@ -270,3 +271,4 @@
 
     }
 })();
+
