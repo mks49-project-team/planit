@@ -19,5 +19,7 @@
       'app.itinerary',
       'app.chat',
       'app.userAuth'
+      'ngAnimate',
+      'app.userAuth'
     ]);
 })();
